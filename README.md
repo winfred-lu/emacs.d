@@ -16,6 +16,4 @@ Optional:
 Usage
 -----------
 
-AS usual,
-
 	$ emacs
