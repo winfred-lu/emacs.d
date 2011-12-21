@@ -20,13 +20,6 @@
       ;c-basic-offset 8)
 ;(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 
-;;; magit
-;(require 'magit)
-
-;;; auto pair
-(require 'autopair)
-(autopair-global-mode)
-
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
