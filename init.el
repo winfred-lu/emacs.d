@@ -11,6 +11,7 @@
 
 (load-library "winfred-visual")
 (load-library "winfred-evil")
+(load-library "winfred-misc")
 
 ;;; org mod settings
 ;(require 'org-install)
