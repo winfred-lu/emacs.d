@@ -1,7 +1,3 @@
-;; magit (apt-get install magit)
-(require 'magit)
-(global-set-key "\C-xg" 'magit-status)
-
 ;; auto pair
 (require 'autopair)
 (autopair-global-mode)
