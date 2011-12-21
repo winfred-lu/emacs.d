@@ -12,5 +12,4 @@ Optional:
 
 Usage
 -----------
-As usual
 	$ emacs
