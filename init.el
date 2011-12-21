@@ -12,6 +12,7 @@
 (load-library "winfred-visual")
 (load-library "winfred-evil")
 (load-library "winfred-buffer")
+(load-library "winfred-magit")
 (load-library "winfred-misc")
 
 ;;; c settings
