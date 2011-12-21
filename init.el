@@ -14,6 +14,7 @@
 (load-library "winfred-buffer")
 (load-library "winfred-magit")
 (load-library "winfred-misc")
+(load-library "winfred-yasnippet")
 
 ;;; c settings
 ;(require 'cc-mode)
