@@ -14,23 +14,6 @@
 (load-library "winfred-buffer")
 (load-library "winfred-misc")
 
-;;; org mod settings
-;(require 'org-install)
-;(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-;(define-key global-map "\C-cl" 'org-store-link)
-;(define-key global-map "\C-ca" 'org-agenda)
-;(setq org-log-done t)
-;(setq org-agenda-include-diary t)
-;(setq org-agenda-files (list "~/org/work.org"
-                             ;"~/org/home.org"))
-;(setq browse-url-browser-function (quote browse-url-generic))
-;(setq browse-url-generic-program "chromium-browser")
-
-;; mobile org settings
-;(setq org-directory "~/org")
-;(setq org-mobile-inbox-for-pull "~/org/flagged.org")
-;(setq org-mobile-directory "~/Dropbox/org")
-
 ;;; c settings
 ;(require 'cc-mode)
 ;(setq c-default-style "linux"
