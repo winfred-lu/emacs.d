@@ -11,6 +11,7 @@
 
 (load-library "winfred-visual")
 (load-library "winfred-evil")
+(load-library "winfred-buffer")
 (load-library "winfred-misc")
 
 ;;; org mod settings
@@ -29,12 +30,6 @@
 ;(setq org-directory "~/org")
 ;(setq org-mobile-inbox-for-pull "~/org/flagged.org")
 ;(setq org-mobile-directory "~/Dropbox/org")
-
-;;; buffer switching
-;(global-set-key (kbd "C-x C-b") 'buffer-menu)
-;(iswitchb-mode 1)
-;(setq iswitchb-buffer-ignore '("^ " "*Buffer"))
-;(setq iswitchb-delim " | ")
 
 ;;; c settings
 ;(require 'cc-mode)
