@@ -1,0 +1,21 @@
+;; color-theme
+(require 'color-theme)
+(load-library "winfred-color-theme")
+(color-theme-winfred)
+
+;; Don't show the startup screen, menu bar, and tool bar
+(setq inhibit-startup-message t)
+(menu-bar-mode nil)
+(tool-bar-mode nil)
+
+;; Display line and column numbers
+(setq line-number-mode t)
+(setq column-number-mode t)
+
+;; Line-wrapping
+(setq-default fill-column 80)
+
+;; Show the matching parens
+(show-paren-mode t)
+(setq show-paren-delay 0)
+

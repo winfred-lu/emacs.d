@@ -9,11 +9,7 @@
 (progn (cd "~/.emacs.d/vendor")
        (normal-top-level-add-subdirs-to-load-path))
 
-;;; color theme
-(require 'color-theme)
-(load-library "winfred-color-theme")
-(color-theme-winfred)
-
+(load-library "winfred-visual")
 (load-library "winfred-evil")
 
 ;;; org mod settings
