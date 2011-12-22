@@ -11,7 +11,7 @@ Installation
 
 Optional:
 
-	$ git submodule foreach make
+	$ ./vendor/compile.sh
 
 Usage
 -----------
