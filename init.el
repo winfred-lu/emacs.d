@@ -15,6 +15,7 @@
 (load-library "winfred-magit")
 (load-library "winfred-misc")
 (load-library "winfred-yasnippet")
+(load-library "winfred-tabs")
 
 ;;; c settings
 ;(require 'cc-mode)

@@ -7,3 +7,6 @@
 [submodule "vendor/yasnippet"]
 	path = vendor/yasnippet
 	url = git://github.com/capitaomorte/yasnippet.git
+[submodule "vendor/smart-tab"]
+	path = vendor/smart-tab
+	url = git://github.com/genehack/smart-tab.git
