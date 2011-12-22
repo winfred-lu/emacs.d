@@ -49,6 +49,3 @@
 		     (evil-append nil)
 		     ))
 
-(define-key evil-normal-state-map "[[" 'c-beginning-of-defun)
-(define-key evil-normal-state-map "[]" 'c-end-of-defun)
-

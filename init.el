@@ -17,11 +17,7 @@
 (load-library "winfred-yasnippet")
 (load-library "winfred-tabs")
 
-;;; c settings
-;(require 'cc-mode)
-;(setq c-default-style "linux"
-      ;c-basic-offset 8)
-;(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
+(load-library "winfred-cc-mode")
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
