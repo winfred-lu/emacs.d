@@ -17,6 +17,7 @@
 (load-library "winfred-yasnippet")
 (load-library "winfred-tabs")
 
+(load-library "winfred-keys")
 (load-library "winfred-cc-mode")
 
 (custom-set-variables
