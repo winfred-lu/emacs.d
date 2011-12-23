@@ -3,3 +3,7 @@
 
 ;; y-or-n
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;; auto pair
+(require 'autopair)
+(autopair-global-mode)
