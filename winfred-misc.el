@@ -7,3 +7,7 @@
 ;; auto pair
 (require 'autopair)
 (autopair-global-mode)
+
+;; chromium as default browser
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "chromium-browser")
