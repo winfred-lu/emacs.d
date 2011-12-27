@@ -19,6 +19,7 @@
 
 (load-library "winfred-keys")
 (load-library "winfred-cc-mode")
+(load-library "winfred-org")
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
