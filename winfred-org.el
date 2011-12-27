@@ -5,8 +5,6 @@
 (setq org-log-done t)
 (setq org-agenda-files (list "~/org/work.org"
 			     "~/org/home.org"))
-(setq browse-url-browser-function (quote browse-url-generic))
-(setq browse-url-generic-program "chromium-browser")
 
 ;; mobile org settings
 (setq org-directory "~/org")
