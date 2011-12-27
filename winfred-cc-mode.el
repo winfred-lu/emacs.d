@@ -8,6 +8,3 @@
 ;	  (lambda ()
 ;	    (local-set-key (kbd "RET") 'newline-and-indent)
 ;	    ))
-
-(define-key evil-normal-state-map "[[" 'c-beginning-of-defun)
-(define-key evil-normal-state-map "][" 'c-end-of-defun)
