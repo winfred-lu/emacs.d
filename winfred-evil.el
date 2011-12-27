@@ -41,11 +41,24 @@
 ;(define-key viper-insert-basic-map (kbd "j") 'viper-escape-if-next-char-is-j)
 
 
-;; make evil work for org-mode!
-(define-key evil-normal-state-map "O" (lambda ()
-		     (interactive)
+;; key bindings for cc-mode
+(define-key evil-normal-state-map "[[" 'c-beginning-of-defun)
+(define-key evil-normal-state-map "][" 'c-end-of-defun)
+
+;; key bindings of org file for evil normal mode
+(define-key evil-normal-state-map "O" (lambda () (interactive)
 		     (end-of-line)
 		     (org-insert-heading)
 		     (evil-append nil)
 		     ))
-
+(define-key evil-normal-state-map "T" 'org-todo)
+(define-key evil-normal-state-map "-" 'org-cycle-list-bullet)
+(define-key evil-normal-state-map (kbd "TAB") 'org-cycle)
+(define-key evil-normal-state-map (kbd "M-l") 'org-metaright)
+(define-key evil-normal-state-map (kbd "M-h") 'org-metaleft)
+(define-key evil-normal-state-map (kbd "M-k") 'org-metaup)
+(define-key evil-normal-state-map (kbd "M-j") 'org-metadown)
+(define-key evil-normal-state-map (kbd "M-L") 'org-shiftmetaright)
+(define-key evil-normal-state-map (kbd "M-H") 'org-shiftmetaleft)
+(define-key evil-normal-state-map (kbd "M-K") 'org-shiftmetaup)
+(define-key evil-normal-state-map (kbd "M-J") 'org-shiftmetadown)
