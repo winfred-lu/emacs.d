@@ -1,10 +1,15 @@
 ;;; buffer switching (frame)
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
 
-;;; mini buffer switching
+;; mini buffer switching
 (iswitchb-mode 1)
-;(setq iswitchb-buffer-ignore '("^ " "*Buffer"))
+
+;; '|' as the delimiter
 (setq iswitchb-delim " | ")
+
+;; ignore buffers
+(add-to-list 'iswitchb-buffer-ignore "^ ")
+(add-to-list 'iswitchb-buffer-ignore "*Completions*")
 
 ;; Keep the size of iswitchb minibuffer more manageable.
 (add-hook 'iswitchb-minibuffer-setup-hook
