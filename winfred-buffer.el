@@ -1,5 +1,10 @@
-;;; buffer switching (frame)
-(global-set-key (kbd "C-x C-b") 'buffer-menu)
+;; buff-menu+ for buffer switching
+(require 'buff-menu+)
+
+;; buff-menu+ sort by mode
+(setq Buffer-menu-sort-column 5)
+
+;;;;;;
 
 ;; mini buffer switching
 (iswitchb-mode 1)
