@@ -1,0 +1,6 @@
+# name: <ol class="...">...</ol>
+# key: ol.c
+# --
+<ol class="$1">
+  $0
+</ol>

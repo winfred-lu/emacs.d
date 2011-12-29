@@ -2,3 +2,4 @@ autosaves
 auto-save-list
 backups
 *.elc
+.yas-*

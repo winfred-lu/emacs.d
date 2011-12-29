@@ -1,0 +1,4 @@
+# name: <span class="...">...</span>
+# key: span.c
+# --
+<span class="$1">$2</span>

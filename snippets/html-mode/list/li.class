@@ -1,0 +1,4 @@
+# name: <li class="...">...</li>
+# key: li.c
+# --
+<li class="$1">$2</li>

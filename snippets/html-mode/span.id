@@ -1,0 +1,4 @@
+# name: <span id="...">...</span>
+# key: span.i
+# --
+<span id="$1">$2</span>
