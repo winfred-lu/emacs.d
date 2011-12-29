@@ -3,10 +3,11 @@
 (load-library "winfred-color-theme")
 (color-theme-winfred)
 
-;; Don't show the startup screen, menu bar, and tool bar
+;; Don't show the startup screen, menu bar, tool bar, and scroll bar
 (setq inhibit-startup-message t)
 (menu-bar-mode nil)
 (tool-bar-mode nil)
+(scroll-bar-mode nil)
 
 ;; Display line and column numbers
 (setq line-number-mode t)
