@@ -2,4 +2,6 @@ autosaves
 auto-save-list
 backups
 *.elc
+tags
+TAGS
 .yas-*
