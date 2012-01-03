@@ -20,44 +20,31 @@
        (t (setq unread-command-events (append unread-command-events
 			  (list evt))))))))
 
-;; viper
-;(setq viper-mode t)
-;(require 'viper)
+;;;;;; global key bindings (modeful) ;;;;;;
 
-;; imap jj to ESC
-;(defun viper-escape-if-next-char (c)
-;  (self-insert-command 1)
-;    (let ((next-key (read-event)))
-;      (if (= c next-key)
-;        (progn
-;          (delete-backward-char 1)
-;            (viper-mode))
-;            (setq unread-command-events (list next-key)))))
-;(defun viper-escape-if-next-char-is-j (arg)
-;  (interactive "p")
-;    (if (= arg 1)
-;      (viper-escape-if-next-char ?j)
-;        (self-insert-command arg)))
-;(define-key viper-insert-basic-map (kbd "j") 'viper-escape-if-next-char-is-j)
+;; switch to previous buffer (able to switch in-between)
+(defun switch-to-previous-buffer ()
+  (interactive)
+  (switch-to-buffer (other-buffer (current-buffer) 1)))
+(define-key evil-normal-state-map ",bb" 'switch-to-previous-buffer)
+(define-key evil-normal-state-map ",be" 'list-buffers)
 
+;;;;;; local key bindings (modeful) ;;;;;;
 
-;; normal mode key bindings for cc-mode
+;; key bindings for cc-mode
 (eval-after-load 'cc-mode
-  '(list
+  '(progn
     (evil-define-key 'normal c-mode-map "[[" 'c-beginning-of-defun)
-    (evil-define-key 'normal c-mode-map "][" 'c-end-of-defun)
-    (message "hello!!")
-    ))
+    (evil-define-key 'normal c-mode-map "][" 'c-end-of-defun)))
 
-;; normal mode key bindings for org-mode
+;; key bindings for org-mode
 (eval-after-load "org"
-  '(list
+  '(progn
     (evil-define-key 'normal org-mode-map "\C-cl" 'org-store-link)
     (evil-define-key 'normal org-mode-map "\C-ca" 'org-agenda)
     (evil-define-key 'normal org-mode-map "T" 'org-todo)
     (evil-define-key 'normal org-mode-map "-" 'org-cycle-list-bullet)
     (evil-define-key 'normal org-mode-map (kbd "TAB") 'org-cycle)
-    (evil-define-key 'normal org-mode-map "\M-l" 'org-metaright)
     (evil-define-key 'normal org-mode-map "\M-l" 'org-metaright)
     (evil-define-key 'normal org-mode-map "\M-h" 'org-metaleft)
     (evil-define-key 'normal org-mode-map "\M-k" 'org-metaup)
@@ -66,9 +53,12 @@
     (evil-define-key 'normal org-mode-map "\M-H" 'org-shiftmetaleft)
     (evil-define-key 'normal org-mode-map "\M-K" 'org-shiftmetaup)
     (evil-define-key 'normal org-mode-map "\M-J" 'org-shiftmetadown)
+    (evil-define-key 'insert org-mode-map "\M-l" 'org-metaright)
+    (evil-define-key 'insert org-mode-map "\M-h" 'org-metaleft)
+    (evil-define-key 'insert org-mode-map "\M-k" 'org-metaup)
+    (evil-define-key 'insert org-mode-map "\M-j" 'org-metadown)
     (evil-define-key 'normal org-mode-map "O"
       (lambda () (interactive)
 	(end-of-line)
 	(org-insert-heading)
-	(evil-append nil)))
-    ))
+	(evil-append nil)))))
