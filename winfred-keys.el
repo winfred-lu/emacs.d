@@ -1,8 +1,18 @@
+;;;; global key bindings ;;;;
+
 ;; F11 to toggle whitespace-mode on/off
 (global-set-key [(f11)] 'whitespace-mode)
 
 ;; auto indentation after RET
-(define-key global-map (kbd "RET") 'newline-and-indent)
+;(global-set-key (kbd "RET") 'newline-and-indent)
 
-;; C-c C-o to lunch web browser for URL at point
-(global-set-key "\C-c\C-o" 'browse-url-at-point)
+;; functions frequently used
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-xg" 'magit-status)
+
+;;;; local key bindings ;;;;
+
+;; key bindings for html-mode
+(add-hook 'html-mode-hook
+	  (lambda ()
+	  (local-set-key (kbd "C-c o") 'browse-url-at-point)))
