@@ -2,7 +2,7 @@
 (require 'evil)
 (evil-mode 1)
 
-;; imap jj to ESC
+;; jj as escape to return to normal mode
 (define-key evil-insert-state-map "j" #'cofi/maybe-exit)
 (evil-define-command cofi/maybe-exit ()
   :repeat change
@@ -34,8 +34,8 @@
 ;; key bindings for cc-mode
 (eval-after-load 'cc-mode
   '(progn
-    (evil-define-key 'normal c-mode-map "[[" 'c-beginning-of-defun)
-    (evil-define-key 'normal c-mode-map "][" 'c-end-of-defun)))
+     (evil-define-key 'normal c-mode-map "[[" 'c-beginning-of-defun)
+     (evil-define-key 'normal c-mode-map "][" 'c-end-of-defun)))
 
 ;; key bindings for org-mode
 (eval-after-load "org"
@@ -62,3 +62,13 @@
 	(end-of-line)
 	(org-insert-heading)
 	(evil-append nil)))))
+
+;; key bindings for Info-mode
+(eval-after-load "Info"
+  '(progn
+     (evil-define-key 'motion Info-mode-map (kbd "TAB") 'Info-next-reference)))
+
+;; key bindings for custom-mode
+(eval-after-load "cus-edit"
+  '(progn
+     (evil-define-key 'normal custom-mode-map (kbd "TAB") 'widget-forward)))
