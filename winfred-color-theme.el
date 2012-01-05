@@ -50,6 +50,12 @@
      (ediff-odd-diff-face-B ((t (:background "light gray" :foreground "Black"))))
      (ediff-odd-diff-face-C ((t (:background "Gray" :foreground "White"))))
 
+     (egg-section-title ((t (:foreground "#70b0a0"))))
+     (egg-branch ((t (:bold t :foreground "#e0e050"))))
+     (egg-term ((t (:foreground "#d0d040"))))
+     (egg-diff-add ((t (:foreground "PaleGreen3"))))
+     (egg-diff-del ((t (:foreground "salmon"))))
+
      (font-lock-constant-face ((t (:foreground "#e0e090"))))
      (font-lock-comment-face ((t (:italic t :foreground "#707070"))))
      (font-lock-keyword-face ((t (:foreground "#90c0e0"))))
