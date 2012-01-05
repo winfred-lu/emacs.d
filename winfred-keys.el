@@ -11,7 +11,7 @@
 
 ;; functions frequently used
 (global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-xg" 'magit-status)
+(global-set-key "\C-xg" 'egg-status)
 
 ;;;;;; local key bindings (modeless) ;;;;;;
 
