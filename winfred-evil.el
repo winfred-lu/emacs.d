@@ -24,12 +24,20 @@
 
 ;;;;;; global key bindings (modeful) ;;;;;;
 
-;; switch to previous buffer (able to switch in-between)
+;; moving with visual line (like gj,gk in vim)
+(define-key evil-normal-state-map "j" 'evil-next-visual-line)
+(define-key evil-normal-state-map "k" 'evil-previous-visual-line)
+(define-key evil-visual-state-map "j" 'evil-next-visual-line)
+(define-key evil-visual-state-map "k" 'evil-previous-visual-line)
+
+;; function switch to previous buffer, buffer switching related bindings
 (defun switch-to-previous-buffer ()
   (interactive)
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 (define-key evil-normal-state-map ",bb" 'switch-to-previous-buffer)
-(define-key evil-normal-state-map ",be" 'list-buffers)
+(define-key evil-normal-state-map ",bl" 'list-buffers)
+(define-key evil-normal-state-map ",bi" 'iswitchb-buffer)
+(define-key evil-normal-state-map ",bf" 'ido-find-file)
 
 ;;;;;; local key bindings (modeful) ;;;;;;
 
