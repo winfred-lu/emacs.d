@@ -14,7 +14,7 @@
 (setq column-number-mode t)
 
 ;; Line-wrapping
-(setq-default fill-column 80)
+(setq-default fill-column 72)
 
 ;; Show the matching parens
 (show-paren-mode t)
