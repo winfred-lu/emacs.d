@@ -2,6 +2,8 @@
 (require 'evil)
 (evil-mode 1)
 
+(evil-set-initial-state 'Custom-mode 'normal)
+
 ;; jj as escape to return to normal mode
 (define-key evil-insert-state-map "j" #'cofi/maybe-exit)
 (evil-define-command cofi/maybe-exit ()
