@@ -12,10 +12,10 @@
 (load-library "winfred-visual")
 (load-library "winfred-evil")
 (load-library "winfred-buffer")
-(load-library "winfred-magit")
 (load-library "winfred-misc")
 (load-library "winfred-yasnippet")
 (load-library "winfred-tabs")
+(require 'egg)
 
 (load-library "winfred-keys")
 (load-library "winfred-cc-mode")
