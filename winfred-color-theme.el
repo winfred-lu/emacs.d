@@ -23,6 +23,16 @@
      (bold ((t (:bold t))))
      (bold-italic ((t (:italic t :bold t))))
 
+     (buffer-menu-star-buffer ((t (:foreground "#d0d050"))))
+     (buffer-menu-directory-buffer ((t (:background "#402010" :foreground "#d0d020"))))
+     (buffer-menu-modified-mark ((t (:foreground "#50d0d0"))))
+     (buffer-menu-read-only-mark ((t (:foreground "#2020d0"))))
+     (buffer-menu-buffer-name ((t (:foreground "#d0d020"))))
+     (buffer-menu-mode ((t (:foreground "#d070d0"))))
+     (buffer-menu-size ((t (:foreground "#50d0d0"))))
+     (buffer-menu-time ((t (:foreground "#5070d0"))))
+     (buffer-menu-file-name ((t (:foreground "#50d050"))))
+
      (ediff-current-diff-face-A ((t (:background "pale green" :foreground "firebrick"))))
      (ediff-current-diff-face-Ancestor ((t (:background "VioletRed" :foreground "Black"))))
      (ediff-current-diff-face-B ((t (:background "Yellow" :foreground "DarkOrchid"))))
