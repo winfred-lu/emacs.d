@@ -6,8 +6,9 @@
 ;; auto indentation after RET
 ;(global-set-key (kbd "RET") 'newline-and-indent)
 
-;; undo the evil's remapping C-e to evil-scroll-line-down
+;; undo the evil's key bindings
 (define-key evil-insert-state-map "\C-e" 'end-of-line)
+(define-key evil-normal-state-map "\M-." 'find-tag)
 
 ;; functions frequently used
 (global-set-key "\C-ca" 'org-agenda)
