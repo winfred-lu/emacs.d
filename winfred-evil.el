@@ -52,6 +52,12 @@
   '(progn
      (evil-define-key 'normal custom-mode-map (kbd "TAB") 'widget-forward)))
 
+;; key bindings for egg-mode
+(eval-after-load "egg"
+  '(progn
+     (evil-define-key 'normal egg-status-buffer-mode-map "q" 'egg-quit-buffer)
+     (evil-define-key 'normal egg-status-buffer-mode-map "c" 'egg-commit-log-edit)))
+
 ;; key bindings for Info-mode
 (eval-after-load "Info"
   '(progn
