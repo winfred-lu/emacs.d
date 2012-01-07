@@ -36,7 +36,7 @@
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 (define-key evil-normal-state-map ",bb" 'switch-to-previous-buffer)
 (define-key evil-normal-state-map ",bl" 'list-buffers)
-(define-key evil-normal-state-map ",bi" 'iswitchb-buffer)
+(define-key evil-normal-state-map ",bs" 'iswitchb-buffer)
 (define-key evil-normal-state-map ",bf" 'ido-find-file)
 
 ;;;;;; local key bindings (modeful) ;;;;;;
@@ -46,6 +46,16 @@
   '(progn
      (evil-define-key 'normal c-mode-map "[[" 'c-beginning-of-defun)
      (evil-define-key 'normal c-mode-map "][" 'c-end-of-defun)))
+
+;; key bindings for custom-mode
+(eval-after-load "cus-edit"
+  '(progn
+     (evil-define-key 'normal custom-mode-map (kbd "TAB") 'widget-forward)))
+
+;; key bindings for Info-mode
+(eval-after-load "Info"
+  '(progn
+     (evil-define-key 'motion Info-mode-map (kbd "TAB") 'Info-next-reference)))
 
 ;; key bindings for org-mode
 (eval-after-load "org"
@@ -72,13 +82,3 @@
 	(end-of-line)
 	(org-insert-heading)
 	(evil-append nil)))))
-
-;; key bindings for Info-mode
-(eval-after-load "Info"
-  '(progn
-     (evil-define-key 'motion Info-mode-map (kbd "TAB") 'Info-next-reference)))
-
-;; key bindings for custom-mode
-(eval-after-load "cus-edit"
-  '(progn
-     (evil-define-key 'normal custom-mode-map (kbd "TAB") 'widget-forward)))
