@@ -9,6 +9,12 @@
 (progn (cd "~/.emacs.d/vendor")
        (normal-top-level-add-subdirs-to-load-path))
 
+;; ELPA package manager
+(when
+    (load
+     (expand-file-name "~/.emacs.d/vendor/elpa/package.el"))
+  (package-initialize))
+
 (load-library "winfred-visual")
 (load-library "winfred-evil")
 (load-library "winfred-buffer")

@@ -9,7 +9,10 @@ if type rake > /dev/null 2>&1; then
 	(cd $dir/yasnippet && rake compile)
 fi
 
+emacs --batch -Q -f batch-byte-compile $dir/elpa/package.el
 emacs --batch -Q -f batch-byte-compile $dir/autopair.el
 emacs --batch -Q -f batch-byte-compile $dir/color-theme.el
+emacs --batch -Q -f batch-byte-compile $dir/egg/egg.el
+emacs --batch -Q -f batch-byte-compile $dir/egg/egg-grep.el
 emacs --batch -Q -f batch-byte-compile $dir/smart-tab/smart-tab.el
 
