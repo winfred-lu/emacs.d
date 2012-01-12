@@ -3,6 +3,7 @@
 (evil-mode 1)
 
 (evil-set-initial-state 'Custom-mode 'normal)
+(evil-set-initial-state 'gtags-select-mode 'emacs)
 
 ;; jj as escape to return to normal mode
 (define-key evil-insert-state-map "j" #'cofi/maybe-exit)
@@ -45,7 +46,8 @@
 (eval-after-load 'cc-mode
   '(progn
      (evil-define-key 'normal c-mode-map "[[" 'c-beginning-of-defun)
-     (evil-define-key 'normal c-mode-map "][" 'c-end-of-defun)))
+     (evil-define-key 'normal c-mode-map "][" 'c-end-of-defun)
+     (evil-define-key 'insert c-mode-map (kbd "RET") 'newline-and-indent)))
 
 ;; key bindings for custom-mode
 (eval-after-load "cus-edit"
@@ -57,6 +59,28 @@
   '(progn
      (evil-define-key 'normal egg-status-buffer-mode-map "q" 'egg-quit-buffer)
      (evil-define-key 'normal egg-status-buffer-mode-map "c" 'egg-commit-log-edit)))
+
+(eval-after-load "lisp"
+  '(progn
+     (evil-define-key 'insert emacs-lisp-mode-map (kbd "RET") 'newline-and-indent)))
+
+;; key bindings for gtags (FIXME)
+(eval-after-load "gtags"
+  '(progn
+     (evil-define-key 'normal gtags-mode-map "\C-]" 'gtags-find-tag-from-here)
+     (evil-define-key 'normal gtags-mode-map "\C-t" 'gtags-pop-stack)
+     (evil-define-key 'normal gtags-mode-map ",gl" 'gtags-find-file)
+     (evil-define-key 'normal gtags-mode-map ",gg" 'gtags-find-with-grep)
+     (evil-define-key 'normal gtags-mode-map ",gI" 'gtags-find-with-idutils)
+     (evil-define-key 'normal gtags-mode-map ",gs" 'gtags-find-symbol)
+     (evil-define-key 'normal gtags-mode-map ",gr" 'gtags-find-rtag)
+     (evil-define-key 'normal gtags-mode-map ",gt" 'gtags-find-tag)
+     (evil-define-key 'normal gtags-mode-map ",gv" 'gtags-visit-rootdir)))
+
+;; key bindings for Help-mode
+(eval-after-load 'help-mode
+  '(progn
+     (evil-define-key 'motion help-mode-map (kbd "TAB") 'forward-button)))
 
 ;; key bindings for Info-mode
 (eval-after-load "Info"
