@@ -4,4 +4,8 @@ backups
 *.elc
 tags
 TAGS
-.yas-*
+GPATH
+GRTAGS
+GSYMS
+GTAGS
+color-theme-*
