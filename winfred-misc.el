@@ -7,6 +7,12 @@
 ;; auto pair
 (require 'autopair)
 (autopair-global-mode)
+(add-hook 'emacs-lisp-mode-hook
+          #'(lambda ()
+              (push '(?` . ?')
+                    (getf autopair-extra-pairs :comment))
+              (push '(?` . ?')
+                    (getf autopair-extra-pairs :string))))
 
 ;; chromium as default browser
 (setq browse-url-browser-function 'browse-url-generic
