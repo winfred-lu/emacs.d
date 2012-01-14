@@ -45,8 +45,6 @@
 ;; key bindings for cc-mode
 (eval-after-load 'cc-mode
   '(progn
-     (evil-define-key 'normal c-mode-map "[[" 'c-beginning-of-defun)
-     (evil-define-key 'normal c-mode-map "][" 'c-end-of-defun)
      (evil-define-key 'insert c-mode-map (kbd "RET") 'newline-and-indent)))
 
 ;; key bindings for custom-mode
