@@ -29,9 +29,7 @@
   ;; If there is more than one, they won't work right.
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
- '(c-tab-always-indent nil)
- '(ediff-split-window-function (quote split-window-horizontally))
- '(vc-follow-symlinks nil))
+ )
 (make-directory "~/.emacs.d/autosaves/" t)
 
 (custom-set-faces

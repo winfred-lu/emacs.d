@@ -21,3 +21,6 @@
 ;; to copy and paste between emacs and other apps
 (setq x-select-enable-clipboard t)
 (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+
+;; stop y-and-n before editing symlinks
+(setq vc-follow-symlinks nil)

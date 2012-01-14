@@ -22,3 +22,6 @@
 
 ;; Visible bell
 (setq visible-bell t)
+
+;; horizontal ediff window
+(setq ediff-split-window-function (quote split-window-horizontally))
