@@ -52,7 +52,8 @@
 ;; key bindings for custom-mode
 (eval-after-load "cus-edit"
   '(progn
-     (evil-define-key 'normal custom-mode-map (kbd "TAB") 'widget-forward)))
+     (evil-define-key 'normal custom-mode-map (kbd "TAB") 'widget-forward)
+     (evil-define-key 'normal custom-mode-map "q" 'Custom-buffer-done)))
 
 ;; key bindings for egg-mode
 (eval-after-load "egg"
