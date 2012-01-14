@@ -17,7 +17,12 @@
 
 ;; ignore buffers
 (add-to-list 'iswitchb-buffer-ignore "^ ")
+(add-to-list 'iswitchb-buffer-ignore "*Buffer List*")
 (add-to-list 'iswitchb-buffer-ignore "*Completions*")
+(add-to-list 'iswitchb-buffer-ignore "*Customize\*")
+(add-to-list 'iswitchb-buffer-ignore "*Egg\*")
+(add-to-list 'iswitchb-buffer-ignore "*Help*")
+(add-to-list 'iswitchb-buffer-ignore "*Messages*")
 
 ;; Keep the size of iswitchb minibuffer more manageable.
 (add-hook 'iswitchb-minibuffer-setup-hook
