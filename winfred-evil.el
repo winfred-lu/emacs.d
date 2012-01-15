@@ -40,6 +40,15 @@
 (define-key evil-normal-state-map ",bs" 'iswitchb-buffer)
 (define-key evil-normal-state-map ",bf" 'ido-find-file)
 
+;; buffer switching at evil motion mode
+(define-prefix-command 'wf-evil-comma-map)
+(define-key wf-evil-comma-map "," 'evil-repeat-find-char-reverse)
+(define-key wf-evil-comma-map "bb" 'switch-to-previous-buffer)
+(define-key wf-evil-comma-map "bl" 'list-buffers)
+(define-key wf-evil-comma-map "bs" 'iswitchb-buffer)
+(define-key wf-evil-comma-map "bf" 'ido-find-file)
+(define-key evil-motion-state-map "," 'wf-evil-comma-map)
+
 ;;;;;; local key bindings (modeful) ;;;;;;
 
 ;; key bindings for cc-mode
