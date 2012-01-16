@@ -4,6 +4,7 @@
 
 (evil-set-initial-state 'Custom-mode 'normal)
 (evil-set-initial-state 'gtags-select-mode 'emacs)
+(evil-set-initial-state 'grep-mode 'emacs)
 
 ;; jj as escape to return to normal mode
 (define-key evil-insert-state-map "j" #'cofi/maybe-exit)
@@ -31,14 +32,12 @@
 (define-key evil-visual-state-map "j" 'evil-next-visual-line)
 (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 
-;; function switch to previous buffer, buffer switching related bindings
-(defun switch-to-previous-buffer ()
-  (interactive)
-  (switch-to-buffer (other-buffer (current-buffer) 1)))
+;; buffer switching related bindings
 (define-key evil-normal-state-map ",bb" 'switch-to-previous-buffer)
 (define-key evil-normal-state-map ",bl" 'list-buffers)
 (define-key evil-normal-state-map ",bs" 'iswitchb-buffer)
 (define-key evil-normal-state-map ",bf" 'ido-find-file)
+(define-key evil-normal-state-map ",bn" 'show-buffer-full-name)
 
 ;; buffer switching at evil motion mode
 (define-prefix-command 'wf-evil-comma-map)
@@ -47,6 +46,7 @@
 (define-key wf-evil-comma-map "bl" 'list-buffers)
 (define-key wf-evil-comma-map "bs" 'iswitchb-buffer)
 (define-key wf-evil-comma-map "bf" 'ido-find-file)
+(define-key wf-evil-comma-map "bn" 'show-buffer-full-name)
 (define-key evil-motion-state-map "," 'wf-evil-comma-map)
 
 ;;;;;; local key bindings (modeful) ;;;;;;
