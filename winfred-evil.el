@@ -98,6 +98,7 @@
 ;; key bindings for org-mode
 (eval-after-load "org"
   '(progn
+    (evil-define-key 'normal org-mode-map "$" 'org-end-of-line)
     (evil-define-key 'normal org-mode-map "\C-cl" 'org-store-link)
     (evil-define-key 'normal org-mode-map "\C-ca" 'org-agenda)
     (evil-define-key 'normal org-mode-map "T" 'org-todo)
@@ -115,8 +116,12 @@
     (evil-define-key 'insert org-mode-map "\M-h" 'org-metaleft)
     (evil-define-key 'insert org-mode-map "\M-k" 'org-metaup)
     (evil-define-key 'insert org-mode-map "\M-j" 'org-metadown)
+    (evil-define-key 'normal org-mode-map "o"
+      (lambda () (interactive)
+	(org-end-of-line)
+	(evil-open-below 0)))
     (evil-define-key 'normal org-mode-map "O"
       (lambda () (interactive)
-	(end-of-line)
+	(org-end-of-line)
 	(org-insert-heading)
 	(evil-append nil)))))
