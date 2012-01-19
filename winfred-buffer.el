@@ -30,7 +30,7 @@
 
 ;; Keep the size of iswitchb minibuffer more manageable.
 (add-hook 'iswitchb-minibuffer-setup-hook
-	  '(lambda () (set (make-local-variable 'max-mini-window-height) 3)))
+          '(lambda () (set (make-local-variable 'max-mini-window-height) 3)))
 
 (defun iswitchb-exclude-nonmatching()
   "Make iswitchb work on only the currently matching names."

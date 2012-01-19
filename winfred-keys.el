@@ -22,14 +22,14 @@
 
 ;; key bindings for html-mode
 (add-hook 'html-mode-hook
-	  '(lambda ()
-	     (local-set-key (kbd "C-c o") 'browse-url-at-point)))
+          '(lambda ()
+             (local-set-key (kbd "C-c o") 'browse-url-at-point)))
 
 (add-hook 'iswitchb-define-mode-map-hook
-	  '(lambda ()
-	     (define-key iswitchb-mode-map "\C-o" 'iswitchb-exclude-nonmatching)
-	     (define-key iswitchb-mode-map "\M-h" 'iswitchb-prev-match)
-	     (define-key iswitchb-mode-map "\M-j" 'iswitchb-next-match)
-	     (define-key iswitchb-mode-map "\M-k" 'iswitchb-prev-match)
-	     (define-key iswitchb-mode-map "\M-l" 'iswitchb-next-match)
-	     (define-key iswitchb-mode-map ",bf" 'iswitchb-find-file)))
+          '(lambda ()
+             (define-key iswitchb-mode-map "\C-o" 'iswitchb-exclude-nonmatching)
+             (define-key iswitchb-mode-map "\M-h" 'iswitchb-prev-match)
+             (define-key iswitchb-mode-map "\M-j" 'iswitchb-next-match)
+             (define-key iswitchb-mode-map "\M-k" 'iswitchb-prev-match)
+             (define-key iswitchb-mode-map "\M-l" 'iswitchb-next-match)
+             (define-key iswitchb-mode-map ",bf" 'iswitchb-find-file)))

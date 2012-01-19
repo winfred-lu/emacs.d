@@ -3,7 +3,7 @@
 (setq org-log-done t)
 (setq org-hide-leading-stars "hidestarts")
 (setq org-agenda-files (list "~/org/work.org"
-			     "~/org/home.org"))
+                             "~/org/home.org"))
 
 ;; mobile org settings
 (setq org-directory "~/org")

@@ -118,10 +118,10 @@
     (evil-define-key 'insert org-mode-map "\M-j" 'org-metadown)
     (evil-define-key 'normal org-mode-map "o"
       (lambda () (interactive)
-	(org-end-of-line)
-	(evil-open-below 0)))
+        (org-end-of-line)
+        (evil-open-below 0)))
     (evil-define-key 'normal org-mode-map "O"
       (lambda () (interactive)
-	(org-end-of-line)
-	(org-insert-heading)
-	(evil-append nil)))))
+        (org-end-of-line)
+        (org-insert-heading)
+        (evil-append nil)))))
