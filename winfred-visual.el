@@ -25,3 +25,18 @@
 
 ;; horizontal ediff window
 (setq ediff-split-window-function (quote split-window-horizontally))
+
+;; indentation
+(setq-default indent-tabs-mode nil)
+
+;; highlight FIXME comments
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (font-lock-add-keywords
+             nil
+             '(("\\<\\(FIXME\\|TODO\\|BUG\\|XXX\\)\\>" 1 font-lock-warning-face t)))))
+(add-hook 'org-mode-hook
+          (lambda ()
+            (font-lock-add-keywords
+             nil
+             '(("\\<\\(FIXME\\)\\>" 1 font-lock-warning-face)))))
