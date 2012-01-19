@@ -35,8 +35,9 @@
             (font-lock-add-keywords
              nil
              '(("\\<\\(FIXME\\|TODO\\|BUG\\|XXX\\)\\>" 1 font-lock-warning-face t)))))
-(add-hook 'org-mode-hook
-          (lambda ()
-            (font-lock-add-keywords
-             nil
-             '(("\\<\\(FIXME\\)\\>" 1 font-lock-warning-face)))))
+(let ((fixme-modes '(org-mode emacs-lisp-mode)))
+  (mapc (lambda (mode)
+          (font-lock-add-keywords
+           mode
+           '(("\\<\\(FIXME\\)\\>" 1 font-lock-warning-face t))))
+        fixme-modes))
