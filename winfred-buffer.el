@@ -22,6 +22,7 @@
 (add-to-list 'iswitchb-buffer-ignore "*Customize")
 (add-to-list 'iswitchb-buffer-ignore "*Egg")
 (add-to-list 'iswitchb-buffer-ignore "*grep")
+(add-to-list 'iswitchb-buffer-ignore ".git*")
 (add-to-list 'iswitchb-buffer-ignore "*GTAGS")
 (add-to-list 'iswitchb-buffer-ignore "*Help")
 (add-to-list 'iswitchb-buffer-ignore "*Messages")
