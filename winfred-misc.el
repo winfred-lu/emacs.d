@@ -1,5 +1,5 @@
 ;; Remove unnecessary trailing whitespace
-(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
+(add-hook 'before-save-hook (lambda () (whitespace-cleanup)))
 
 ;; y-or-n
 (defalias 'yes-or-no-p 'y-or-n-p)
