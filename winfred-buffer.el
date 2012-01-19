@@ -17,19 +17,26 @@
 
 ;; ignore buffers
 (add-to-list 'iswitchb-buffer-ignore "^ ")
-(add-to-list 'iswitchb-buffer-ignore "*Buffer List*")
-(add-to-list 'iswitchb-buffer-ignore "*Completions*")
-(add-to-list 'iswitchb-buffer-ignore "*Customize\*")
-(add-to-list 'iswitchb-buffer-ignore "*Egg\*")
-(add-to-list 'iswitchb-buffer-ignore "*grep*")
-(add-to-list 'iswitchb-buffer-ignore "*GTAGS\*")
-(add-to-list 'iswitchb-buffer-ignore "*info*")
-(add-to-list 'iswitchb-buffer-ignore "*Help*")
-(add-to-list 'iswitchb-buffer-ignore "*Messages*")
+(add-to-list 'iswitchb-buffer-ignore "*Buffer")
+(add-to-list 'iswitchb-buffer-ignore "*Completions")
+(add-to-list 'iswitchb-buffer-ignore "*Customize")
+(add-to-list 'iswitchb-buffer-ignore "*Egg")
+(add-to-list 'iswitchb-buffer-ignore "*grep")
+(add-to-list 'iswitchb-buffer-ignore "*GTAGS")
+(add-to-list 'iswitchb-buffer-ignore "*Help")
+(add-to-list 'iswitchb-buffer-ignore "*Messages")
+(add-to-list 'iswitchb-buffer-ignore "*Shell")
 
 ;; Keep the size of iswitchb minibuffer more manageable.
 (add-hook 'iswitchb-minibuffer-setup-hook
 	  '(lambda () (set (make-local-variable 'max-mini-window-height) 3)))
+
+(defun iswitchb-exclude-nonmatching()
+  "Make iswitchb work on only the currently matching names."
+  (interactive)
+  (setq iswitchb-buflist iswitchb-matches)
+  (setq iswitchb-rescan t)
+  (delete-minibuffer-contents))
 
 ;;;;;;
 
