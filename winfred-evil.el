@@ -93,7 +93,11 @@
 ;; key bindings for Info-mode
 (eval-after-load "Info"
   '(progn
-     (evil-define-key 'motion Info-mode-map (kbd "TAB") 'Info-next-reference)))
+     (evil-define-key 'motion Info-mode-map (kbd "TAB") 'Info-next-reference)
+     (evil-define-key 'motion Info-mode-map "n" 'Info-next)
+     (evil-define-key 'motion Info-mode-map "^" 'Info-up)
+     (evil-define-key 'motion Info-mode-map "L" 'Info-history)
+     (evil-define-key 'motion Info-mode-map "T" 'Info-toc)))
 
 ;; key bindings for org-mode
 (eval-after-load "org"
