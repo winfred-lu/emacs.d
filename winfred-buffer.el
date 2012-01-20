@@ -1,3 +1,10 @@
+;; backups and autosaves
+(setq backup-directory-alist `((".*" . "~/.emacs.d/backups")))
+(setq auto-save-file-name-transforms `((".*" "~/.emacs.d/autosaves/\\1" t)))
+(setq require-final-newline t)
+
+;;;;;;
+
 ;; buff-menu+ for buffer switching
 (require 'buff-menu+)
 
