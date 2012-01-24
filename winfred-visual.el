@@ -13,8 +13,8 @@
 (setq line-number-mode t)
 (setq column-number-mode t)
 
-;; Line-wrapping
-(setq-default fill-column 72)
+;; Eighty column
+(setq-default fill-column 80)
 
 ;; Show the matching parens
 (show-paren-mode t)
