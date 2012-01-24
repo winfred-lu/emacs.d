@@ -22,18 +22,13 @@
 ;; '|' as the delimiter
 (setq iswitchb-delim " | ")
 
-;; ignore buffers
-(add-to-list 'iswitchb-buffer-ignore "^ ")
-(add-to-list 'iswitchb-buffer-ignore "*Buffer")
-(add-to-list 'iswitchb-buffer-ignore "*Completions")
-(add-to-list 'iswitchb-buffer-ignore "*Customize")
-(add-to-list 'iswitchb-buffer-ignore "*Egg")
-(add-to-list 'iswitchb-buffer-ignore "*grep")
-(add-to-list 'iswitchb-buffer-ignore ".git*")
-(add-to-list 'iswitchb-buffer-ignore "*GTAGS")
-(add-to-list 'iswitchb-buffer-ignore "*Help")
-(add-to-list 'iswitchb-buffer-ignore "*Messages")
-(add-to-list 'iswitchb-buffer-ignore "*Shell")
+;; Ignore all non-file buffers excluding those listed in `exc-files'
+(defun iswitchb-ignore-non-file (name)
+  (let ((exc-files '("*info*" "*scratch*")))
+    (and (not (member name exc-files))
+         (eq 42 (aref name 0))
+         (eq 42 (aref name (- (length name) 1))))))
+(setq iswitchb-buffer-ignore '("^ " iswitchb-ignore-non-file))
 
 ;; Keep the size of iswitchb minibuffer more manageable.
 (add-hook 'iswitchb-minibuffer-setup-hook
