@@ -55,7 +55,14 @@
 ;; key bindings for cc-mode
 (eval-after-load 'cc-mode
   '(progn
-     (evil-define-key 'insert c-mode-map (kbd "RET") 'newline-and-indent)))
+     (evil-define-key 'insert c-mode-map (kbd "RET") 'evil-ret)))
+
+;; switch evil mode to apply gtags key bindings
+(setq c-mode-hook
+      '(lambda ()
+         (gtags-mode 1)
+         (evil-emacs-state)
+         (evil-normal-state)))
 
 ;; key bindings for custom-mode
 (eval-after-load "cus-edit"
@@ -74,7 +81,7 @@
   '(progn
      (evil-define-key 'insert emacs-lisp-mode-map (kbd "RET") 'evil-ret)))
 
-;; key bindings for gtags (FIXME)
+;; key bindings for gtags
 (eval-after-load "gtags"
   '(progn
      (evil-define-key 'normal gtags-mode-map "\C-]" 'gtags-find-tag-from-here)
