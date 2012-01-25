@@ -5,6 +5,7 @@
 (evil-set-initial-state 'Custom-mode 'normal)
 (evil-set-initial-state 'gtags-select-mode 'emacs)
 (evil-set-initial-state 'grep-mode 'emacs)
+(evil-set-initial-state 'Info-mode 'emacs)
 
 ;; kj as escape to return to normal mode
 (define-key evil-insert-state-map "k" #'cofi/maybe-exit)
@@ -66,11 +67,12 @@
 (eval-after-load "egg"
   '(progn
      (evil-define-key 'normal egg-status-buffer-mode-map "q" 'egg-quit-buffer)
-     (evil-define-key 'normal egg-status-buffer-mode-map "c" 'egg-commit-log-edit)))
+     (evil-define-key 'normal egg-status-buffer-mode-map "c" 'egg-commit-log-edit)
+     (evil-define-key 'normal egg-status-buffer-mode-map "g" 'egg-buffer-cmd-refresh)))
 
 (eval-after-load "lisp"
   '(progn
-     (evil-define-key 'insert emacs-lisp-mode-map (kbd "RET") 'newline-and-indent)))
+     (evil-define-key 'insert emacs-lisp-mode-map (kbd "RET") 'evil-ret)))
 
 ;; key bindings for gtags (FIXME)
 (eval-after-load "gtags"
@@ -94,10 +96,13 @@
 (eval-after-load "Info"
   '(progn
      (evil-define-key 'motion Info-mode-map (kbd "TAB") 'Info-next-reference)
-     (evil-define-key 'motion Info-mode-map "n" 'Info-next)
      (evil-define-key 'motion Info-mode-map "^" 'Info-up)
-     (evil-define-key 'motion Info-mode-map "L" 'Info-history)
-     (evil-define-key 'motion Info-mode-map "T" 'Info-toc)))
+     (evil-define-key 'motion Info-mode-map "T" 'Info-toc)
+     (evil-define-key 'emacs Info-mode-map "j" 'evil-next-visual-line)
+     (evil-define-key 'emacs Info-mode-map "k" 'evil-previous-visual-line)
+     (evil-define-key 'emacs Info-mode-map "\C-f" 'evil-scroll-page-down)
+     (evil-define-key 'emacs Info-mode-map "\C-b" 'evil-scroll-page-up)
+     (evil-define-key 'emacs Info-mode-map "," 'wf-evil-comma-map)))
 
 ;; key bindings for org-mode
 (eval-after-load "org"
