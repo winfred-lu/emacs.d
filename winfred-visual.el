@@ -15,6 +15,7 @@
 
 ;; Eighty column
 (setq-default fill-column 80)
+(setq sentence-end-double-space nil)
 
 ;; Show the matching parens
 (show-paren-mode t)
