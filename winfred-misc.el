@@ -1,14 +1,16 @@
 ;; Remove unnecessary trailing whitespace
-(add-hook 'before-save-hook (lambda () (whitespace-cleanup)))
+(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
 ;; y-or-n
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; auto pair
 (require 'autopair)
-(autopair-global-mode)
+;(autopair-global-mode)
+(add-hook 'c-mode-common-hook #'(lambda () (autopair-mode)))
 (add-hook 'emacs-lisp-mode-hook
           #'(lambda ()
+              (autopair-mode)
               (push '(?` . ?')
                     (getf autopair-extra-pairs :comment))
               (push '(?` . ?')
