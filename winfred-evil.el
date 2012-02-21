@@ -6,6 +6,7 @@
 (evil-set-initial-state 'gtags-select-mode 'emacs)
 (evil-set-initial-state 'grep-mode 'emacs)
 (evil-set-initial-state 'Info-mode 'emacs)
+(evil-set-initial-state 'Man-mode 'emacs)
 
 ;; kj as escape to return to normal mode
 (define-key evil-insert-state-map "k" #'cofi/maybe-exit)
@@ -36,7 +37,7 @@
 ;; buffer switching related bindings
 (define-key evil-normal-state-map ",bb" 'switch-to-previous-buffer)
 (define-key evil-normal-state-map ",bl" 'list-buffers)
-(define-key evil-normal-state-map ",bs" 'iswitchb-buffer)
+(define-key evil-normal-state-map ",bh" 'iswitchb-buffer)
 (define-key evil-normal-state-map ",bf" 'ido-find-file)
 (define-key evil-normal-state-map ",bn" 'show-buffer-full-name)
 
@@ -45,10 +46,25 @@
 (define-key wf-evil-comma-map "," 'evil-repeat-find-char-reverse)
 (define-key wf-evil-comma-map "bb" 'switch-to-previous-buffer)
 (define-key wf-evil-comma-map "bl" 'list-buffers)
-(define-key wf-evil-comma-map "bs" 'iswitchb-buffer)
+(define-key wf-evil-comma-map "bh" 'iswitchb-buffer)
 (define-key wf-evil-comma-map "bf" 'ido-find-file)
 (define-key wf-evil-comma-map "bn" 'show-buffer-full-name)
 (define-key evil-motion-state-map "," 'wf-evil-comma-map)
+
+;; cscope bindings at evil normal mode
+(define-prefix-command 'wf-cscope-map)
+(define-key wf-cscope-map "s" 'cscope-find-this-symbol)
+(define-key wf-cscope-map "g" 'cscope-find-global-definition)
+(define-key wf-cscope-map "c" 'cscope-find-functions-calling-this-function)
+(define-key wf-cscope-map "d" 'cscope-find-called-functions)
+(define-key wf-cscope-map "t" 'cscope-find-this-text-string)
+(define-key wf-cscope-map "e" 'cscope-find-egrep-pattern)
+(define-key wf-cscope-map "f" 'cscope-find-this-file)
+(define-key wf-cscope-map "i" 'cscope-find-files-including-file)
+(define-key wf-cscope-map "n" 'cscope-next-symbol)
+(define-key wf-cscope-map "p" 'cscope-prev-symbol)
+(define-key wf-cscope-map "u" 'cscope-pop-mark)
+(define-key evil-normal-state-map "\C-_" 'wf-cscope-map)
 
 ;;;;;; local key bindings (modeful) ;;;;;;
 
@@ -58,11 +74,11 @@
      (evil-define-key 'insert c-mode-map (kbd "RET") 'evil-ret)))
 
 ;; switch evil mode to apply gtags key bindings
-(setq c-mode-hook
-      '(lambda ()
-         (gtags-mode 1)
-         (evil-emacs-state)
-         (evil-normal-state)))
+; (setq c-mode-hook
+;       '(lambda ()
+;          (gtags-mode 1)
+;          (evil-emacs-state)
+;          (evil-normal-state)))
 
 ;; key bindings for custom-mode
 (eval-after-load "cus-edit"
@@ -82,17 +98,17 @@
      (evil-define-key 'insert emacs-lisp-mode-map (kbd "RET") 'evil-ret)))
 
 ;; key bindings for gtags
-(eval-after-load "gtags"
-  '(progn
-     (evil-define-key 'normal gtags-mode-map "\C-]" 'gtags-find-tag-from-here)
-     (evil-define-key 'normal gtags-mode-map "\C-t" 'gtags-pop-stack)
-     (evil-define-key 'normal gtags-mode-map ",gl" 'gtags-find-file)
-     (evil-define-key 'normal gtags-mode-map ",gg" 'gtags-find-with-grep)
-     (evil-define-key 'normal gtags-mode-map ",gI" 'gtags-find-with-idutils)
-     (evil-define-key 'normal gtags-mode-map ",gs" 'gtags-find-symbol)
-     (evil-define-key 'normal gtags-mode-map ",gr" 'gtags-find-rtag)
-     (evil-define-key 'normal gtags-mode-map ",gt" 'gtags-find-tag)
-     (evil-define-key 'normal gtags-mode-map ",gv" 'gtags-visit-rootdir)))
+; (eval-after-load "gtags"
+;   '(progn
+;      (evil-define-key 'normal gtags-mode-map "\C-]" 'gtags-find-tag-from-here)
+;      (evil-define-key 'normal gtags-mode-map "\C-t" 'gtags-pop-stack)
+;      (evil-define-key 'normal gtags-mode-map ",gl" 'gtags-find-file)
+;      (evil-define-key 'normal gtags-mode-map ",gg" 'gtags-find-with-grep)
+;      (evil-define-key 'normal gtags-mode-map ",gI" 'gtags-find-with-idutils)
+;      (evil-define-key 'normal gtags-mode-map ",gs" 'gtags-find-symbol)
+;      (evil-define-key 'normal gtags-mode-map ",gr" 'gtags-find-rtag)
+;      (evil-define-key 'normal gtags-mode-map ",gt" 'gtags-find-tag)
+;      (evil-define-key 'normal gtags-mode-map ",gv" 'gtags-visit-rootdir)))
 
 ;; key bindings for Help-mode
 (eval-after-load 'help-mode
