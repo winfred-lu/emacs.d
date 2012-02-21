@@ -25,7 +25,7 @@
 (setq visible-bell t)
 
 ;; horizontal ediff window
-(setq ediff-split-window-function (quote split-window-horizontally))
+;(setq ediff-split-window-function (quote split-window-horizontally))
 
 ;; indentation
 (setq-default indent-tabs-mode nil)
