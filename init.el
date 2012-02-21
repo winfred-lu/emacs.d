@@ -18,6 +18,7 @@
 (require 'egg)
 (load-library "winfred-keys")
 (load-library "winfred-cc-mode")
+(require 'etags-select)
 (load-library "winfred-org")
 (require 'magit)
 (require 'xcscope)

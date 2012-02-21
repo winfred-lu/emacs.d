@@ -3,7 +3,6 @@
 (evil-mode 1)
 
 (evil-set-initial-state 'Custom-mode 'normal)
-(evil-set-initial-state 'gtags-select-mode 'emacs)
 (evil-set-initial-state 'grep-mode 'emacs)
 (evil-set-initial-state 'Info-mode 'emacs)
 (evil-set-initial-state 'Man-mode 'emacs)
@@ -66,6 +65,10 @@
 (define-key wf-cscope-map "u" 'cscope-pop-mark)
 (define-key evil-normal-state-map "\C-_" 'wf-cscope-map)
 
+;; etags-select
+(define-key evil-normal-state-map "\C-]" 'etags-select-find-tag-at-point)
+(define-key evil-normal-state-map "\M-." 'etags-select-find-tag)
+
 ;;;;;; local key bindings (modeful) ;;;;;;
 
 ;; key bindings for cc-mode
@@ -92,6 +95,10 @@
      (evil-define-key 'normal egg-status-buffer-mode-map "q" 'egg-quit-buffer)
      (evil-define-key 'normal egg-status-buffer-mode-map "c" 'egg-commit-log-edit)
      (evil-define-key 'normal egg-status-buffer-mode-map "g" 'egg-buffer-cmd-refresh)))
+
+(eval-after-load "etags-select"
+  '(progn
+     (evil-define-key 'emacs etags-select-mode-map (kbd "RET") 'etags-select-goto-tag)))
 
 (eval-after-load "lisp"
   '(progn

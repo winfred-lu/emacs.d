@@ -9,7 +9,6 @@
 ;; undo evil's key bindings
 (define-key evil-insert-state-map "\C-e" 'end-of-line)
 (define-key evil-normal-state-map "\C-e" 'end-of-line)
-(define-key evil-normal-state-map "\M-." 'find-tag)
 
 ;; yank at motion state
 (define-key evil-motion-state-map "y" 'evil-yank)
