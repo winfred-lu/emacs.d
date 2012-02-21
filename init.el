@@ -19,3 +19,5 @@
 (load-library "winfred-keys")
 (load-library "winfred-cc-mode")
 (load-library "winfred-org")
+(require 'magit)
+(require 'xcscope)
