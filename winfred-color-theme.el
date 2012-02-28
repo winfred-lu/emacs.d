@@ -1,6 +1,7 @@
-;; c-u m-x list-faces-display
+;; m-x list-colors-display, list-faces-display
+;; c-u c-x =
+;; emacs colors: http://raebear.net/comp/emacscolors.html
 (defun color-theme-winfred ()
-  "Color theme by Winfred (winfred.lu AT gmail.com), created 2011-12-21"
   (interactive)
   (color-theme-install
    '(color-theme-winfred
@@ -32,6 +33,8 @@
      (buffer-menu-size ((t (:foreground "#50d0d0"))))
      (buffer-menu-time ((t (:foreground "#5070d0"))))
      (buffer-menu-file-name ((t (:foreground "#50d050"))))
+
+     (diff-refine-change ((t (nil))))
 
      (ediff-current-diff-face-A ((t (:background "pale green" :foreground "firebrick"))))
      (ediff-current-diff-face-Ancestor ((t (:background "VioletRed" :foreground "Black"))))
@@ -67,6 +70,9 @@
      (font-lock-warning-face ((t (:bold t :foreground "#e07060"))))
 
      (highlight ((t (:background "dark slate blue" :foreground "#90a0f0"))))
+     (ido-first-match ((t (:bold t :foreground "antique white"))))
+     (ido-only-match ((t (:foreground "dark sea green"))))
+     (ido-subdir ((t (:foreground "rosy brown"))))
      (isearch ((t (:background "#a05050" :foreground "#50a0a0"))))
      (ispell-face ((t (:bold t :background "#f0b070" :foreground "#90e080"))))
      (italic ((t (:italic t))))
@@ -100,3 +106,4 @@
      (show-paren-mismatch-face ((t (:background "purple" :foreground "white"))))
      (underline ((t (:underline t))))
      (zmacs-region ((t (:background "dark slate gray")))))))
+
