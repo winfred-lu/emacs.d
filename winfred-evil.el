@@ -36,7 +36,7 @@
 ;; buffer switching related bindings
 (define-key evil-normal-state-map ",bb" 'switch-to-previous-buffer)
 (define-key evil-normal-state-map ",bl" 'list-buffers)
-(define-key evil-normal-state-map ",bh" 'iswitchb-buffer)
+(define-key evil-normal-state-map ",bh" 'ido-switch-buffer)
 (define-key evil-normal-state-map ",bf" 'ido-find-file)
 (define-key evil-normal-state-map ",bn" 'show-buffer-full-name)
 
@@ -45,7 +45,7 @@
 (define-key wf-evil-comma-map "," 'evil-repeat-find-char-reverse)
 (define-key wf-evil-comma-map "bb" 'switch-to-previous-buffer)
 (define-key wf-evil-comma-map "bl" 'list-buffers)
-(define-key wf-evil-comma-map "bh" 'iswitchb-buffer)
+(define-key wf-evil-comma-map "bh" 'ido-switch-buffer)
 (define-key wf-evil-comma-map "bf" 'ido-find-file)
 (define-key wf-evil-comma-map "bn" 'show-buffer-full-name)
 (define-key evil-motion-state-map "," 'wf-evil-comma-map)
@@ -68,6 +68,7 @@
 ;; etags-select
 (define-key evil-normal-state-map "\C-]" 'etags-select-find-tag-at-point)
 (define-key evil-normal-state-map "\M-." 'etags-select-find-tag)
+
 
 ;;;;;; local key bindings (modeful) ;;;;;;
 
@@ -104,6 +105,12 @@
   '(progn
      (evil-define-key 'insert emacs-lisp-mode-map (kbd "RET") 'evil-ret)))
 
+(eval-after-load "gnus"
+  '(progn
+     (evil-define-key 'emacs gnus-group-mode-map "," 'wf-evil-comma-map)
+     (evil-define-key 'emacs gnus-summary-mode-map "," 'wf-evil-comma-map)
+     (evil-define-key 'emacs gnus-article-mode-map "," 'wf-evil-comma-map)))
+
 ;; key bindings for gtags
 ; (eval-after-load "gtags"
 ;   '(progn
@@ -127,9 +134,11 @@
   '(progn
      (evil-define-key 'motion Info-mode-map (kbd "TAB") 'Info-next-reference)
      (evil-define-key 'motion Info-mode-map "^" 'Info-up)
-     (evil-define-key 'motion Info-mode-map "T" 'Info-toc)
      (evil-define-key 'emacs Info-mode-map "j" 'evil-next-visual-line)
      (evil-define-key 'emacs Info-mode-map "k" 'evil-previous-visual-line)
+     (evil-define-key 'emacs Info-mode-map "G" 'evil-goto-line)
+     (evil-define-key 'emacs Info-mode-map "H" 'evil-window-top)
+     (evil-define-key 'emacs Info-mode-map "M" 'evil-window-middle)
      (evil-define-key 'emacs Info-mode-map "\C-f" 'evil-scroll-page-down)
      (evil-define-key 'emacs Info-mode-map "\C-b" 'evil-scroll-page-up)
      (evil-define-key 'emacs Info-mode-map "," 'wf-evil-comma-map)))

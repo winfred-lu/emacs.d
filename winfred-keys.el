@@ -19,16 +19,13 @@
 
 ;;;;;; local key bindings (modeful) ;;;;;;
 
-;; key bindings for html-mode
 (add-hook 'html-mode-hook
           '(lambda ()
              (local-set-key (kbd "C-c o") 'browse-url-at-point)))
 
-(add-hook 'iswitchb-define-mode-map-hook
+(add-hook 'ido-setup-hook
           '(lambda ()
-             (define-key iswitchb-mode-map "\C-o" 'iswitchb-exclude-nonmatching)
-             (define-key iswitchb-mode-map "\M-h" 'iswitchb-prev-match)
-             (define-key iswitchb-mode-map "\M-j" 'iswitchb-next-match)
-             (define-key iswitchb-mode-map "\M-k" 'iswitchb-prev-match)
-             (define-key iswitchb-mode-map "\M-l" 'iswitchb-next-match)
-             (define-key iswitchb-mode-map ",bf" 'iswitchb-find-file)))
+             (define-key ido-completion-map "\M-h" 'ido-prev-match)
+             (define-key ido-completion-map "\M-l" 'ido-next-match)
+             (define-key ido-completion-map "\C-a" 'ido-toggle-ignore)))
+
