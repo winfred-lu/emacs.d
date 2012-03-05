@@ -27,5 +27,5 @@
           '(lambda ()
              (define-key ido-completion-map "\M-h" 'ido-prev-match)
              (define-key ido-completion-map "\M-l" 'ido-next-match)
-             (define-key ido-completion-map "\C-a" 'ido-toggle-ignore)))
+             (define-key ido-completion-map "\C-n" 'ido-toggle-ignore)))
 
