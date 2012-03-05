@@ -20,6 +20,7 @@
 (setq ido-enable-flex-matching t)
 (add-to-list 'ido-ignore-buffers "\\*Customize")
 (add-to-list 'ido-ignore-buffers "\\*Buffer")
+(add-to-list 'ido-ignore-files "TAGS")
 
 ;; mini buffer switching
 ;(iswitchb-mode 1)
