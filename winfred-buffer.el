@@ -3,6 +3,10 @@
       auto-save-file-name-transforms `((".*" "~/.emacs.d/autosaves/\\1" t))
       require-final-newline t)
 
+;; bookmarks file and autosaving
+(setq bookmark-default-file "~/.emacs.d/bookmarks"
+      bookmark-save-flag 1)
+
 ;;;;;;
 
 ;; buff-menu+ for buffer switching
