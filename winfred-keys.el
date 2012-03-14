@@ -9,6 +9,7 @@
 ;; undo evil's key bindings
 (define-key evil-insert-state-map "\C-e" 'end-of-line)
 (define-key evil-normal-state-map "\C-e" 'end-of-line)
+(define-key evil-insert-state-map "\C-y" 'yank)
 
 ;; yank at motion state
 (define-key evil-motion-state-map "y" 'evil-yank)
@@ -18,6 +19,15 @@
 (global-set-key "\C-xg" 'magit-status)
 
 ;;;;;; local key bindings (modeful) ;;;;;;
+
+(add-hook 'cscope-list-entry-hook
+          '(lambda ()
+             (define-key cscope-list-entry-keymap "j" 'evil-next-visual-line)
+             (define-key cscope-list-entry-keymap "k" 'evil-previous-visual-line)
+             (define-key cscope-list-entry-keymap "q" 'delete-window)
+             (define-key cscope-list-entry-keymap "\C-f" 'evil-scroll-page-down)
+             (define-key cscope-list-entry-keymap "\C-b" 'evil-scroll-page-up)
+             (define-key cscope-list-entry-keymap (kbd "RET") 'cscope-select-entry-other-window)))
 
 (add-hook 'html-mode-hook
           '(lambda ()

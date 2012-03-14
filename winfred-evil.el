@@ -6,6 +6,7 @@
 (evil-set-initial-state 'grep-mode 'emacs)
 (evil-set-initial-state 'Info-mode 'emacs)
 (evil-set-initial-state 'Man-mode 'emacs)
+(evil-set-initial-state 'cscope-list-entry-mode 'emacs)
 
 ;; kj as escape to return to normal mode
 (define-key evil-insert-state-map "k" #'cofi/maybe-exit)
@@ -99,6 +100,10 @@
 
 (eval-after-load "etags-select"
   '(progn
+     (evil-define-key 'emacs etags-select-mode-map "j" 'evil-next-visual-line)
+     (evil-define-key 'emacs etags-select-mode-map "k" 'evil-previous-visual-line)
+     (evil-define-key 'emacs etags-select-mode-map "\C-f" 'evil-scroll-page-down)
+     (evil-define-key 'emacs etags-select-mode-map "\C-b" 'evil-scroll-page-up)
      (evil-define-key 'emacs etags-select-mode-map (kbd "RET") 'etags-select-goto-tag)))
 
 (eval-after-load "lisp"
