@@ -7,6 +7,10 @@
 (setq bookmark-default-file "~/.emacs.d/bookmarks"
       bookmark-save-flag 1)
 
+;; make buffer names unique
+(require 'uniquify)
+(setq uniquify-buffer-name-style (quote forward))
+
 ;;;;;;
 
 ;; buff-menu+ for buffer switching
