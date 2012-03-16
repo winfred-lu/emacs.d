@@ -100,6 +100,7 @@
 
 (eval-after-load "etags-select"
   '(progn
+     (evil-define-key 'emacs etags-select-mode-map "," 'wf-evil-comma-map)
      (evil-define-key 'emacs etags-select-mode-map "j" 'evil-next-visual-line)
      (evil-define-key 'emacs etags-select-mode-map "k" 'evil-previous-visual-line)
      (evil-define-key 'emacs etags-select-mode-map "\C-f" 'evil-scroll-page-down)
@@ -118,6 +119,7 @@
 
 (eval-after-load "grep"
   '(progn
+     (evil-define-key 'emacs grep-mode-map "," 'wf-evil-comma-map)
      (evil-define-key 'emacs grep-mode-map "j" 'evil-next-visual-line)
      (evil-define-key 'emacs grep-mode-map "k" 'evil-previous-visual-line)
      (evil-define-key 'emacs grep-mode-map "\C-f" 'evil-scroll-page-down)
