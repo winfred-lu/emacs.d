@@ -116,6 +116,13 @@
      (evil-define-key 'emacs gnus-summary-mode-map "," 'wf-evil-comma-map)
      (evil-define-key 'emacs gnus-article-mode-map "," 'wf-evil-comma-map)))
 
+(eval-after-load "grep"
+  '(progn
+     (evil-define-key 'emacs grep-mode-map "j" 'evil-next-visual-line)
+     (evil-define-key 'emacs grep-mode-map "k" 'evil-previous-visual-line)
+     (evil-define-key 'emacs grep-mode-map "\C-f" 'evil-scroll-page-down)
+     (evil-define-key 'emacs grep-mode-map "\C-b" 'evil-scroll-page-up)))
+
 ;; key bindings for gtags
 ; (eval-after-load "gtags"
 ;   '(progn
