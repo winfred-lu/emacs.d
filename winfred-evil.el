@@ -35,7 +35,7 @@
 (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 
 ;; buffer switching related bindings
-(define-key evil-normal-state-map ",bb" 'switch-to-previous-buffer)
+(define-key evil-normal-state-map ",bb" 'evil-buffer)
 (define-key evil-normal-state-map ",bl" 'list-buffers)
 (define-key evil-normal-state-map ",bh" 'ido-switch-buffer)
 (define-key evil-normal-state-map ",bf" 'ido-find-file)
@@ -44,7 +44,7 @@
 ;; buffer switching at evil motion mode
 (define-prefix-command 'wf-evil-comma-map)
 (define-key wf-evil-comma-map "," 'evil-repeat-find-char-reverse)
-(define-key wf-evil-comma-map "bb" 'switch-to-previous-buffer)
+(define-key wf-evil-comma-map "bb" 'evil-buffer)
 (define-key wf-evil-comma-map "bl" 'list-buffers)
 (define-key wf-evil-comma-map "bh" 'ido-switch-buffer)
 (define-key wf-evil-comma-map "bf" 'ido-find-file)

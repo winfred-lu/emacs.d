@@ -59,11 +59,6 @@
 
 ;;;;;;
 
-(defun switch-to-previous-buffer ()
-  "Switch to previous buffer."
-  (interactive)
-  (switch-to-buffer (other-buffer (current-buffer) 1)))
-
 (defun show-buffer-full-name ()
   "Show the full path file name in the minibuffer."
   (interactive)
