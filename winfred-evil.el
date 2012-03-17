@@ -26,6 +26,13 @@
        (t (setq unread-command-events (append unread-command-events
                           (list evt))))))))
 
+(defun wf-define-evil-movements (map)
+  (evil-define-key 'emacs map "," 'wf-evil-comma-map)
+  (evil-define-key 'emacs map "j" 'evil-next-visual-line)
+  (evil-define-key 'emacs map "k" 'evil-previous-visual-line)
+  (evil-define-key 'emacs map "\C-f" 'evil-scroll-page-down)
+  (evil-define-key 'emacs map "\C-b" 'evil-scroll-page-up))
+
 ;;;;;; global key bindings (modeful) ;;;;;;
 
 ;; moving with visual line (like gj,gk in vim)
@@ -100,11 +107,7 @@
 
 (eval-after-load "etags-select"
   '(progn
-     (evil-define-key 'emacs etags-select-mode-map "," 'wf-evil-comma-map)
-     (evil-define-key 'emacs etags-select-mode-map "j" 'evil-next-visual-line)
-     (evil-define-key 'emacs etags-select-mode-map "k" 'evil-previous-visual-line)
-     (evil-define-key 'emacs etags-select-mode-map "\C-f" 'evil-scroll-page-down)
-     (evil-define-key 'emacs etags-select-mode-map "\C-b" 'evil-scroll-page-up)
+     (wf-define-evil-movements etags-select-mode-map)
      (evil-define-key 'emacs etags-select-mode-map (kbd "RET") 'etags-select-goto-tag)))
 
 (eval-after-load "lisp"
@@ -119,11 +122,7 @@
 
 (eval-after-load "grep"
   '(progn
-     (evil-define-key 'emacs grep-mode-map "," 'wf-evil-comma-map)
-     (evil-define-key 'emacs grep-mode-map "j" 'evil-next-visual-line)
-     (evil-define-key 'emacs grep-mode-map "k" 'evil-previous-visual-line)
-     (evil-define-key 'emacs grep-mode-map "\C-f" 'evil-scroll-page-down)
-     (evil-define-key 'emacs grep-mode-map "\C-b" 'evil-scroll-page-up)))
+     (wf-define-evil-movements grep-mode-map)))
 
 ;; key bindings for gtags
 ; (eval-after-load "gtags"
@@ -148,14 +147,16 @@
   '(progn
      (evil-define-key 'motion Info-mode-map (kbd "TAB") 'Info-next-reference)
      (evil-define-key 'motion Info-mode-map "^" 'Info-up)
-     (evil-define-key 'emacs Info-mode-map "j" 'evil-next-visual-line)
-     (evil-define-key 'emacs Info-mode-map "k" 'evil-previous-visual-line)
+     (wf-define-evil-movements Info-mode-map)
      (evil-define-key 'emacs Info-mode-map "G" 'evil-goto-line)
      (evil-define-key 'emacs Info-mode-map "H" 'evil-window-top)
-     (evil-define-key 'emacs Info-mode-map "M" 'evil-window-middle)
-     (evil-define-key 'emacs Info-mode-map "\C-f" 'evil-scroll-page-down)
-     (evil-define-key 'emacs Info-mode-map "\C-b" 'evil-scroll-page-up)
-     (evil-define-key 'emacs Info-mode-map "," 'wf-evil-comma-map)))
+     (evil-define-key 'emacs Info-mode-map "M" 'evil-window-middle)))
+
+(eval-after-load "magit"
+  '(progn
+     (wf-define-evil-movements magit-status-mode-map)
+     (wf-define-evil-movements magit-commit-mode-map)
+     (evil-define-key 'emacs magit-status-mode-map "K" 'magit-discard-item)))
 
 ;; key bindings for org-mode
 (eval-after-load "org"
