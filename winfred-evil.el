@@ -2,6 +2,7 @@
 (require 'evil)
 (evil-mode 1)
 
+(evil-set-initial-state 'calendar-mode 'emacs)
 (evil-set-initial-state 'Custom-mode 'normal)
 (evil-set-initial-state 'grep-mode 'emacs)
 (evil-set-initial-state 'Info-mode 'emacs)
@@ -80,7 +81,14 @@
 
 ;;;;;; local key bindings (modeful) ;;;;;;
 
-;; key bindings for cc-mode
+(eval-after-load "calendar"
+  '(progn
+     (evil-define-key 'emacs calendar-mode-map "j" 'calendar-forward-week)
+     (evil-define-key 'emacs calendar-mode-map "k" 'calendar-backward-week)
+     (evil-define-key 'emacs calendar-mode-map "h" 'calendar-backward-day)
+     (evil-define-key 'emacs calendar-mode-map "l" 'calendar-forward-day)
+     (evil-define-key 'emacs calendar-mode-map "K" 'org-agenda-action)))
+
 (eval-after-load 'cc-mode
   '(progn
      (evil-define-key 'insert c-mode-map (kbd "RET") 'evil-ret)))
