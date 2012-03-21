@@ -5,6 +5,7 @@
 (evil-set-initial-state 'calendar-mode 'emacs)
 (evil-set-initial-state 'Custom-mode 'normal)
 (evil-set-initial-state 'grep-mode 'emacs)
+(evil-set-initial-state 'hexl-mode 'emacs)
 (evil-set-initial-state 'Info-mode 'emacs)
 (evil-set-initial-state 'Man-mode 'emacs)
 (evil-set-initial-state 'cscope-list-entry-mode 'emacs)
@@ -164,7 +165,13 @@
   '(progn
      (wf-define-evil-movements magit-status-mode-map)
      (wf-define-evil-movements magit-commit-mode-map)
+     (wf-define-evil-movements magit-log-mode-map)
      (evil-define-key 'emacs magit-status-mode-map "K" 'magit-discard-item)))
+
+(eval-after-load "Man"
+  '(progn
+     (wf-define-evil-movements Man-mode-map)
+     (evil-define-key 'emacs Man-mode-map "K" 'Man-kill)))
 
 ;; key bindings for org-mode
 (eval-after-load "org"
