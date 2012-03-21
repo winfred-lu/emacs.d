@@ -17,7 +17,8 @@
 (require 'buff-menu+)
 
 ;; buff-menu+ sort by mode
-(setq Buffer-menu-sort-column 5)
+(setq Buffer-menu-sort-column 5
+      Buffer-menu-time-flag nil)
 
 ;; show buffer menu in the current window
 (add-to-list 'same-window-buffer-names "*Buffer List*")
