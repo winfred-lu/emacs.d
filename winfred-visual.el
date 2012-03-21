@@ -6,8 +6,10 @@
 ;; Don't show the startup screen, menu bar, tool bar, and scroll bar
 (setq inhibit-startup-message t)
 (menu-bar-mode nil)
-(tool-bar-mode nil)
-(scroll-bar-mode nil)
+(if (functionp 'tool-bar-mode)
+    (tool-bar-mode nil))
+(if (functionp 'scroll-bar-mode)
+    (scroll-bar-mode nil))
 
 ;; Display line and column numbers
 (setq line-number-mode t)
