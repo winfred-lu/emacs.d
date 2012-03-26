@@ -60,6 +60,13 @@
 (define-key wf-evil-comma-map "bn" 'show-buffer-full-name)
 (define-key evil-motion-state-map "," 'wf-evil-comma-map)
 
+;; hide, unhide region at evil visual mode
+(require 'hide-region)
+(define-key evil-visual-state-map "zc"
+  (lambda () (interactive) (hide-region-hide) (evil-normal-state)))
+(define-key evil-visual-state-map "zo"
+  (lambda () (interactive) (hide-region-unhide) (evil-normal-state)))
+
 ;; cscope bindings at evil normal mode
 (define-prefix-command 'wf-cscope-map)
 (define-key wf-cscope-map "s" 'cscope-find-this-symbol)
@@ -89,10 +96,6 @@
      (evil-define-key 'emacs calendar-mode-map "h" 'calendar-backward-day)
      (evil-define-key 'emacs calendar-mode-map "l" 'calendar-forward-day)
      (evil-define-key 'emacs calendar-mode-map "K" 'org-agenda-action)))
-
-(eval-after-load 'cc-mode
-  '(progn
-     (evil-define-key 'insert c-mode-map (kbd "RET") 'evil-ret)))
 
 ;; switch evil mode to apply gtags key bindings
 ; (setq c-mode-hook
