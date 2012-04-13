@@ -27,7 +27,8 @@
              (define-key cscope-list-entry-keymap "q" 'delete-window)
              (define-key cscope-list-entry-keymap "\C-f" 'evil-scroll-page-down)
              (define-key cscope-list-entry-keymap "\C-b" 'evil-scroll-page-up)
-             (define-key cscope-list-entry-keymap (kbd "RET") 'cscope-select-entry-other-window)))
+             (define-key cscope-list-entry-keymap (kbd "RET") 'cscope-select-entry-other-window)
+             (define-key cscope-list-entry-keymap "," 'wf-evil-comma-map)))
 
 (add-hook 'html-mode-hook
           '(lambda ()
