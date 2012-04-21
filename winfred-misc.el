@@ -8,6 +8,7 @@
 (require 'autopair)
 ;(autopair-global-mode)
 (add-hook 'c-mode-common-hook #'(lambda () (autopair-mode)))
+(add-hook 'python-mode-hook #'(lambda () (autopair-mode)))
 (add-hook 'emacs-lisp-mode-hook
           #'(lambda ()
               (autopair-mode)
