@@ -89,6 +89,10 @@
 
 ;;;;;; local key bindings (modeful) ;;;;;;
 
+(eval-after-load "calc"
+  '(progn
+     (evil-define-key 'emacs calc-mode-map "\C-w" 'evil-window-map)))
+
 (eval-after-load "calendar"
   '(progn
      (evil-define-key 'emacs calendar-mode-map "j" 'calendar-forward-week)
