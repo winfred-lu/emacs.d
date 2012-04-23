@@ -43,6 +43,13 @@
 (define-key evil-visual-state-map "j" 'evil-next-visual-line)
 (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 
+;; ace jump mode key bindings
+(require 'ace-jump-mode)
+(define-key evil-normal-state-map " " 'ace-jump-mode)
+(define-key evil-normal-state-map ",w" 'ace-jump-word-mode)
+(define-key evil-normal-state-map ",c" 'ace-jump-char-mode)
+(define-key evil-normal-state-map ",l" 'ace-jump-line-mode)
+
 ;; buffer switching related bindings
 (define-key evil-normal-state-map ",bb" 'evil-buffer)
 (define-key evil-normal-state-map ",bl" 'list-buffers)
