@@ -1,4 +1,3 @@
-;; Evil
 (require 'evil)
 (evil-mode 1)
 
@@ -44,28 +43,23 @@
 (define-key evil-visual-state-map "j" 'evil-next-visual-line)
 (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 
-;; ace jump mode key bindings
 (require 'ace-jump-mode)
 (define-key evil-normal-state-map " " 'ace-jump-mode)
-(define-key evil-normal-state-map ",w" 'ace-jump-word-mode)
-(define-key evil-normal-state-map ",c" 'ace-jump-char-mode)
-(define-key evil-normal-state-map ",l" 'ace-jump-line-mode)
 
-;; buffer switching related bindings
-(define-key evil-normal-state-map ",bb" 'evil-buffer)
-(define-key evil-normal-state-map ",bl" 'list-buffers)
-(define-key evil-normal-state-map ",bh" 'ido-switch-buffer)
-(define-key evil-normal-state-map ",bf" 'ido-find-file)
-(define-key evil-normal-state-map ",bn" 'show-buffer-full-name)
-
-;; buffer switching at evil motion mode
 (define-prefix-command 'wf-evil-comma-map)
 (define-key wf-evil-comma-map "," 'evil-repeat-find-char-reverse)
-(define-key wf-evil-comma-map "bb" 'evil-buffer)
-(define-key wf-evil-comma-map "bl" 'list-buffers)
-(define-key wf-evil-comma-map "bh" 'ido-switch-buffer)
-(define-key wf-evil-comma-map "bf" 'ido-find-file)
-(define-key wf-evil-comma-map "bn" 'show-buffer-full-name)
+(define-key wf-evil-comma-map "v" 'evil-buffer)
+(define-key wf-evil-comma-map "h" 'list-buffers)
+(define-key wf-evil-comma-map "b" 'ido-switch-buffer)
+(define-key wf-evil-comma-map "f" 'ido-find-file)
+(define-key wf-evil-comma-map "n" 'show-buffer-full-name)
+(define-key wf-evil-comma-map "d" 'dired-jump)
+(define-key wf-evil-comma-map "g" 'magit-status)
+(define-key wf-evil-comma-map "k" 'kill-buffer-and-window)
+(define-key wf-evil-comma-map "w" 'ace-jump-word-mode)
+(define-key wf-evil-comma-map "c" 'ace-jump-char-mode)
+(define-key wf-evil-comma-map "l" 'ace-jump-line-mode)
+(define-key evil-normal-state-map "," 'wf-evil-comma-map)
 (define-key evil-motion-state-map "," 'wf-evil-comma-map)
 
 ;; hide, unhide region at evil visual mode
@@ -109,13 +103,6 @@
        "h" 'calendar-backward-day
        "l" 'calendar-forward-day
        "K" 'org-agenda-action)))
-
-;; switch evil mode to apply gtags key bindings
-; (setq c-mode-hook
-;       '(lambda ()
-;          (gtags-mode 1)
-;          (evil-emacs-state)
-;          (evil-normal-state)))
 
 ;; key bindings for custom-mode
 (eval-after-load "cus-edit"
@@ -185,3 +172,4 @@
        "\M-h" 'org-metaleft
        "\M-k" 'org-metaup
        "\M-j" 'org-metadown)))
+
