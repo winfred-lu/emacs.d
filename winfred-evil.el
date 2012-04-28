@@ -1,4 +1,12 @@
+(setq evil-move-cursor-back nil
+      evil-cross-lines t)
 (require 'evil)
+
+(setq evil-normal-state-tag   (propertize "n" 'face '((:foreground "green")))
+      evil-emacs-state-tag    (propertize "e" 'face '((:foreground "orange")))
+      evil-insert-state-tag   (propertize "i" 'face '((:foreground "purple")))
+      evil-motion-state-tag   (propertize "m" 'face '((:foreground "blue")))
+      evil-operator-state-tag (propertize "o" 'face '((:foreground "yellow"))))
 (evil-mode 1)
 
 (loop for (mode . state) in '((calendar-mode . emacs)
@@ -45,6 +53,10 @@
 
 (require 'ace-jump-mode)
 (define-key evil-normal-state-map " " 'ace-jump-mode)
+(define-key evil-operator-state-map " " 'ace-jump-char-mode)
+;; make ace jump look like a single command to evil
+(defadvice ace-jump-char-mode (after evil activate) (recursive-edit))
+(defadvice ace-jump-done (after evil activate) (exit-recursive-edit))
 
 (define-prefix-command 'wf-evil-comma-map)
 (define-key wf-evil-comma-map "," 'evil-repeat-find-char-reverse)
@@ -69,7 +81,7 @@
 (define-key evil-visual-state-map "zo"
   (lambda () (interactive) (hide-region-unhide) (evil-normal-state)))
 
-;; cscope bindings at evil normal mode
+;; cscope key bindings at evil normal mode
 (define-prefix-command 'wf-cscope-map)
 (define-key wf-cscope-map "s" 'cscope-find-this-symbol)
 (define-key wf-cscope-map "g" 'cscope-find-global-definition)
