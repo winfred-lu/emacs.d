@@ -26,11 +26,11 @@
 ;; Visible bell
 (setq visible-bell t)
 
-;; horizontal ediff window
-;(setq ediff-split-window-function (quote split-window-horizontally))
-
-;; indentation
+;; Indent Tabs
 (setq-default indent-tabs-mode nil)
+
+;; Enable narrow-to-region
+(put 'narrow-to-region 'disabled nil)
 
 ;; highlight FIXME comments
 (add-hook 'c-mode-common-hook
