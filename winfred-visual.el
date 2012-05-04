@@ -5,7 +5,7 @@
 
 ;; Don't show the startup screen, menu bar, tool bar, and scroll bar
 (setq inhibit-startup-message t)
-(menu-bar-mode nil)
+(menu-bar-mode 0)
 (if (functionp 'tool-bar-mode)
     (tool-bar-mode nil))
 (if (functionp 'scroll-bar-mode)
