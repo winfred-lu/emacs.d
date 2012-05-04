@@ -1,10 +1,7 @@
 ;;;;;; global key bindings (modeless) ;;;;;;
 
-;; F11 to toggle whitespace-mode on/off
 (global-set-key [(f11)] 'whitespace-mode)
-
-;; auto indentation after RET
-;(global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key [(f12)] (lambda()(interactive)(switch-to-buffer "*scratch*")))
 
 ;; undo evil's key bindings
 (define-key evil-insert-state-map "\C-e" 'end-of-line)
@@ -17,6 +14,7 @@
 ;; functions frequently used
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-xg" 'magit-status)
+(global-set-key "\C-x\C-b" 'ibuffer)
 
 ;;;;;; local key bindings (modeful) ;;;;;;
 

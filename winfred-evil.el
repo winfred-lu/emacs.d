@@ -1,12 +1,12 @@
-(setq evil-move-cursor-back nil
-      evil-cross-lines t)
+(setq evil-cross-lines t)
 (require 'evil)
 
 (setq evil-normal-state-tag   (propertize "n" 'face '((:foreground "green")))
       evil-emacs-state-tag    (propertize "e" 'face '((:foreground "orange")))
       evil-insert-state-tag   (propertize "i" 'face '((:foreground "purple")))
       evil-motion-state-tag   (propertize "m" 'face '((:foreground "blue")))
-      evil-operator-state-tag (propertize "o" 'face '((:foreground "yellow"))))
+      evil-visual-state-tag   (propertize "v" 'face '((:foreground "yellow")))
+      evil-operator-state-tag (propertize "o" 'face '((:foreground "red"))))
 (evil-mode 1)
 
 (loop for (mode . state) in '((calendar-mode . emacs)
@@ -35,13 +35,15 @@
        (t (setq unread-command-events (append unread-command-events
                           (list evt))))))))
 
-(defun wf-define-evil-movements (map)
-  (evil-define-key 'emacs map
-    "," 'wf-evil-comma-map
-    "j" 'evil-next-visual-line
-    "k" 'evil-previous-visual-line
-    "\C-f" 'evil-scroll-page-down
-    "\C-b" 'evil-scroll-page-up))
+(defmacro wf-define-evil-movements (keymap &rest bindings)
+  (declare (indent defun))
+  `(evil-define-key 'emacs ,keymap
+     "j"    (lookup-key evil-motion-state-map "j")
+     "k"    (lookup-key evil-motion-state-map "k")
+     "\C-f" (lookup-key evil-motion-state-map "\C-f")
+     "\C-b" (lookup-key evil-motion-state-map "\C-b")
+     ","    'wf-evil-comma-map
+     ,@bindings))
 
 ;;;;;; global key bindings (modeless) ;;;;;;
 
@@ -61,7 +63,7 @@
 (define-prefix-command 'wf-evil-comma-map)
 (define-key wf-evil-comma-map "," 'evil-repeat-find-char-reverse)
 (define-key wf-evil-comma-map "v" 'evil-buffer)
-(define-key wf-evil-comma-map "h" 'list-buffers)
+(define-key wf-evil-comma-map "h" 'ibuffer)
 (define-key wf-evil-comma-map "b" 'ido-switch-buffer)
 (define-key wf-evil-comma-map "f" 'ido-find-file)
 (define-key wf-evil-comma-map "n" 'show-buffer-full-name)
@@ -116,7 +118,6 @@
        "l" 'calendar-forward-day
        "K" 'org-agenda-action)))
 
-;; key bindings for custom-mode
 (eval-after-load "cus-edit"
   '(progn
      (evil-define-key 'normal custom-mode-map (kbd "TAB") 'widget-forward)
@@ -124,8 +125,8 @@
 
 (eval-after-load "etags-select"
   '(progn
-     (wf-define-evil-movements etags-select-mode-map)
-     (evil-define-key 'emacs etags-select-mode-map (kbd "RET") 'etags-select-goto-tag)))
+     (wf-define-evil-movements etags-select-mode-map
+                               (kbd "RET") 'etags-select-goto-tag)))
 
 (eval-after-load "lisp"
   '(progn
@@ -141,33 +142,43 @@
   '(progn
      (wf-define-evil-movements grep-mode-map)))
 
-;; key bindings for Help-mode
 (eval-after-load 'help-mode
   '(progn
      (evil-define-key 'motion help-mode-map (kbd "TAB") 'forward-button)))
 
+(eval-after-load "ibuffer"
+  '(progn (wf-define-evil-movements ibuffer-mode-map
+                                    "J" 'ibuffer-jump-to-buffer
+                                    "K" 'ibuffer-do-kill-lines
+                                    "<" 'ibuffer-toggle-sorting-mode)))
+
 (eval-after-load "magit"
   '(progn
-     (wf-define-evil-movements magit-status-mode-map)
+     (wf-define-evil-movements magit-status-mode-map
+                               "K" 'magit-discard-item)
      (wf-define-evil-movements magit-commit-mode-map)
-     (wf-define-evil-movements magit-log-mode-map)
-     (evil-define-key 'emacs magit-status-mode-map "K" 'magit-discard-item)))
+     (wf-define-evil-movements magit-log-mode-map)))
 
 (eval-after-load "Man"
   '(progn
-     (wf-define-evil-movements Man-mode-map)
-     (evil-define-key 'emacs Man-mode-map "K" 'Man-kill)))
+     (wf-define-evil-movements Man-mode-map
+                               "K" 'Man-kill)))
 
 ;; key bindings for org-mode
 (eval-after-load "org"
   '(progn
      (evil-define-key 'normal org-mode-map
        "$" 'org-end-of-line
-       "\C-cl" 'org-store-link
-       "\C-ca" 'org-agenda
        "T" 'org-todo
        "-" 'org-cycle-list-bullet
        (kbd "TAB") 'org-cycle
+       (kbd "RET") 'org-open-at-point
+       "zm" 'hide-body
+       "zr" 'show-all
+       "zo" 'show-subtree
+       "zO" 'show-all
+       "zc" 'hide-subtree
+       "zC" 'hide-all
        "\M-l" 'org-metaright
        "\M-h" 'org-metaleft
        "\M-k" 'org-metaup

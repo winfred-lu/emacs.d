@@ -13,23 +13,16 @@
 
 ;;;;;;
 
-;; buff-menu+ for buffer switching
-(require 'buff-menu+)
-
-;; buff-menu+ sort by mode
-(setq Buffer-menu-sort-column 5
-      Buffer-menu-time-flag nil)
-
-;; show buffer menu in the current window
-(add-to-list 'same-window-buffer-names "*Buffer List*")
 
 ;;;;;;
 
-(ido-mode t)
 (setq ido-enable-flex-matching t
       ido-everywhere t)
+(ido-mode t)
 (loop for b in '("\\*Buffer" "\\*Completions" "\\*Customize" "\\*Help"
-                 "\\*Messages" "\\*cscope" "\\*etags-select" "\\*magit")
+                 "\\*Ibuffer"
+                 "\\*Messages" "\\*cscope" "\\*etags-select" "\\*grep"
+                 "\\*magit")
       do (add-to-list 'ido-ignore-buffers b))
 (loop for d in '("\\`auto" "\\`backups/" "\\`CVS/")
       do (add-to-list 'ido-ignore-directories d))
