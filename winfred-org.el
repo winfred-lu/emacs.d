@@ -1,13 +1,36 @@
-;; org mod settings
+;; org mode settings
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-(setq org-log-done t)
-(setq org-hide-leading-stars "hidestarts")
-(setq org-agenda-files (list "~/org/work.org"
-                             "~/org/home.org"))
+(setq org-agenda-files (file-expand-wildcards "~/org/*.org")
+      org-hide-leading-stars "hidestars"
+      org-hide-emphasis-markers t
+      org-log-done t)
 
 ;; mobile org settings
-(setq org-directory "~/org")
-(setq org-mobile-inbox-for-pull "~/org/flagged.org")
-(setq org-mobile-directory "~/Dropbox/org")
+(setq org-directory "~/org"
+      org-mobile-inbox-for-pull "~/org/flagged.org"
+      org-mobile-directory "~/Dropbox/org")
 
-(setq org-hide-emphasis-markers t)
+;; babel settings
+(setq org-ditaa-jar-path "~/git/org-mode/contrib/scripts/ditaa.jar"
+      org-plantuml-jar-path "/usr/share/plantuml/plantuml.jar"
+      org-babel-results-keyword "results"
+      org-confirm-babel-evaluate nil)
+
+(defun bh/display-inline-images ()
+  (condition-case nil
+      (org-display-inline-images)
+    (error nil)))
+(add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
+
+;; active Babel languages
+(if (>= emacs-major-version 24)
+    (progn
+      (org-babel-do-load-languages
+       'org-babel-load-languages
+       '((emacs-lisp . t)
+         (ditaa . t)
+         (gnuplot . t)
+         (org . t)
+         (plantuml . t)
+         (python . t)))
+      (add-to-list 'org-src-lang-modes (quote ("plantuml" . fundamental)))))
