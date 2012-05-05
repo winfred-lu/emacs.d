@@ -9,9 +9,10 @@
 (define-key wf-minor-mode-map "w" 'whitespace-mode)
 
 ;; functions frequently used
-(global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-xg" 'magit-status)
 (global-set-key "\C-xm" 'wf-minor-mode-map)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-co" 'browse-url-at-point)
 (global-set-key "\C-x\C-b" 'ibuffer)
 
 ;; ido with artist-mode
@@ -47,9 +48,9 @@
 
 
 (add-hook 'artist-mode-hook
-          (lambda ()
-            (define-key artist-mode-map "\C-c\C-o" 'artist-ido-select-operation)
-            (define-key artist-mode-map "\C-c\C-s" 'artist-ido-select-settings)))
+          '(lambda ()
+             (define-key artist-mode-map "\C-c\C-o" 'artist-ido-select-operation)
+             (define-key artist-mode-map "\C-c\C-s" 'artist-ido-select-settings)))
 
 (add-hook 'cscope-list-entry-hook
           '(lambda ()
@@ -60,10 +61,6 @@
              (define-key cscope-list-entry-keymap "\C-b" 'evil-scroll-page-up)
              (define-key cscope-list-entry-keymap (kbd "RET") 'cscope-select-entry-other-window)
              (define-key cscope-list-entry-keymap "," 'wf-evil-comma-map)))
-
-(add-hook 'html-mode-hook
-          '(lambda ()
-             (local-set-key (kbd "C-c o") 'browse-url-at-point)))
 
 (add-hook 'ido-setup-hook
           '(lambda ()
