@@ -10,11 +10,12 @@
 (evil-mode 1)
 
 (loop for (mode . state) in '((calendar-mode . emacs)
+                              (cscope-list-entry-mode . emacs)
                               (Custom-mode . normal)
                               (grep-mode . emacs)
                               (hexl-mode . emacs)
                               (Man-mode . emacs)
-                              (cscope-list-entry-mode . emacs))
+                              (picture-mode . emacs))
       do (evil-set-initial-state mode state))
 
 ;; kj as escape to return to normal mode
@@ -45,7 +46,13 @@
      ","    'wf-evil-comma-map
      ,@bindings))
 
-;;;;;; global key bindings (modeless) ;;;;;;
+;;;;;; key bindings regardless of major mode ;;;;;;
+
+;; undo evil's key bindings
+(define-key evil-insert-state-map "\C-e" 'end-of-line)
+(define-key evil-normal-state-map "\C-e" 'end-of-line)
+(define-key evil-insert-state-map "\C-y" 'yank)
+(define-key evil-motion-state-map "y" 'evil-yank)
 
 ;; moving with visual line (like gj,gk in vim)
 (define-key evil-normal-state-map "j" 'evil-next-visual-line)
@@ -73,6 +80,7 @@
 (define-key wf-evil-comma-map "w" 'ace-jump-word-mode)
 (define-key wf-evil-comma-map "c" 'ace-jump-char-mode)
 (define-key wf-evil-comma-map "l" 'ace-jump-line-mode)
+(define-key wf-evil-comma-map "s" 'ispell-word)
 (define-key evil-normal-state-map "," 'wf-evil-comma-map)
 (define-key evil-motion-state-map "," 'wf-evil-comma-map)
 
@@ -98,12 +106,12 @@
 (define-key wf-cscope-map "u" 'cscope-pop-mark)
 (define-key evil-normal-state-map "\C-_" 'wf-cscope-map)
 
-;; etags-select
+;; etags-select instead of evil-jump-to-tag
 (define-key evil-normal-state-map "\C-]" 'etags-select-find-tag-at-point)
 (define-key evil-normal-state-map "\M-." 'etags-select-find-tag)
 
 
-;;;;;; local key bindings (modeful) ;;;;;;
+;;;;;; key bindings according to major mode ;;;;;;
 
 (eval-after-load "calc"
   '(progn
@@ -173,6 +181,7 @@
        "-" 'org-cycle-list-bullet
        (kbd "TAB") 'org-cycle
        (kbd "RET") 'org-open-at-point
+       "\C-t" 'org-mark-ring-goto
        "zm" 'hide-body
        "zr" 'show-all
        "zo" 'show-subtree

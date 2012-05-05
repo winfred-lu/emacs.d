@@ -1,15 +1,5 @@
-;;;;;; global key bindings (modeless) ;;;;;;
-
 (global-set-key [(f11)] 'whitespace-mode)
 (global-set-key [(f12)] (lambda()(interactive)(switch-to-buffer "*scratch*")))
-
-;; undo evil's key bindings
-(define-key evil-insert-state-map "\C-e" 'end-of-line)
-(define-key evil-normal-state-map "\C-e" 'end-of-line)
-(define-key evil-insert-state-map "\C-y" 'yank)
-
-;; yank at motion state
-(define-key evil-motion-state-map "y" 'evil-yank)
 
 (define-prefix-command 'wf-minor-mode-map)
 (define-key wf-minor-mode-map "a" 'artist-mode)
@@ -24,7 +14,42 @@
 (global-set-key "\C-xm" 'wf-minor-mode-map)
 (global-set-key "\C-x\C-b" 'ibuffer)
 
-;;;;;; local key bindings (modeful) ;;;;;;
+;; ido with artist-mode
+(defun artist-ido-select-operation (type)
+  "Use ido to select a drawing operation in artist-mode"
+  (interactive
+   (list (ido-completing-read
+          "Drawing operation: "
+          (list "Pen" "Pen Line" "line" "straight line" "rectangle"
+                "square" "poly-line" "straight poly-line" "ellipse"
+                "circle" "text see-thru" "text-overwrite" "spray-can"
+                "erase char" "erase rectangle" "vaporize line" "vaporize lines"
+                "cut rectangle" "cut square" "copy rectangle" "copy square"
+                "paste" "flood-fill"))))
+  (artist-select-operation type))
+(defun artist-ido-select-settings (type)
+  "Use ido to select a setting to change in artist-mode"
+  (interactive
+   (list (ido-completing-read
+          "Setting: "
+          (list "Set Fill" "Set Line" "Set Erase" "Spray-size" "Spray-chars"
+                "Rubber-banding" "Trimming" "Borders"))))
+  (if (equal type "Spray-size")
+      (artist-select-operation "spray set size")
+    (call-interactively (artist-fc-get-fn-from-symbol
+                         (cdr (assoc type '(("Set Fill" . set-fill)
+                                            ("Set Line" . set-line)
+                                            ("Set Erase" . set-erase)
+                                            ("Rubber-banding" . rubber-band)
+                                            ("Trimming" . trimming)
+                                            ("Borders" . borders)
+                                            ("Spray-chars" . spray-chars))))))))
+
+
+(add-hook 'artist-mode-hook
+          (lambda ()
+            (define-key artist-mode-map "\C-c\C-o" 'artist-ido-select-operation)
+            (define-key artist-mode-map "\C-c\C-s" 'artist-ido-select-settings)))
 
 (add-hook 'cscope-list-entry-hook
           '(lambda ()
