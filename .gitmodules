@@ -10,6 +10,3 @@
 [submodule "vendor/smart-tab"]
 	path = vendor/smart-tab
 	url = git://github.com/genehack/smart-tab.git
-[submodule "vendor/egg"]
-	path = vendor/egg
-	url = git://github.com/byplayer/egg.git
