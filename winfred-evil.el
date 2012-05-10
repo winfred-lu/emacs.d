@@ -81,6 +81,9 @@
 (define-key wf-evil-comma-map "c" 'ace-jump-char-mode)
 (define-key wf-evil-comma-map "l" 'ace-jump-line-mode)
 (define-key wf-evil-comma-map "s" 'ispell-word)
+(define-key wf-evil-comma-map "p" 'pdb)
+(define-key wf-evil-comma-map "s" 'ispell-word)
+(define-key wf-evil-comma-map "t" 'visit-tags-table)
 (define-key evil-normal-state-map "," 'wf-evil-comma-map)
 (define-key evil-motion-state-map "," 'wf-evil-comma-map)
 
@@ -112,6 +115,12 @@
 
 
 ;;;;;; key bindings according to major mode ;;;;;;
+
+(add-hook 'bookmark-bmenu-mode-hook
+          '(lambda ()
+             (wf-define-evil-movements bookmark-bmenu-mode-map
+               "J" 'bookmark-bmenu-this-window
+               "K" 'bookmark-bmenu-delete)))
 
 (eval-after-load "calc"
   '(progn
@@ -160,6 +169,10 @@
                                     "K" 'ibuffer-do-kill-lines
                                     "<" 'ibuffer-toggle-sorting-mode)))
 
+(eval-after-load 'info
+  '(progn
+     (evil-define-key 'motion Info-mode-map "," 'wf-evil-comma-map)))
+
 (eval-after-load "magit"
   '(progn
      (wf-define-evil-movements magit-status-mode-map
@@ -204,4 +217,3 @@
        "\M-h" 'org-metaleft
        "\M-k" 'org-metaup
        "\M-j" 'org-metadown)))
-
