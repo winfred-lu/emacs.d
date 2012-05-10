@@ -11,7 +11,7 @@
       org-mobile-directory "~/Dropbox/org")
 
 ;; babel settings
-(setq org-ditaa-jar-path "~/git/org-mode/contrib/scripts/ditaa.jar"
+(setq org-ditaa-jar-path "~/.emacs.d/ditaa.jar"
       org-plantuml-jar-path "/usr/share/plantuml/plantuml.jar"
       org-babel-results-keyword "results"
       org-confirm-babel-evaluate nil)
@@ -23,14 +23,13 @@
 (add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
 
 ;; active Babel languages
-(if (>= emacs-major-version 24)
-    (progn
-      (org-babel-do-load-languages
-       'org-babel-load-languages
-       '((emacs-lisp . t)
-         (ditaa . t)
-         (gnuplot . t)
-         (org . t)
-         (plantuml . t)
-         (python . t)))
-      (add-to-list 'org-src-lang-modes (quote ("plantuml" . fundamental)))))
+(if (fboundp 'org-babel-do-load-languages)
+    (org-babel-do-load-languages 'org-babel-load-languages
+                                 '((emacs-lisp . t)
+                                   (ditaa . t)
+                                   (gnuplot . t)
+                                   (org . t)
+                                   (plantuml . t)
+                                   (python . t))))
+(if (boundp 'add-to-list)
+    (add-to-list 'org-src-lang-modes (quote ("plantuml" . fundamental))))
