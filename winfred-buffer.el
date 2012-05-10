@@ -1,10 +1,10 @@
 ;; backups and autosaves
-(setq backup-directory-alist `((".*" . "~/.emacs.d/backups"))
-      auto-save-file-name-transforms `((".*" "~/.emacs.d/autosaves/\\1" t))
+(setq backup-directory-alist `((".*" . "~/.d.emacs.d/backups"))
+      auto-save-file-name-transforms `((".*" "~/.d.emacs.d/autosaves/\\1" t))
       require-final-newline t)
 
 ;; bookmarks file and autosaving
-(setq bookmark-default-file "~/.emacs.d/bookmarks"
+(setq bookmark-default-file "~/.d.emacs.d/bookmarks"
       bookmark-save-flag 1)
 
 ;; make buffer names unique
@@ -13,16 +13,18 @@
 
 ;;;;;;
 
+(autoload 'dired-jump "dired" t nil)
 
 ;;;;;;
 
 (setq ido-enable-flex-matching t
       ido-everywhere t)
 (ido-mode t)
-(loop for b in '("\\*Buffer" "\\*Completions" "\\*Customize" "\\*Help"
+(loop for b in '("\\*Backtrace" "\\*Bookmark"
+		 "\\*Buffer" "\\*Completions" "\\*Customize" "\\*Help"
                  "\\*Ibuffer"
                  "\\*Messages" "\\*cscope" "\\*etags-select" "\\*grep"
-                 "\\*magit")
+                 "\\*magit" "\\*scratch")
       do (add-to-list 'ido-ignore-buffers b))
 (loop for d in '("\\`auto" "\\`backups/" "\\`CVS/")
       do (add-to-list 'ido-ignore-directories d))
