@@ -6,7 +6,8 @@
       evil-insert-state-tag   (propertize "i" 'face '((:foreground "purple")))
       evil-motion-state-tag   (propertize "m" 'face '((:foreground "blue")))
       evil-visual-state-tag   (propertize "v" 'face '((:foreground "yellow")))
-      evil-operator-state-tag (propertize "o" 'face '((:foreground "red"))))
+      evil-operator-state-tag (propertize "o" 'face '((:foreground "red")))
+      evil-replace-state-tag  (propertize "r" 'face '((:foreground "red"))))
 (evil-mode 1)
 
 (loop for (mode . state) in '((calendar-mode . emacs)
@@ -69,21 +70,22 @@
 
 (define-prefix-command 'wf-evil-comma-map)
 (define-key wf-evil-comma-map "," 'evil-repeat-find-char-reverse)
-(define-key wf-evil-comma-map "v" 'evil-buffer)
-(define-key wf-evil-comma-map "h" 'ibuffer)
 (define-key wf-evil-comma-map "b" 'ido-switch-buffer)
-(define-key wf-evil-comma-map "f" 'ido-find-file)
-(define-key wf-evil-comma-map "n" 'show-buffer-full-name)
-(define-key wf-evil-comma-map "d" 'dired-jump)
-(define-key wf-evil-comma-map "g" 'magit-status)
-(define-key wf-evil-comma-map "k" 'kill-buffer-and-window)
-(define-key wf-evil-comma-map "w" 'ace-jump-word-mode)
 (define-key wf-evil-comma-map "c" 'ace-jump-char-mode)
+(define-key wf-evil-comma-map "d" 'dired-jump)
+(define-key wf-evil-comma-map "f" 'ido-find-file)
+(define-key wf-evil-comma-map "g" 'magit-status)
+(define-key wf-evil-comma-map "h" 'ibuffer)
+(define-key wf-evil-comma-map "k" 'kill-buffer-and-window)
 (define-key wf-evil-comma-map "l" 'ace-jump-line-mode)
-(define-key wf-evil-comma-map "s" 'ispell-word)
+(define-key wf-evil-comma-map "n" 'show-buffer-full-name)
 (define-key wf-evil-comma-map "p" 'pdb)
+(define-key wf-evil-comma-map "r" 'browse-kill-ring)
 (define-key wf-evil-comma-map "s" 'ispell-word)
 (define-key wf-evil-comma-map "t" 'visit-tags-table)
+(define-key wf-evil-comma-map "v" 'evil-buffer)
+(define-key wf-evil-comma-map "w" 'ace-jump-word-mode)
+(define-key wf-evil-comma-map "y" 'python-shell)
 (define-key evil-normal-state-map "," 'wf-evil-comma-map)
 (define-key evil-motion-state-map "," 'wf-evil-comma-map)
 
@@ -121,6 +123,15 @@
              (wf-define-evil-movements bookmark-bmenu-mode-map
                "J" 'bookmark-bmenu-this-window
                "K" 'bookmark-bmenu-delete)))
+
+(eval-after-load "browse-kill-ring"
+  '(progn
+     (evil-define-key 'emacs browse-kill-ring-mode-map
+       "j" 'browse-kill-ring-forward
+       "k" 'browse-kill-ring-previous
+       "\C-f" 'evil-scroll-page-down
+       "\C-b" 'evil-scroll-page-up
+       "," 'wf-evil-comma-map)))
 
 (eval-after-load "calc"
   '(progn

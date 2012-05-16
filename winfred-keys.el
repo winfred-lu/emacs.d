@@ -9,9 +9,10 @@
 (define-key wf-minor-mode-map "w" 'whitespace-mode)
 
 ;; functions frequently used
-(global-set-key "\C-xg" 'magit-status)
-(global-set-key "\C-xm" 'wf-minor-mode-map)
 (global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-xg" 'magit-status)
+(global-set-key "\C-xk" 'browse-kill-ring)
+(global-set-key "\C-xm" 'wf-minor-mode-map)
 (global-set-key "\C-co" 'browse-url-at-point)
 (global-set-key "\C-x\C-b" 'ibuffer)
 
