@@ -23,6 +23,7 @@
      (blank-tab-face ((t (:background "green" :foreground "black"))))
      (bold ((t (:bold t))))
      (bold-italic ((t (:italic t :bold t))))
+     (minibuffer-prompt ((t (:foreground "dark sea green"))))
 
      (buffer-menu-star-buffer ((t (:foreground "#d0d050"))))
      (buffer-menu-directory-buffer ((t (:background "#402010" :foreground "#d0d020"))))
@@ -91,6 +92,7 @@
      (modeline-mousable ((t (:background "light goldenrod" :foreground "dim gray"))))
      (modeline-mousable-minor-mode ((t (:background "dim gray" :foreground "light goldenrod"))))
 
+     (org-hide ((t (:foreground "black"))))
      (org-level-1 ((t (:foreground "#e09090"))))
      (org-level-2 ((t (:foreground "#e0a080"))))
      (org-level-3 ((t (:foreground "#e0e090"))))
@@ -99,6 +101,7 @@
      (org-level-6 ((t (:foreground "#a0a0e0"))))
      (org-level-7 ((t (:foreground "#e0a0d0"))))
      (org-level-8 ((t (:foreground "#808080"))))
+     (org-table ((t (:foreground "#9fc59f"))))
 
      (region ((t (:background "dark slate gray"))))
      (secondary-selection ((t (:background "dark slate blue" :foreground "light goldenrod"))))
