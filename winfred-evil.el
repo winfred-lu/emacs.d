@@ -15,7 +15,6 @@
                               (Custom-mode . normal)
                               (grep-mode . emacs)
                               (hexl-mode . emacs)
-                              (Man-mode . emacs)
                               (picture-mode . emacs))
       do (evil-set-initial-state mode state))
 
@@ -55,11 +54,11 @@
 (define-key evil-insert-state-map "\C-y" 'yank)
 (define-key evil-motion-state-map "y" 'evil-yank)
 
-;; moving with visual line (like gj,gk in vim)
+;; moving with visual line
 (define-key evil-normal-state-map "j" 'evil-next-visual-line)
 (define-key evil-normal-state-map "k" 'evil-previous-visual-line)
-(define-key evil-visual-state-map "j" 'evil-next-visual-line)
-(define-key evil-visual-state-map "k" 'evil-previous-visual-line)
+(define-key evil-normal-state-map "gj" 'evil-next-line)
+(define-key evil-normal-state-map "gk" 'evil-previous-line)
 
 (require 'ace-jump-mode)
 (define-key evil-normal-state-map " " 'ace-jump-mode)
@@ -78,7 +77,7 @@
 (define-key wf-evil-comma-map "h" 'ibuffer)
 (define-key wf-evil-comma-map "k" 'kill-buffer-and-window)
 (define-key wf-evil-comma-map "l" 'ace-jump-line-mode)
-(define-key wf-evil-comma-map "n" 'show-buffer-full-name)
+(define-key wf-evil-comma-map "n" 'evil-show-file-info)
 (define-key wf-evil-comma-map "p" 'pdb)
 (define-key wf-evil-comma-map "r" 'browse-kill-ring)
 (define-key wf-evil-comma-map "s" 'ispell-word)
@@ -129,8 +128,8 @@
      (evil-define-key 'emacs browse-kill-ring-mode-map
        "j" 'browse-kill-ring-forward
        "k" 'browse-kill-ring-previous
-       "\C-f" 'evil-scroll-page-down
-       "\C-b" 'evil-scroll-page-up
+       "\C-f" (lookup-key evil-motion-state-map "\C-f")
+       "\C-b" (lookup-key evil-motion-state-map "\C-b")
        "," 'wf-evil-comma-map)))
 
 (eval-after-load "calc"
@@ -144,7 +143,11 @@
        "k" 'calendar-backward-week
        "h" 'calendar-backward-day
        "l" 'calendar-forward-day
-       "K" 'org-agenda-action)))
+       "K" 'org-agenda-action
+       "\C-f" 'calendar-scroll-left-three-months
+       "\C-b" 'calendar-scroll-right-three-months
+       "\C-w" 'evil-window-map
+       "," 'wf-evil-comma-map)))
 
 (eval-after-load "cus-edit"
   '(progn
@@ -193,8 +196,9 @@
 
 (eval-after-load "Man"
   '(progn
-     (wf-define-evil-movements Man-mode-map
-                               "K" 'Man-kill)))
+     (evil-make-overriding-map Man-mode-map 'normal t)
+     (evil-define-key 'normal Man-mode-map
+       "k" (lookup-key evil-motion-state-map "k"))))
 
 ;; key bindings for org-mode
 (eval-after-load "org"
