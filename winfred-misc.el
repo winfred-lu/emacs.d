@@ -21,15 +21,22 @@
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "chromium-browser")
 
-;; to copy and paste between emacs and other apps
-(setq x-select-enable-clipboard t
-      interprogram-paste-function 'x-cut-buffer-or-selection-value)
-
 ;; stop y-and-n before editing symlinks
 (setq vc-follow-symlinks nil)
 
+;; chinese input method: boshiamy and zozy
+(setq default-input-method "chinese-liu5")
+(defun switch-to-zozy ()
+  (interactive)
+  (activate-input-method "chinese-zozy"))
+(global-set-key (kbd "<S-f7>") 'switch-to-zozy)
+(defun switch-to-liu ()
+  (interactive)
+  (activate-input-method "chinese-liu5"))
+(global-set-key (kbd "<C-f9>") 'switch-to-liu)
 
-;; http://irreal.org/blog/?p=297  http://nflath.com/2009/08/easier-emacs/
+;; http://irreal.org/blog/?p=297
+;; http://nflath.com/2009/08/easier-emacs/
 (defun eval-and-replace ()
   "Replace the preceding sexp with its value."
   (interactive)
