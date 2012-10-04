@@ -61,3 +61,13 @@
                   (get-char-property (point) 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
+;; http://emacswiki.org/emacs/CopyAndPaste
+(defun yank-to-x-clipboard ()
+  (interactive)
+  (if (region-active-p)
+      (progn
+        (shell-command-on-region (region-beginning) (region-end) "xsel -i")
+        (message "Yanked region to clipboard!")
+        (deactivate-mark))
+    (message "No region active; can't yank to clipboard!")))
+
