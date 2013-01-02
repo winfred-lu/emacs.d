@@ -77,6 +77,9 @@
      (ispell-face ((t (:bold t :background "#f0b070" :foreground "#90e080"))))
      (italic ((t (:italic t))))
 
+     (link ((t (:underline t :foreground "#2a5580"))))
+     (link-visited ((t (:underline t :foreground "#802a55"))))
+
      (magit-log-sha1 ((t (:foreground "#cf6a4c"))))
      (magit-log-head-label-local ((t (:foreground "#3387cc"))))
      (magit-log-head-label-remote ((t (:foreground "#65b042"))))
@@ -97,8 +100,8 @@
      (org-level-1 ((t (:foreground "#e09090"))))
      (org-level-2 ((t (:foreground "#e0a080"))))
      (org-level-3 ((t (:foreground "#e0e090"))))
-     (org-level-4 ((t (:foreground "#b0e0a0"))))
-     (org-level-5 ((t (:foreground "#a0d0e0"))))
+     (org-level-4 ((t (:foreground "#a0e090"))))
+     (org-level-5 ((t (:foreground "#a0c0e0"))))
      (org-level-6 ((t (:foreground "#a0a0e0"))))
      (org-level-7 ((t (:foreground "#e0a0d0"))))
      (org-level-8 ((t (:foreground "#808080"))))
