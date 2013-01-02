@@ -224,6 +224,7 @@
        "\M-H" 'org-shiftmetaleft
        "\M-K" 'org-shiftmetaup
        "\M-J" 'org-shiftmetadown
+       "\C-c\C-o" 'org-open-at-point
        "o" (lambda () (interactive) (org-end-of-line) (evil-open-below 0))
        "O" (lambda () (interactive) (org-end-of-line) (org-insert-heading)
              (evil-append nil)))
