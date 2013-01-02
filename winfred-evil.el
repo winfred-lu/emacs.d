@@ -77,6 +77,7 @@
 (define-key wf-evil-comma-map "h" 'ibuffer)
 (define-key wf-evil-comma-map "k" 'kill-buffer-and-window)
 (define-key wf-evil-comma-map "l" 'ace-jump-line-mode)
+(define-key wf-evil-comma-map "m" 'idomenu)
 (define-key wf-evil-comma-map "n" 'evil-show-file-info)
 (define-key wf-evil-comma-map "p" 'pdb)
 (define-key wf-evil-comma-map "r" 'browse-kill-ring)
@@ -151,8 +152,7 @@
 
 (eval-after-load "cus-edit"
   '(progn
-     (evil-define-key 'normal custom-mode-map (kbd "TAB") 'widget-forward)
-     (evil-define-key 'normal custom-mode-map "q" 'Custom-buffer-done)))
+     (evil-make-overriding-map custom-mode-map 'normal t)))
 
 (eval-after-load "etags-select"
   '(progn

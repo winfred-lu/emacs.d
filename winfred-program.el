@@ -1,6 +1,8 @@
 ;(setq indent-tabs-mode nil)
 ;(set-default 'tab-width 8)
 
+(require 'idomenu)
+
 ;; settings for C programming (c-set-style, set-variable c-basic-offset)
 (setq c-default-style '((c-mode . "linux")
                         (java-mode . "java")
