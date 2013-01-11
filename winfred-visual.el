@@ -5,13 +5,10 @@
 
 ;; Don't show the startup screen, menu bar, tool bar, and scroll bar
 (setq inhibit-startup-message t)
-(menu-bar-mode 0)
-(if (functionp 'tool-bar-mode)
-    (tool-bar-mode nil))
-(if (functionp 'scroll-bar-mode)
-    (scroll-bar-mode nil))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-;; Display line and column numbers
 (setq line-number-mode t)
 (setq column-number-mode t)
 
@@ -27,6 +24,7 @@
 (setq visible-bell t)
 
 ;; Indent Tabs
+(if (not indicate-empty-lines) (toggle-indicate-empty-lines))
 (setq-default indent-tabs-mode nil)
 
 ;; Enable narrow-to-region
