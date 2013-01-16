@@ -1,4 +1,6 @@
 (setq evil-cross-lines t)
+(add-to-list 'load-path (concat user-emacs-directory
+                                "vendor/evil/lib"))
 (require 'evil)
 
 (setq evil-normal-state-tag   (propertize "n" 'face '((:foreground "green")))
