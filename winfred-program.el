@@ -10,6 +10,10 @@
       c-basic-offset 8
       c-tab-always-indent nil)
 (add-hook 'c-mode-common-hook 'turn-on-cwarn-mode)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (modify-syntax-entry ?_ "w" c-mode-syntax-table)
+            (modify-syntax-entry ?_ "w" c++-mode-syntax-table)))
 
 (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
 (setq auto-mode-alist
