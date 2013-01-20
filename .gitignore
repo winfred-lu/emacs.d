@@ -1,6 +1,7 @@
 autosaves
 auto-save-list
 backups
+bookmarks
 *.elc
 tags
 TAGS
@@ -9,3 +10,8 @@ GRTAGS
 GSYMS
 GTAGS
 color-theme-*
+ecb-*
+cedet-*
+/elpa/archives/ELPA/archive-contents
+/elpa/archives/gnu/archive-contents
+/elpa/archives/marmalade/archive-contents
