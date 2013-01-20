@@ -55,6 +55,7 @@
 
 (add-hook 'cscope-list-entry-hook
           '(lambda ()
+             (evil-emacs-state)
              (define-key cscope-list-entry-keymap "j" 'evil-next-visual-line)
              (define-key cscope-list-entry-keymap "k" 'evil-previous-visual-line)
              (define-key cscope-list-entry-keymap "q" 'delete-window)
