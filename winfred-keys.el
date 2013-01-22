@@ -53,6 +53,13 @@
              (define-key artist-mode-map "\C-c\C-o" 'artist-ido-select-operation)
              (define-key artist-mode-map "\C-c\C-s" 'artist-ido-select-settings)))
 
+(add-hook 'c-mode-common-hook
+          '(lambda ()
+             (define-key c-mode-base-map "\C-c\C-f" 'c-forward-conditional)
+             (define-key c-mode-base-map "\C-c\C-b" 'c-backward-conditional)
+             (define-key c-mode-base-map "\C-c\C-n" 'c-down-conditional-with-else)
+             (define-key c-mode-base-map "\C-c\C-p" 'c-up-conditional-with-else)))
+
 (add-hook 'cscope-list-entry-hook
           '(lambda ()
              (evil-emacs-state)
