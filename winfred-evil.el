@@ -2,6 +2,7 @@
 (add-to-list 'load-path (concat user-emacs-directory
                                 "vendor/evil/lib"))
 (require 'evil)
+(require 'evil-nerd-commenter)
 
 (setq evil-normal-state-tag   (propertize "n" 'face '((:foreground "green")))
       evil-emacs-state-tag    (propertize "e" 'face '((:foreground "orange")))
@@ -72,7 +73,9 @@
 (define-prefix-command 'wf-evil-comma-map)
 (define-key wf-evil-comma-map "," 'evil-repeat-find-char-reverse)
 (define-key wf-evil-comma-map "b" 'ido-switch-buffer)
-(define-key wf-evil-comma-map "c" 'ace-jump-char-mode)
+(define-key wf-evil-comma-map "ci" 'evilnc-comment-or-uncomment-lines)
+(define-key wf-evil-comma-map "cc" 'evilnc-comment-or-uncomment-to-the-line)
+(define-key wf-evil-comma-map "cl" 'calc)
 (define-key wf-evil-comma-map "d" 'dired-jump)
 (define-key wf-evil-comma-map "f" 'ido-find-file)
 (define-key wf-evil-comma-map "g" 'magit-status)
