@@ -21,6 +21,10 @@
 
 
 ;; settings for Python programming
+(add-hook 'python-mode-hook
+          (lambda ()
+            (modify-syntax-entry ?_ "w" py-mode-syntax-table)))
+
 (require 'ipython)
 (setq python-python-command "ipython"
       ipython-command "/usr/bin/ipython"
