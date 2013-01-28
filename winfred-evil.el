@@ -120,61 +120,6 @@
 (define-key evil-normal-state-map "\C-]" 'etags-select-find-tag-at-point)
 (define-key evil-normal-state-map "\M-." 'etags-select-find-tag)
 
-(defun wf-jump-item ()
-  "An enhancement to evil-jump-item (%) for c-mode.
-It is able to jump between comments or conditionals."
-  (interactive)
-  (cond
-   ((and (not (string= major-mode "c-mode"))
-         (not (string= major-mode "c++-mode")))
-    (evil-jump-item))
-   ((or (and (char-equal (preceding-char) ?/)
-             (char-equal (following-char) ?*))
-        (and (char-equal (following-char) ?/)
-             (char-equal (char-after (+ 1 (point))) ?*)))
-    (search-forward "*/"))
-   ((or (and (char-equal (preceding-char) ?*)
-             (char-equal (following-char) ?/))
-        (and (char-equal (following-char) ?*)
-             (char-equal (char-after (+ 1 (point))) ?/)))
-    (search-backward "/*"))
-   ((string-match "^[ \t]*#[ \t]*\\(if\\|elif\\|else\\)" (thing-at-point 'line))
-    (progn
-      (when (fboundp 'hide-ifdef-mode)
-        (hide-ifdef-mode 1))
-      (hif-find-next-relevant)
-      (while (hif-looking-at-ifX)
-        (hif-ifdef-to-endif)
-        (hif-find-next-relevant))))
-   ((string-match "^[ \t]*#[ \t]*endif" (thing-at-point 'line))
-    (progn
-      (when (fboundp 'hide-ifdef-mode)
-        (hide-ifdef-mode 1))
-      (hif-endif-to-ifdef)))
-   (t (evil-jump-item))))
-
-(defun wf-close-fold ()
-  "An enhancement to evil-close-fold (zc) for c-mode to be able to hide conditionals."
-  (interactive)
-  (if (string-match "^[ \t]*#[ \t]*\\(if\\|elif\\|else\\|endif\\)"
-                    (thing-at-point 'line))
-      (progn (when (fboundp 'hide-ifdef-mode)
-               (hide-ifdef-mode 1))
-             (when (fboundp 'hide-ifdef-block)
-               (hide-ifdef-block)))
-    (evil-close-fold)))
-
-(defun wf-open-fold ()
-  "An enhancement to evil-open-fold (zc) for c-mode to be able to show the hidden conditionals."
-  (interactive)
-  (if (string-match "^[ \t]*#[ \t]*\\(if\\|elif\\|else\\|endif\\)"
-                    (thing-at-point 'line))
-      (progn (when (fboundp 'hide-ifdef-mode)
-               (hide-ifdef-mode 1))
-             (when (fboundp 'show-ifdef-block)
-               (show-ifdef-block)))
-    (evil-open-fold)))
-
 
 ;;;;;; key bindings according to major mode ;;;;;;
 
@@ -183,12 +128,6 @@ It is able to jump between comments or conditionals."
              (wf-define-evil-movements bookmark-bmenu-mode-map
                "J" 'bookmark-bmenu-this-window
                "K" 'bookmark-bmenu-delete)))
-
-(add-hook 'c-mode-common-hook
-          '(lambda ()
-             (define-key evil-motion-state-map "%" 'wf-jump-item)
-             (define-key evil-normal-state-map "zo" 'wf-open-fold)
-             (define-key evil-normal-state-map "zc" 'wf-close-fold)))
 
 (eval-after-load "browse-kill-ring"
   '(progn
