@@ -159,6 +159,13 @@
   '(progn
      (evil-make-overriding-map custom-mode-map 'normal t)))
 
+(eval-after-load "dired"
+  '(progn
+     (evil-define-key 'normal dired-mode-map (kbd "^")
+       (lambda () (interactive) (find-alternate-file "..")))
+     (evil-define-key 'normal dired-mode-map (kbd "RET")
+       `dired-find-alternate-file)))
+
 (eval-after-load "etags-select"
   '(progn
      (wf-define-evil-movements etags-select-mode-map
