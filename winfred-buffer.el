@@ -4,6 +4,8 @@
       auto-save-list-file-prefix "~/.d.emacs.d/auto-save-list/.saves-"
       require-final-newline t)
 
+(remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
+
 ;; bookmarks file and autosaving
 (setq bookmark-default-file "~/.d.emacs.d/bookmarks"
       bookmark-save-flag 1)
