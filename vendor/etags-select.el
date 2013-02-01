@@ -336,7 +336,7 @@ Use the C-u prefix to prevent the etags-select window from closing."
       (setq tag-point (point))
       (setq overlay-arrow-position (point-marker))
       (re-search-forward "\\]\\s-+\\(.+?\\)\\s-*$")
-      (setq text-to-search-for (regexp-quote (etags-select-match-string 1)))
+      (setq text-to-search-for (concat (regexp-quote (etags-select-match-string 1)) "$"))
       (goto-char tag-point)
       (re-search-backward "^In: \\(.*\\)$")
       (setq filename (etags-select-match-string 1))
