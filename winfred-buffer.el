@@ -37,10 +37,10 @@
 (defun wf-ido-ignore-buf (name)
   (with-current-buffer name (not buffer-file-name)))
 (setq ido-ignore-buffers '("^ " wf-ido-ignore-buf))
-(loop for d in '("\\`auto" "\\`backups/" "\\`CVS/")
-      do (add-to-list 'ido-ignore-directories d))
-(loop for f in '("tags" "\\`cscope." "\\.dep$" ".d.emacs.d" ".dropbox")
-      do (add-to-list 'ido-ignore-files f))
+(dolist (d '("\\`auto" "\\`backups/" "\\`CVS/"))
+        (add-to-list 'ido-ignore-directories d))
+(dolist (f '("tags" "\\`cscope." "\\.dep$" ".d.emacs.d" ".dropbox"))
+        (add-to-list 'ido-ignore-files f))
 
 ;;;;;;
 

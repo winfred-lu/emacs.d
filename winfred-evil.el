@@ -13,13 +13,13 @@
       evil-replace-state-tag  (propertize "r" 'face '((:foreground "red"))))
 (evil-mode 1)
 
-(loop for (mode . state) in '((calendar-mode . emacs)
-                              (cscope-list-entry-mode . emacs)
-                              (Custom-mode . normal)
-                              (grep-mode . emacs)
-                              (hexl-mode . emacs)
-                              (picture-mode . emacs))
-      do (evil-set-initial-state mode state))
+(dolist (x '((calendar-mode . emacs)
+             (cscope-list-entry-mode . emacs)
+             (Custom-mode . normal)
+             (grep-mode . emacs)
+             (hexl-mode . emacs)
+             (picture-mode . emacs)))
+  (evil-set-initial-state (car x) (cdr x)))
 
 ;; kj as escape to return to normal mode
 (define-key evil-insert-state-map "k" #'cofi/maybe-exit)
