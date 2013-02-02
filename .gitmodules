@@ -13,3 +13,6 @@
 [submodule "vendor/evil-nerd-commenter"]
 	path = vendor/evil-nerd-commenter
 	url = git://github.com/redguardtoo/evil-nerd-commenter.git
+[submodule "vendor/autopair"]
+	path = vendor/autopair
+	url = git://github.com/capitaomorte/autopair
