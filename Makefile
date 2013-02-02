@@ -1,6 +1,7 @@
 EMACS = emacs
 
 VENDOR = $(filter-out vendor/csharp-mode-0.8.5.el, $(wildcard vendor/*.el))
+VENDOR += vendor/autopair/autopair.el
 FILES = $(VENDOR) $(wildcard winfred-*.el)
 ELCFILES = $(FILES:.el=.elc)
 
