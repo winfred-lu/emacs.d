@@ -11,7 +11,7 @@ Installation
 
 Optional:
 
-	$ ./vendor/compile.sh
+	$ make
 
 Usage
 -----------
