@@ -2,6 +2,7 @@
 (require 'color-theme)
 (load-library "winfred-color-theme")
 (color-theme-winfred)
+;(tty-run-terminal-initialization (selected-frame) "rxvt")
 
 ;; Don't show the startup screen, menu bar, tool bar, and scroll bar
 (setq inhibit-startup-message t)
@@ -11,6 +12,7 @@
 
 (setq line-number-mode t)
 (setq column-number-mode t)
+(if (not indicate-empty-lines) (toggle-indicate-empty-lines))
 
 ;; Eighty column
 (setq-default fill-column 80)
@@ -24,7 +26,6 @@
 (setq visible-bell t)
 
 ;; Indent Tabs
-(if (not indicate-empty-lines) (toggle-indicate-empty-lines))
 (setq-default indent-tabs-mode nil)
 
 ;; Enable narrow-to-region
@@ -42,3 +43,4 @@
            mode
            '(("\\<\\(FIXME\\)\\>" 1 font-lock-warning-face t))))
         fixme-modes))
+
