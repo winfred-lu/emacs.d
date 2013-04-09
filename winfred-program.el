@@ -20,6 +20,11 @@
       (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
 
 
+;; Batch scripts
+(autoload 'dos-mode "dos" "Edit Dos scripts." t)
+(add-to-list 'auto-mode-alist '("\\.bat$" . dos-mode))
+
+
 ;; settings for Python programming
 (add-hook 'python-mode-hook
           (lambda ()
