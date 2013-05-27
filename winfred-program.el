@@ -16,9 +16,10 @@
             (modify-syntax-entry ?_ "w" c++-mode-syntax-table)))
 
 (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
-(setq auto-mode-alist
-      (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.cs$" . csharp-mode))
 
+;; INF files
+(add-to-list 'auto-mode-alist '("\\.[iI][nN][fFxX]\\'" . conf-mode))
 
 ;; Batch scripts
 (autoload 'dos-mode "dos" "Edit Dos scripts." t)
