@@ -194,7 +194,7 @@ Only works with GNU Emacs."
         (beginning-of-line)
         (re-search-forward "\\s-*\\(.*?\\)\\s-*\^?")
         (setq tag-line (etags-select-match-string 1))
-        (re-search-forward "\^A\\s-*\\([0-9]+\\)\\s-*,")
+        (re-search-forward "\\s-*\\([0-9]+\\)\\s-*,")
         (setq line-number (etags-select-match-string 1))
         (end-of-line)
         (save-excursion
