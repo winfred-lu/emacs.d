@@ -43,3 +43,6 @@
                                    (sh . t))))
 (if (boundp 'add-to-list)
     (add-to-list 'org-src-lang-modes (quote ("plantuml" . fundamental))))
+
+(setq org-export-htmlize-output-type 'css)
+(setq org-src-fontify-natively t)
