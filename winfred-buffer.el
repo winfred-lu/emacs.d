@@ -42,6 +42,12 @@
 (dolist (f '("tags" "\\`cscope." "\\.dep$" ".d.emacs.d" ".dropbox"))
         (add-to-list 'ido-ignore-files f))
 
+(defun wf-sudo-find-file ()
+  "Ido find file as root."
+  (interactive)
+  (find-file
+   (concat "/sudo:root@localhost:" (ido-read-file-name "Sudo find file: "))))
+
 ;;;;;;
 
 ;; search TAGS recursively each parent directory
@@ -74,4 +80,3 @@ otherwise raises an error."
 ;; delay search the TAGS file after open the source file
 (add-hook 'emacs-startup-hook
           '(lambda () (jds-set-tags-file-path)))
-

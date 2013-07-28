@@ -15,6 +15,7 @@
 (global-set-key "\C-xm" 'wf-minor-mode-map)
 (global-set-key "\C-c\C-o" 'browse-url-at-point)
 (global-set-key "\C-x\C-b" 'ibuffer)
+(global-set-key "\C-x\C-r" 'wf-sudo-find-file)
 
 ;; ido with artist-mode
 (defun artist-ido-select-operation (type)
@@ -73,4 +74,3 @@
 (add-hook 'org-mode-hook
           '(lambda ()
              (define-key org-mode-map "\C-cl" 'org-store-link)))
-
