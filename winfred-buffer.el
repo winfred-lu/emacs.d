@@ -45,8 +45,10 @@
 (defun wf-sudo-find-file ()
   "Ido find file as root."
   (interactive)
-  (find-file
-   (concat "/sudo:root@localhost:" (ido-read-file-name "Sudo find file: "))))
+  (let ((sudo-file-name (ido-read-file-name "Sudo find file: ")))
+    (if (string-equal (subseq sudo-file-name 0 6) "/sudo:")
+        (find-file sudo-file-name)
+      (find-file (concat "/sudo:root@localhost:" sudo-file-name)))))
 
 ;;;;;;
 
