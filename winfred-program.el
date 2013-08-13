@@ -1,17 +1,59 @@
 (require 'idomenu)
 
-;; settings for C programming
-;;   note: c-set-style, set-var c-basic-offset, set-var indent-tabs-mode
-;;         set-var tab-width
-(setq c-default-style '((c-mode . "linux")
+;; customized C indentation styles
+(defun c-lineup-arglist-tabs-only (ignored)
+  "Line up argument lists by tabs, not spaces"
+  (let* ((anchor (c-langelem-pos c-syntactic-element))
+         (column (c-langelem-2nd-pos c-syntactic-element))
+         (offset (- (1+ column) anchor))
+         (steps (floor offset c-basic-offset)))
+    (* (max steps 1)
+       c-basic-offset)))
+(c-add-style "linux-kernel"
+             '("linux"
+               (indent-tabs-mode t)
+               (c-offsets-alist
+                (arglist-cont-nonempty c-lineup-gcc-asm-reg
+                                       c-lineup-arglist-tabs-only))))
+(c-add-style "microsoft"
+             '("stroustrup"
+               (c-offsets-alist
+                (innamespace . -)
+                (inline-open . 0)
+                (inher-cont . c-lineup-multi-inher)
+                (arglist-cont-nonempty . +)
+                (template-args-cont . +))))
+
+;; ido with C indentation styles
+(defun wf-ido-select-c-style (style)
+  "Use ido to select a C indentation style"
+  (interactive
+   (list (ido-completing-read
+          "C/l indentation style: "
+          ;; (list "awk" "bsd" "cc-mode" "ellemtel" "gnu" "java"
+          ;;       "k&r" "linux" "python" "stroustrup" "user" "whitesmith"
+          ;;       "linux-kernel" "microsoft")
+          (append
+           (mapcar 'car c-style-alist)
+           (list "linux-kernel" "microsoft"))
+          )))
+  (c-set-style style))
+
+;; default style settings
+(setq c-default-style '((c-mode . "linux-kernel")
+                        (c++-mode . "linux-kernel")
                         (java-mode . "java")
+                        (awk . "awk")
                         (python-mode . "python")
-                        (other . "gnu"))
+                        (other . "bsd"))
       c-basic-offset 8
       c-tab-always-indent nil)
+
+;; misc C settings
 (add-hook 'c-mode-common-hook 'turn-on-cwarn-mode)
 (add-hook 'c-mode-common-hook
           (lambda ()
+            (define-key c-mode-base-map "\C-c." 'wf-ido-select-c-style)
             (modify-syntax-entry ?_ "w" c-mode-syntax-table)
             (modify-syntax-entry ?_ "w" c++-mode-syntax-table)))
 
