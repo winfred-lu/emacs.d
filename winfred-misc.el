@@ -1,5 +1,7 @@
 ;; Remove unnecessary trailing whitespace
-(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
+;(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
+;; highlight trailing spaces
+(setq-default show-trailing-whitespace t)
 
 ;; y-or-n
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -70,4 +72,3 @@
         (message "Yanked region to clipboard!")
         (deactivate-mark))
     (message "No region active; can't yank to clipboard!")))
-
