@@ -1,5 +1,9 @@
-;; Remove unnecessary trailing whitespace
-;(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
+;; Remove trailing white spaces except certain modes
+(add-hook 'before-save-hook
+          #'(lambda ()
+              (unless (string= major-mode "dos-mode")
+                (delete-trailing-whitespace))))
+
 ;; highlight trailing spaces
 (setq-default show-trailing-whitespace t)
 
