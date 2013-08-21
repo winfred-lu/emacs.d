@@ -9,14 +9,34 @@
          (steps (floor offset c-basic-offset)))
     (* (max steps 1)
        c-basic-offset)))
-(c-add-style "linux-kernel"
+(c-add-style "linux-tabs"
              '("linux"
-               (indent-tabs-mode t)
+               (indent-tabs-mode . t)
+               (tab-width . 8)
                (c-offsets-alist
                 (arglist-cont-nonempty c-lineup-gcc-asm-reg
                                        c-lineup-arglist-tabs-only))))
-(c-add-style "microsoft"
+(c-add-style "linux-space"
+             '("linux"
+               (indent-tabs-mode . nil)
+               (tab-width . 8)
+               (c-offsets-alist
+                (arglist-cont-nonempty c-lineup-gcc-asm-reg
+                                       c-lineup-arglist-tabs-only))))
+(c-add-style "ms-tabs"
              '("stroustrup"
+               (indent-tabs-mode . t)
+               (tab-width . 4)
+               (c-offsets-alist
+                (innamespace . -)
+                (inline-open . 0)
+                (inher-cont . c-lineup-multi-inher)
+                (arglist-cont-nonempty . +)
+                (template-args-cont . +))))
+(c-add-style "ms-space"
+             '("stroustrup"
+               (indent-tabs-mode . nil)
+               (tab-width . 4)
                (c-offsets-alist
                 (innamespace . -)
                 (inline-open . 0)
@@ -32,11 +52,8 @@
           "C/l indentation style: "
           ;; (list "awk" "bsd" "cc-mode" "ellemtel" "gnu" "java"
           ;;       "k&r" "linux" "python" "stroustrup" "user" "whitesmith"
-          ;;       "linux-kernel" "microsoft")
-          (append
-           (mapcar 'car c-style-alist)
-           (list "linux-kernel" "microsoft"))
-          )))
+          ;;       "..."
+          (mapcar 'car c-style-alist))))
   (c-set-style style))
 
 ;; default style settings
