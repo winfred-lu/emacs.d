@@ -57,8 +57,8 @@
   (c-set-style style))
 
 ;; default style settings
-(setq c-default-style '((c-mode . "linux-kernel")
-                        (c++-mode . "linux-kernel")
+(setq c-default-style '((c-mode . "linux-tabs")
+                        (c++-mode . "linux-tabs")
                         (java-mode . "java")
                         (awk . "awk")
                         (python-mode . "python")
