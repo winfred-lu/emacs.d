@@ -318,7 +318,7 @@ to do."
            (set-buffer-modified-p nil)
            (setq buffer-read-only t)
            (setq etags-select-opened-window (selected-window))
-           (select-window (split-window-vertically))
+           (select-window (split-window-sensibly))
            (switch-to-buffer etags-select-buffer-name)
            (etags-select-mode tagname)))))
 
