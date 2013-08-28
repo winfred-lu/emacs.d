@@ -282,5 +282,6 @@
   (set (make-local-variable 'font-lock-defaults)
        '(kconfig-mode-font-lock-keywords t)))
 
-(add-to-list 'auto-mode-alist '("/Kconfig$" . kconfig-mode))
-(add-to-list 'auto-mode-alist '("_defconfig$" . conf-mode))
+(add-to-list 'auto-mode-alist '("Kconfig\\'" . kconfig-mode))
+(add-to-list 'auto-mode-alist '("kcnf\\'" . kconfig-mode))
+(add-to-list 'auto-mode-alist '("Config.in\\'" . kconfig-mode))

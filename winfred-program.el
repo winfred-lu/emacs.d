@@ -75,14 +75,15 @@
             (modify-syntax-entry ?_ "w" c++-mode-syntax-table)))
 
 (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
-(add-to-list 'auto-mode-alist '("\\.cs$" . csharp-mode))
+(add-to-list 'auto-mode-alist '("\\.[cC][sS]\\'" . csharp-mode))
 
-;; INF files
+;; INF, _defconfig files
 (add-to-list 'auto-mode-alist '("\\.[iI][nN][fFxX]\\'" . conf-mode))
+(add-to-list 'auto-mode-alist '("_defconfig\\'" . conf-mode))
 
 ;; Batch scripts
 (autoload 'dos-mode "dos" "Edit Dos scripts." t)
-(add-to-list 'auto-mode-alist '("\\.bat$" . dos-mode))
+(add-to-list 'auto-mode-alist '("\\.[bB][aA][tT]\\'" . dos-mode))
 
 
 ;; settings for Python programming
