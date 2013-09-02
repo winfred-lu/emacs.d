@@ -18,6 +18,9 @@
 (setq-default fill-column 80)
 (setq sentence-end-double-space nil)
 
+;; Disable '\' character in line wrapping
+(set-display-table-slot standard-display-table 'wrap ?\ )
+
 ;; Show the matching parens
 (show-paren-mode t)
 (setq show-paren-delay 0)
@@ -43,4 +46,3 @@
            mode
            '(("\\<\\(FIXME\\)\\>" 1 font-lock-warning-face t))))
         fixme-modes))
-
