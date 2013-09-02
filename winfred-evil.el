@@ -4,6 +4,7 @@
 (require 'evil)
 (require 'evil-nerd-commenter)
 
+;; colorful mode character in status line
 (setq evil-normal-state-tag   (propertize "n" 'face '((:foreground "green")))
       evil-emacs-state-tag    (propertize "e" 'face '((:foreground "orange")))
       evil-insert-state-tag   (propertize "i" 'face '((:foreground "purple")))
@@ -21,6 +22,9 @@
              (picture-mode . emacs)))
   (evil-set-initial-state (car x) (cdr x)))
 
+;; evil-ret-and-indent all the time
+(define-key evil-insert-state-map [remap evil-ret] 'evil-ret-and-indent)
+
 ;; kj as escape to return to normal mode
 (define-key evil-insert-state-map "k" #'cofi/maybe-exit)
 (evil-define-command cofi/maybe-exit ()
@@ -29,15 +33,15 @@
   (let ((modified (buffer-modified-p)))
     (insert "k")
     (let ((evt (read-event (format "Insert %c to exit insert state" ?j)
-               nil 0.5)))
+                           nil 0.5)))
       (cond
        ((null evt) (message ""))
        ((and (integerp evt) (char-equal evt ?j))
-    (delete-char -1)
-    (set-buffer-modified-p modified)
-    (push 'escape unread-command-events))
+        (delete-char -1)
+        (set-buffer-modified-p modified)
+        (push 'escape unread-command-events))
        (t (setq unread-command-events (append unread-command-events
-                          (list evt))))))))
+                                              (list evt))))))))
 
 (defmacro wf-define-evil-movements (keymap &rest bindings)
   (declare (indent defun))
@@ -171,7 +175,7 @@
 (eval-after-load "etags-select"
   '(progn
      (wf-define-evil-movements etags-select-mode-map
-                               (kbd "RET") 'etags-select-goto-tag)))
+       (kbd "RET") 'etags-select-goto-tag)))
 
 (eval-after-load "lisp"
   '(progn
@@ -193,9 +197,9 @@
 
 (eval-after-load "ibuffer"
   '(progn (wf-define-evil-movements ibuffer-mode-map
-                                    "J" 'ibuffer-jump-to-buffer
-                                    "K" 'ibuffer-do-kill-lines
-                                    "<" 'ibuffer-toggle-sorting-mode)))
+            "J" 'ibuffer-jump-to-buffer
+            "K" 'ibuffer-do-kill-lines
+            "<" 'ibuffer-toggle-sorting-mode)))
 
 (eval-after-load 'info
   '(progn
@@ -204,7 +208,7 @@
 (eval-after-load "magit"
   '(progn
      (wf-define-evil-movements magit-status-mode-map
-                               "K" 'magit-discard-item)
+       "K" 'magit-discard-item)
      (wf-define-evil-movements magit-commit-mode-map)
      (wf-define-evil-movements magit-log-mode-map)))
 
