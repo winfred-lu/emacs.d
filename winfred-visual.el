@@ -56,6 +56,7 @@
                 ((buffer-modified-p) "** ")
                 (t "   ")))
    mode-line-buffer-identification
+   " "
    mode-line-position
    evil-mode-line-tag
    (vc-mode vc-mode)
