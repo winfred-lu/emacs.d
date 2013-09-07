@@ -19,7 +19,7 @@
 (setq sentence-end-double-space nil)
 
 ;; Disable '\' character in line wrapping
-(set-display-table-slot standard-display-table 'wrap ?\ )
+;(set-display-table-slot standard-display-table 'wrap ?\ )
 
 ;; Show the matching parens
 (show-paren-mode t)
@@ -46,3 +46,20 @@
            mode
            '(("\\<\\(FIXME\\)\\>" 1 font-lock-warning-face t))))
         fixme-modes))
+
+;; mode-line settings
+(setq-default
+ mode-line-format
+ '("%e"
+   ;; read-only or modified status
+   (:eval (cond (buffer-read-only "RO ")
+                ((buffer-modified-p) "** ")
+                (t "   ")))
+   mode-line-buffer-identification
+   mode-line-position
+   evil-mode-line-tag
+   (vc-mode vc-mode)
+   " "
+   mode-line-modes
+   mode-line-misc-info
+   ))
