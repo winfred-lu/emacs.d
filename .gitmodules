@@ -1,6 +1,9 @@
 [submodule "vendor/evil"]
 	path = vendor/evil
 	url = git://gitorious.org/evil/evil.git
+[submodule "vendor/git-modes"]
+	path = vendor/git-modes
+	url = git://github.com/magit/git-modes
 [submodule "vendor/magit"]
 	path = vendor/magit
 	url = git://github.com/magit/magit.git

@@ -12,6 +12,7 @@ LOADPATH = $(foreach d, $(DIRS), -L $d)
 
 all: $(ELCFILES)
 	$(MAKE) -C vendor/evil
+	$(MAKE) -C vendor/git-modes
 	$(MAKE) -C vendor/magit
 	cd vendor/yasnippet && rake compile
 
