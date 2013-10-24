@@ -2,7 +2,8 @@
 (add-to-list 'load-path (concat user-emacs-directory
                                 "vendor/evil/lib"))
 (require 'evil)
-(require 'evil-nerd-commenter)
+(require 'evil-matchit)
+(global-evil-matchit-mode 1)
 
 ;; colorful mode character in status line
 (setq evil-normal-state-tag   (propertize "n" 'face '((:foreground "green")))

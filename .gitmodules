@@ -19,3 +19,6 @@
 [submodule "vendor/autopair"]
 	path = vendor/autopair
 	url = git://github.com/capitaomorte/autopair
+[submodule "vendor/evil-matchit"]
+	path = vendor/evil-matchit
+	url = git://github.com/redguardtoo/evil-matchit
