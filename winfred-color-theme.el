@@ -42,6 +42,11 @@
      (cscope-line-face ((t (:foreground "#208020"))))
      (cscope-line-number-face ((t (:foreground "#802020"))))
 
+     (diff-file-header ((t (:foreground "white" :bold t))))
+     (diff-header ((t (:foreground "DodgerBlue4"))))
+     (diff-added ((t (:foreground "SeaGreen"))))
+     (diff-changed ((t (:foreground "RosyBrown"))))
+     (diff-removed ((t (:foreground "IndianRed"))))
      (diff-refine-change ((t (nil))))
 
      (ediff-current-diff-A ((t (:foreground "black" :background "#a07070"))))
