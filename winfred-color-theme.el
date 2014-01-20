@@ -65,12 +65,12 @@
      (egg-diff-del ((t (:foreground "salmon"))))
 
      (font-lock-constant-face ((t (:foreground "#c0a070"))))
-     (font-lock-comment-face ((t (:italic t :foreground "#707070"))))
+     (font-lock-comment-face ((t (:foreground "#707070"))))
      (font-lock-keyword-face ((t (:foreground "#90b0e0"))))
-     (font-lock-preprocessor-face ((t (:italic t :foreground "#5070b0"))))
+     (font-lock-preprocessor-face ((t (:foreground "#5070b0"))))
      (font-lock-string-face ((t (:foreground "#b0b070"))))
      (font-lock-variable-name-face ((t (:foreground "#6070d0"))))
-     (font-lock-function-name-face ((t (:italic t :foreground "#b06090"))))
+     (font-lock-function-name-face ((t (:foreground "#b06090"))))
      (font-lock-type-face ((t (:foreground "#60b070"))))
      (font-lock-warning-face ((t (:bold t :foreground "#e05050"))))
 
