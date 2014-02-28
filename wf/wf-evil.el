@@ -1,6 +1,4 @@
 (setq evil-cross-lines t)
-(add-to-list 'load-path (concat user-emacs-directory
-                                "vendor/evil/lib"))
 (require 'evil)
 (require 'evil-matchit)
 (global-evil-matchit-mode 1)
@@ -69,11 +67,8 @@
 (define-key evil-normal-state-map "gk" 'evil-previous-line)
 
 (require 'ace-jump-mode)
-(define-key evil-normal-state-map " " 'ace-jump-mode)
-(define-key evil-operator-state-map " " 'ace-jump-char-mode)
-;; make ace jump look like a single command to evil
-(defadvice ace-jump-char-mode (after evil activate) (recursive-edit))
-(defadvice ace-jump-done (after evil activate) (exit-recursive-edit))
+(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
+(define-key evil-operator-state-map (kbd "SPC") 'ace-jump-char-mode)
 
 (define-prefix-command 'wf-evil-comma-map)
 (define-key wf-evil-comma-map "," 'evil-repeat-find-char-reverse)
