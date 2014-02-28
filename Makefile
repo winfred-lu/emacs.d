@@ -8,6 +8,7 @@ ELCFILES = $(FILES:.el=.elc)
 
 DIRS = . $(shell find vendor -maxdepth 1 -type d)
 LOADPATH = $(foreach d, $(DIRS), -L $d)
+LOADPATH += -L /usr/share/emacs/site-lisp/python-mode
 
 .PHONY: all clean
 
