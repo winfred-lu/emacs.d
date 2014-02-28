@@ -1,7 +1,7 @@
 ;; Winfred's Emacs Enrionment
 
 ;; Configure the load path
-(add-to-list 'load-path user-emacs-directory)
+(add-to-list 'load-path (concat user-emacs-directory "wf"))
 (let ((default-directory (concat user-emacs-directory
                                  (convert-standard-filename "vendor/"))))
   (normal-top-level-add-to-load-path '("."))
@@ -16,14 +16,14 @@
 ;; 		   ("gnu" . "http://elpa.gnu.org/packages/")
 ;; 		   ("marmalade" . "http://marmalade-repo.org/packages/")))))
 
-(load-library "winfred-visual")
-(load-library "winfred-evil")
-(load-library "winfred-buffer")
-(load-library "winfred-misc")
-(load-library "winfred-keys")
-(load-library "winfred-program")
-(load-library "winfred-org")
+(load-library "wf-visual")
+(load-library "wf-evil")
+(load-library "wf-buffer")
+(load-library "wf-misc")
+(load-library "wf-keys")
+(load-library "wf-program")
+(load-library "wf-org")
+
 (require 'etags-select)
 (require 'magit)
 (require 'xcscope)
-

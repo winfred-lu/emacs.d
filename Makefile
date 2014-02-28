@@ -3,7 +3,7 @@ EMACS = emacs
 VENDOR = $(filter-out vendor/csharp-mode-0.8.5.el, $(wildcard vendor/*.el))
 VENDOR += $(wildcard vendor/evil-matchit/*.el)
 VENDOR += vendor/autopair/autopair.el
-FILES = $(VENDOR) $(wildcard winfred-*.el)
+FILES = $(VENDOR) $(wildcard wf/*.el)
 ELCFILES = $(FILES:.el=.elc)
 
 DIRS = . $(shell find vendor -maxdepth 1 -type d)

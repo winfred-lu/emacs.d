@@ -1,6 +1,6 @@
 ;; color-theme
 (require 'color-theme)
-(load-library "winfred-color-theme")
+(load-library "wf-color-theme")
 (color-theme-winfred)
 ;(tty-run-terminal-initialization (selected-frame) "rxvt")
 
