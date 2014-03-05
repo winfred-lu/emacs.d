@@ -1,6 +1,14 @@
 (setq evil-cross-lines t)
 (require 'evil)
 (require 'evil-matchit)
+
+(defun evilmi-customize-keybinding ()
+  (evil-define-key 'normal evil-matchit-mode-map
+    "%" 'evilmi-jump-items
+    ",is" 'evilmi-select-items
+    ",id" 'evilmi-delete-items
+    )
+  )
 (global-evil-matchit-mode 1)
 
 ;; colorful mode character in status line
@@ -81,6 +89,7 @@
 (define-key wf-evil-comma-map "f" 'ido-find-file)
 (define-key wf-evil-comma-map "g" 'magit-status)
 (define-key wf-evil-comma-map "h" 'ibuffer)
+; ,i taken by 'evilmi-select-items and 'evilmi-delete-items
 (define-key wf-evil-comma-map "k" 'kill-buffer)
 (define-key wf-evil-comma-map "l" 'ace-jump-line-mode)
 (define-key wf-evil-comma-map "m" 'idomenu)
