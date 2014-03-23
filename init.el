@@ -6,6 +6,8 @@
                                  (convert-standard-filename "vendor/"))))
   (normal-top-level-add-to-load-path '("."))
   (normal-top-level-add-subdirs-to-load-path))
+; wf: strange evil/lib is not added to load-path
+(add-to-list 'load-path (concat user-emacs-directory "vendor/evil/lib"))
 
 ;; Use ELPA (emacs 24.x)
 ;; (if (>= emacs-major-version 24)
