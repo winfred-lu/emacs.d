@@ -7,5 +7,5 @@ switch (${1:ch}) {
        ${3:a = b};
        break;
        ${4:default:
-       ${5:action}}
+       ${5:action;}}
 }
