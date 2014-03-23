@@ -1,4 +1,0 @@
-# name: <span style="...">...</span>
-# key: span.s
-# --
-<span style="${1:color: #333399;}">$2</span>

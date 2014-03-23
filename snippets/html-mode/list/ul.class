@@ -1,6 +1,0 @@
-# name: <ul class="...">...</ul>
-# key: ul.c
-# --
-<ul class="$1">
-  $0
-</ul>

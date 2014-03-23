@@ -25,6 +25,7 @@
 (load-library "wf-keys")
 (load-library "wf-program")
 (load-library "wf-org")
+(load-library "wf-yasnippet")
 
 (require 'etags-select)
 (require 'magit)
