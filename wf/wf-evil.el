@@ -63,8 +63,6 @@
 ;;;;;; key bindings regardless of major mode ;;;;;;
 
 ;; undo evil's key bindings
-(define-key evil-insert-state-map "\C-e" 'end-of-line)
-(define-key evil-normal-state-map "\C-e" 'end-of-line)
 (define-key evil-insert-state-map "\C-y" 'yank)
 (define-key evil-motion-state-map "y" 'evil-yank)
 
@@ -255,4 +253,11 @@
        "\M-l" 'org-metaright
        "\M-h" 'org-metaleft
        "\M-k" 'org-metaup
-       "\M-j" 'org-metadown)))
+       "\M-j" 'org-metadown)
+     (delete '("\\.pdf\\'" . default) org-file-apps)
+     (add-to-list 'org-file-apps '("\\.pdf\\'" . "evince %s"))
+     (add-to-list 'org-file-apps '("\\.bmp\\'" . default))
+     (add-to-list 'org-file-apps '("\\.gif\\'" . default))
+     (add-to-list 'org-file-apps '("\\.jpg\\'" . default))
+     (add-to-list 'org-file-apps '("\\.png\\'" . default))
+     (add-to-list 'org-file-apps '("\\.tif\\'" . default))))
