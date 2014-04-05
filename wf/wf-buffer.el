@@ -1,14 +1,19 @@
-;; backups and autosaves
-(setq backup-directory-alist `((".*" . "~/.d.emacs.d/backups"))
-      auto-save-file-name-transforms `((".*" "~/.d.emacs.d/autosaves/\\1" t))
-      auto-save-list-file-prefix "~/.d.emacs.d/auto-save-list/.saves-"
-      require-final-newline t)
+;; versioned backups
+(setq vc-make-backup-files t
+      version-control t        ; use version numbers for backups
+      kept-new-versions 6
+      kept-old-versions 2
+      delete-old-versions t    ; don't ask to delete excess backup versions
+      backup-by-copying t      ; don't clobber symlinks
+      backup-directory-alist
+      `((".*" . "~/.emacs.d/backups"))  ; don't litter my fs tree
+      auto-save-file-name-transforms
+      `((".*" "~/.emacs.d/autosaves/" t))
+      )
+(setq bookmark-save-flag 1)
 
+;; remove the prompt for killing emacsclient buffers
 (remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
-
-;; bookmarks file and autosaving
-(setq bookmark-default-file "~/.d.emacs.d/bookmarks"
-      bookmark-save-flag 1)
 
 ;; make buffer names unique
 (require 'uniquify)
@@ -16,8 +21,7 @@
 
 (require 'browse-kill-ring)
 
-;;;;;;
-
+;; dired settings
 (autoload 'dired-jump "dired" t nil)
 (add-hook 'dired-load-hook
           (lambda ()
@@ -27,8 +31,8 @@
           (lambda ()
             (dired-omit-mode 1)
             ))
-;;;;;;
 
+;; ido settings
 (setq ido-enable-flex-matching t
       ido-everywhere t
       ido-max-directory-size 100000)
@@ -50,7 +54,6 @@
         (find-file sudo-file-name)
       (find-file (concat "/sudo:root@localhost:" sudo-file-name)))))
 
-;;;;;;
 
 ;; search TAGS recursively each parent directory
 (defun jds-find-tags-file ()
