@@ -35,7 +35,8 @@
 ;; ido settings
 (setq ido-enable-flex-matching t
       ido-everywhere t
-      ido-max-directory-size 100000)
+      ido-max-directory-size 100000
+      ido-file-extensions-order '(".c" ".py" ".el" ".org" ".sh"))
 (ido-mode t)
 (put 'dired-do-rename 'ido nil)
 (defun wf-ido-ignore-buf (name)
@@ -43,7 +44,7 @@
 (setq ido-ignore-buffers '("^ " wf-ido-ignore-buf))
 (dolist (d '("\\`auto" "\\`backups/" "\\`CVS/"))
         (add-to-list 'ido-ignore-directories d))
-(dolist (f '("tags" "\\`cscope." "\\.dep$" ".d.emacs.d" ".dropbox"))
+(dolist (f '("tags" "\\`cscope." "\\.dep$" ".dropbox"))
         (add-to-list 'ido-ignore-files f))
 
 (defun wf-sudo-find-file ()
