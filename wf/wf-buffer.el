@@ -38,7 +38,9 @@
       ido-max-directory-size 100000
       ido-file-extensions-order '(".c" ".py" ".el" ".org" ".sh"))
 (ido-mode t)
-(put 'dired-do-rename 'ido nil)
+(ido-everywhere t)
+(put 'dired-do-rename 'ido nil)  ; since ido-everything doesn't work for me
+(put 'dired-do-copy 'ido nil)    ; since ido-everything doesn't work for me
 (defun wf-ido-ignore-buf (name)
   (with-current-buffer name (not buffer-file-name)))
 (setq ido-ignore-buffers '("^ " wf-ido-ignore-buf))
