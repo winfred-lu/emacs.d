@@ -1,3 +1,5 @@
+(global-set-key [(f7)] 'recompile)
+(global-set-key [(f9)] 'set-mark-command)
 (global-set-key [(f11)] 'whitespace-mode)
 (global-set-key [(f12)] (lambda()(interactive)(switch-to-buffer "*scratch*")))
 
