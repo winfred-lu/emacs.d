@@ -5,7 +5,7 @@
   (interactive)
   (color-theme-install
    '(color-theme-winfred
-     (;(background-color . "black")
+     ((background-color . "black")
       (background-mode . dark)
       (border-color . "black")
       (cursor-color . "black")
