@@ -9,14 +9,12 @@
 ; wf: strange evil/lib is not added to load-path
 (add-to-list 'load-path (concat user-emacs-directory "vendor/evil/lib"))
 
-;; Use ELPA (emacs 24.x)
-;; (if (>= emacs-major-version 24)
-;;     (progn (require 'package)
-;; 	   (package-initialize)
-;; 	   (setq package-archives
-;; 		 '(("ELPA" . "http://tromey.com/elpa/")
-;; 		   ("gnu" . "http://elpa.gnu.org/packages/")
-;; 		   ("marmalade" . "http://marmalade-repo.org/packages/")))))
+;; Emacs 24: packages using MELPA
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (package-initialize))
 
 (load-library "wf-visual")
 (load-library "wf-evil")
