@@ -1,4 +1,5 @@
-(setq evil-cross-lines t)
+(setq evil-cross-lines t
+      evil-want-C-j-jump nil)
 (require 'evil)
 (require 'evil-matchit)
 
