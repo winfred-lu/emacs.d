@@ -1,8 +1,17 @@
-;; Remove trailing white spaces except certain modes
-(add-hook 'before-save-hook
-          #'(lambda ()
-              (unless (string= major-mode "dos-mode")
-                (delete-trailing-whitespace))))
+;; delete trailing white spaces before saving a buffer
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(defun wf-toggle-delete-trailing-whitespace-before-save ()
+  "Toggle to (not to) delete trailing white spaces before saving a buffer."
+  (interactive)
+  (defvar wf-del-trailing-ws-b4-save t)
+  (setq wf-del-trailing-ws-b4-save
+        (if wf-del-trailing-ws-b4-save nil t))
+  (if wf-del-trailing-ws-b4-save
+      (add-hook 'before-save-hook 'delete-trailing-whitespace)
+    (remove-hook 'before-save-hook 'delete-trailing-whitespace))
+  (message "delete-trailing-whitespace-before-save %s"
+           (if wf-del-trailing-ws-b4-save "enabled" "disabled")))
 
 ;; highlight trailing spaces
 (setq-default show-trailing-whitespace t)
