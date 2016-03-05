@@ -9,6 +9,13 @@
 ; wf: strange evil/lib is not added to load-path
 (add-to-list 'load-path (concat user-emacs-directory "vendor/evil/lib"))
 
+;; temporarily reduce garbage collection during startup (speed up)
+(defconst wf-original-gc-cons-threshold gc-cons-threshold
+    "Initial value of `gc-cons-threshold' at start-up time.")
+(setq gc-cons-threshold (* 128 1024 1024))
+(add-hook 'after-init-hook
+          (lambda () (setq gc-cons-threshold wf-original-gc-cons-threshold)))
+
 ;; Emacs 24: packages using MELPA
 (when (>= emacs-major-version 24)
   (require 'package)
