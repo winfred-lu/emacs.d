@@ -1,5 +1,4 @@
-(setq evil-cross-lines t
-      evil-want-C-j-jump nil)
+(setq evil-cross-lines t)
 (require 'evil)
 (require 'evil-matchit)
 
@@ -73,9 +72,9 @@
 (define-key evil-normal-state-map "gj" 'evil-next-line)
 (define-key evil-normal-state-map "gk" 'evil-previous-line)
 
-(require 'ace-jump-mode)
-(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
-(define-key evil-operator-state-map (kbd "SPC") 'ace-jump-char-mode)
+(define-key evil-motion-state-map (kbd "SPC") #'evil-ace-jump-word-mode)
+(define-key evil-normal-state-map (kbd "SPC") #'evil-ace-jump-word-mode)
+(define-key evil-operator-state-map (kbd "SPC") #'evil-ace-jump-char-mode)
 
 (define-prefix-command 'wf-evil-comma-map)
 (define-key wf-evil-comma-map "," 'evil-repeat-find-char-reverse)
@@ -91,7 +90,7 @@
 (define-key wf-evil-comma-map "h" 'ibuffer)
 ; ,i taken by 'evilmi-select-items and 'evilmi-delete-items
 (define-key wf-evil-comma-map "k" 'kill-buffer)
-(define-key wf-evil-comma-map "l" 'ace-jump-line-mode)
+(define-key wf-evil-comma-map "l" 'evil-ace-jump-line-mode)
 (define-key wf-evil-comma-map "m" 'idomenu)
 (define-key wf-evil-comma-map "n" 'evil-show-file-info)
 (define-key wf-evil-comma-map "p" 'pdb)
@@ -100,7 +99,7 @@
 (define-key wf-evil-comma-map "s" 'ispell-word)
 (define-key wf-evil-comma-map "t" 'visit-tags-table)
 (define-key wf-evil-comma-map "v" 'evil-buffer)
-(define-key wf-evil-comma-map "w" 'ace-jump-word-mode)
+(define-key wf-evil-comma-map "w" 'evil-ace-jump-word-mode)
 (define-key wf-evil-comma-map "x" 'find-name-dired)
 (define-key wf-evil-comma-map "y" 'python-shell)
 (define-key evil-normal-state-map "," 'wf-evil-comma-map)
