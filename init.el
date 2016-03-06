@@ -23,6 +23,9 @@
                '("melpa" . "http://melpa.milkbox.net/packages/") t)
   (package-initialize))
 
+;; un-comment to check and install listed packages on startup
+;(load-library "wf-chk-pkgs")
+
 (load-library "wf-visual")
 (load-library "wf-evil")
 (load-library "wf-buffer")
