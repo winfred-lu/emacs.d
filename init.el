@@ -1,13 +1,10 @@
 ;; Winfred's Emacs Enrionment
 
-;; Configure the load path
+(when (< emacs-major-version 24)
+  (message "Your Emacs is old. Please upgrade if possible"))
+
+;; add our folder to the load-path
 (add-to-list 'load-path (concat user-emacs-directory "wf"))
-(let ((default-directory (concat user-emacs-directory
-                                 (convert-standard-filename "vendor/"))))
-  (normal-top-level-add-to-load-path '("."))
-  (normal-top-level-add-subdirs-to-load-path))
-; wf: strange evil/lib is not added to load-path
-(add-to-list 'load-path (concat user-emacs-directory "vendor/evil/lib"))
 
 ;; temporarily reduce garbage collection during startup (speed up)
 (defconst wf-original-gc-cons-threshold gc-cons-threshold
@@ -16,14 +13,16 @@
 (add-hook 'after-init-hook
           (lambda () (setq gc-cons-threshold wf-original-gc-cons-threshold)))
 
-;; Emacs 24: packages using MELPA
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list 'package-archives
-               '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  (package-initialize))
+;; basic package initializations
+(setq package-archives'(("gnu" . "https://elpa.gnu.org/packages/")
+                        ("melpa" . "https://melpa.org/packages/")
+                        ;("melpa-stable" . "https://stable.melpa.org/packages/")
+                        ;("marmalade" . "https://marmalade-repo.org/packages/")
+                        ))
+(setq package-enable-at-startup nil)
+(package-initialize)
 
-;; un-comment to check and install listed packages on startup
+;; un-comment the next line to check and install listed packages on startup
 ;(load-library "wf-chk-pkgs")
 
 (load-library "wf-visual")
