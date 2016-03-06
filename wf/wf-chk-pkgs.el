@@ -1,4 +1,4 @@
-;; customized package list to check
+;; customized packages to check and install
 (defvar wf-required-packages
   '(
     ace-jump-mode
@@ -9,24 +9,18 @@
     evil
     evil-matchit
     evil-nerd-commenter
+    hide-region
     idomenu
     magit
+    xcscope
     yasnippet
     ) "a list of packages to ensure are installed")
 
-;; function to check if all listed packages are installed
-(require 'cl)
-(defun wf-packages-installed ()
-  (loop for p in wf-required-packages
-        when (not (package-installed-p p)) do (return nil)
-                  finally (return t)))
+;; fetch the available package lists
+(unless package-archive-contents
+  (package-refresh-contents))
 
-;; check & install missing packages if not all the listed packages are installed
-(unless (wf-packages-installed)
-  (message "%s" "Emacs is now refreshing package database...")
-  (package-refresh-contents)
-  (message "%s" " done.")
-  (dolist (p wf-required-packages)
-    (when (not (package-installed-p p))
-      (package-install p)))
-  )
+;; check & install missing packages
+(dolist (p wf-required-packages)
+  (unless (package-installed-p p)
+    (package-install p)))
