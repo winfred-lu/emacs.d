@@ -212,7 +212,7 @@
 (eval-after-load "magit"
   '(progn
      (wf-define-evil-movements magit-status-mode-map
-       "K" 'magit-discard-item)
+       "K" 'magit-discard)
      (wf-define-evil-movements magit-commit-mode-map)
      (wf-define-evil-movements magit-log-mode-map)))
 
