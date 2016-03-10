@@ -91,10 +91,10 @@
           (lambda ()
             (modify-syntax-entry ?_ "w" py-mode-syntax-table)))
 
-(require 'ipython)
-(setq python-python-command "ipython"
-      ipython-command "/usr/bin/ipython"
-      py-python-command-args '("--colors=Linux"))
+;(require 'ipython)
+;(setq python-python-command "ipython"
+;      ipython-command "/usr/bin/ipython"
+;      py-python-command-args '("--colors=Linux"))
 
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
