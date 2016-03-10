@@ -9,9 +9,12 @@
     evil
     evil-matchit
     evil-nerd-commenter
+    goto-chg            ; Evil requires `goto-last-change' and `goto-last-change-reverse' function for the corresponding motions g; g, as well as the last-change-register `.'
     hide-region
     idomenu
     magit
+    smart-tab
+    undo-tree           ; Evil requires undo-tree.el for linear undo and undo branches
     xcscope
     yasnippet
     ) "a list of packages to ensure are installed")
