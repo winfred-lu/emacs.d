@@ -1,23 +1,15 @@
 EMACS = emacs
 
-VENDOR = $(filter-out vendor/csharp-mode-0.8.5.el, $(wildcard vendor/*.el))
-VENDOR += $(wildcard vendor/evil-matchit/*.el)
-VENDOR += $(wildcard vendor/evil-nerd-commenter/*.el)
-VENDOR += vendor/autopair/autopair.el
-FILES = $(VENDOR) $(wildcard wf/*.el)
+FILES = $(wildcard wf/*.el)
 ELCFILES = $(FILES:.el=.elc)
 
-DIRS = . $(shell find vendor -maxdepth 1 -type d)
+DIRS = . $(shell find elpa -maxdepth 1 -type d)
 LOADPATH = $(foreach d, $(DIRS), -L $d)
 LOADPATH += -L /usr/share/emacs/site-lisp/python-mode
 
 .PHONY: all clean
 
 all: $(ELCFILES)
-	$(MAKE) -C vendor/evil
-	$(MAKE) -C vendor/git-modes
-	$(MAKE) -C vendor/magit
-	cd vendor/yasnippet && rake compile
 
 clean:
 	rm -f *~
