@@ -127,10 +127,6 @@
 (define-key wf-cscope-map "u" 'cscope-pop-mark)
 (define-key evil-normal-state-map "\C-_" 'wf-cscope-map)
 
-;; etags-select instead of evil-jump-to-tag
-(define-key evil-normal-state-map "\C-]" 'etags-select-find-tag-at-point)
-(define-key evil-normal-state-map "\M-." 'etags-select-find-tag)
-
 
 ;;;;;; key bindings according to major mode ;;;;;;
 
@@ -180,7 +176,10 @@
 (eval-after-load "etags-select"
   '(progn
      (wf-define-evil-movements etags-select-mode-map
-       (kbd "RET") 'etags-select-goto-tag)))
+       (kbd "RET") 'etags-select-goto-tag)
+     ; to replace evil-jump-to-tag
+     (define-key evil-normal-state-map "\C-]" 'etags-select-find-tag-at-point)
+     (define-key evil-normal-state-map "\M-." 'etags-select-find-tag)))
 
 (eval-after-load "lisp"
   '(progn
