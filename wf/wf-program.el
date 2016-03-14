@@ -74,6 +74,8 @@
             (modify-syntax-entry ?_ "w" c-mode-syntax-table)
             (modify-syntax-entry ?_ "w" c++-mode-syntax-table)))
 
+(add-to-list 'auto-mode-alist '("\\.\\(pde\\|ino\\)\\'" . c++-mode))
+
 (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
 (add-to-list 'auto-mode-alist '("\\.[cC][sS]\\'" . csharp-mode))
 
