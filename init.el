@@ -33,6 +33,7 @@
 (load-library "wf-program")
 (load-library "wf-org")
 (load-library "wf-yasnippet")
+(load-library "wf-helm")
 
 (require 'etags-select)
 (require 'magit)
