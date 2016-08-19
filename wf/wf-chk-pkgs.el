@@ -10,6 +10,7 @@
     evil-matchit
     evil-nerd-commenter
     goto-chg            ; Evil requires `goto-last-change' and `goto-last-change-reverse' function for the corresponding motions g; g, as well as the last-change-register `.'
+    helm
     hide-region
     idomenu
     magit
