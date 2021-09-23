@@ -1,6 +1,6 @@
 ;; yasnippet settings
 (require 'yasnippet)
-(yas/load-directory (concat user-emacs-directory "snippets"))
+(yas-load-directory (concat user-emacs-directory "snippets"))
 
 ;; use minor mode instead of global mode
 ;(yas/global-mode 1)
