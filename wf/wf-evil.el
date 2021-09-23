@@ -106,11 +106,11 @@
 (define-key evil-motion-state-map "," 'wf-evil-comma-map)
 
 ;; hide, unhide region at evil visual mode
-(require 'hide-region)
-(define-key evil-visual-state-map "zc"
-  (lambda () (interactive) (hide-region-hide) (evil-normal-state)))
-(define-key evil-visual-state-map "zo"
-  (lambda () (interactive) (hide-region-unhide) (evil-normal-state)))
+;(require 'hide-region)
+;(define-key evil-visual-state-map "zc"
+;  (lambda () (interactive) (hide-region-hide) (evil-normal-state)))
+;(define-key evil-visual-state-map "zo"
+;  (lambda () (interactive) (hide-region-unhide) (evil-normal-state)))
 
 ;; cscope key bindings at evil normal mode
 (define-prefix-command 'wf-cscope-map)
@@ -173,13 +173,13 @@
      (evil-define-key 'normal dired-mode-map (kbd "RET")
        `dired-find-file)))
 
-(eval-after-load "etags-select"
-  '(progn
-     (wf-define-evil-movements etags-select-mode-map
-       (kbd "RET") 'etags-select-goto-tag)
-     ; to replace evil-jump-to-tag
-     (define-key evil-normal-state-map "\C-]" 'etags-select-find-tag-at-point)
-     (define-key evil-normal-state-map "\M-." 'etags-select-find-tag)))
+;(eval-after-load "etags-select"
+;  '(progn
+;     (wf-define-evil-movements etags-select-mode-map
+;       (kbd "RET") 'etags-select-goto-tag)
+;     ; to replace evil-jump-to-tag
+;     (define-key evil-normal-state-map "\C-]" 'etags-select-find-tag-at-point)
+;     (define-key evil-normal-state-map "\M-." 'etags-select-find-tag)))
 
 (eval-after-load "lisp"
   '(progn

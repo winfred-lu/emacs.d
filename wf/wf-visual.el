@@ -1,7 +1,7 @@
 ;; color-theme
-(require 'color-theme)
-(load-library "wf-color-theme")
-(color-theme-winfred)
+;(require 'color-theme)
+;(load-library "wf-color-theme")
+;(color-theme-winfred)
 ;(tty-run-terminal-initialization (selected-frame) "rxvt")
 
 ;; Don't show the startup screen, menu bar, tool bar, and scroll bar

@@ -31,10 +31,9 @@
 (load-library "wf-misc")
 (load-library "wf-keys")
 (load-library "wf-program")
-(load-library "wf-org")
+;(load-library "wf-org")
 (load-library "wf-yasnippet")
-(load-library "wf-helm")
+;(load-library "wf-helm")
 
-(require 'etags-select)
 (require 'magit)
 (require 'xcscope)
