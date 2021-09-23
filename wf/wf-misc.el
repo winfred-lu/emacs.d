@@ -19,28 +19,6 @@
 ;; y-or-n
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; auto pair
-(require 'autopair)
-;(autopair-global-mode)
-(add-hook 'c-mode-common-hook
-          #'(lambda ()
-              (autopair-mode)
-              (push ?{
-                    (cl-getf autopair-dont-pair :comment))))
-(add-hook 'python-mode-hook
-          #'(lambda ()
-              (autopair-mode)
-              (setq autopair-handle-action-fns
-                    (list #'autopair-default-handle-action
-                          #'autopair-python-triple-quote-action))))
-(add-hook 'emacs-lisp-mode-hook
-          #'(lambda ()
-              (autopair-mode)
-              (push '(?` . ?')
-                    (cl-getf autopair-extra-pairs :comment))
-              (push '(?` . ?')
-                    (cl-getf autopair-extra-pairs :string))))
-
 ;; chromium as default browser
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "chromium-browser")

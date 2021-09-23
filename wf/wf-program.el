@@ -1,5 +1,10 @@
 (require 'idomenu)
 
+;; electric pair mode
+(add-hook 'emacs-lisp-mode-hook 'electric-pair-mode)
+(add-hook 'c-mode-common-hook 'electric-pair-mode)
+(add-hook 'python-mode-hook 'electric-pair-mode)
+
 ;; customized C indentation styles
 (defun c-lineup-arglist-tabs-only (ignored)
   "Line up argument lists by tabs, not spaces"

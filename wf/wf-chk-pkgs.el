@@ -2,7 +2,6 @@
 (defvar wf-required-packages
   '(
     ace-jump-mode
-    autopair
     browse-kill-ring
     color-theme
     etags-select
