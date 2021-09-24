@@ -33,7 +33,9 @@
 (load-library "wf-program")
 (load-library "wf-org")
 (load-library "wf-yasnippet")
+;; Ido and Helm are incompatible. Choose either one.
 ;(load-library "wf-helm")
+(load-library "wf-ido")
 
 (require 'magit)
 (require 'xcscope)

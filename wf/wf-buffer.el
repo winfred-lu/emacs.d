@@ -32,32 +32,6 @@
             (dired-omit-mode 1)
             ))
 
-;; ido settings
-(setq ido-enable-flex-matching t
-      ido-everywhere t
-      ido-max-directory-size 100000
-      ido-file-extensions-order '(".c" ".py" ".el" ".org" ".sh"))
-(ido-mode t)
-(ido-everywhere t)
-(put 'dired-do-rename 'ido nil)  ; since ido-everything doesn't work for me
-(put 'dired-do-copy 'ido nil)    ; since ido-everything doesn't work for me
-(defun wf-ido-ignore-buf (name)
-  (with-current-buffer name (not buffer-file-name)))
-(setq ido-ignore-buffers '("^ " wf-ido-ignore-buf))
-(dolist (d '("\\`auto" "\\`backups/" "\\`CVS/"))
-        (add-to-list 'ido-ignore-directories d))
-(dolist (f '("tags" "\\`cscope." "\\.dep$" ".dropbox"))
-        (add-to-list 'ido-ignore-files f))
-
-(defun wf-sudo-find-file ()
-  "Ido find file as root."
-  (interactive)
-  (let ((sudo-file-name (ido-read-file-name "Sudo find file: ")))
-    (if (string-equal (subseq sudo-file-name 0 6) "/sudo:")
-        (find-file sudo-file-name)
-      (find-file (concat "/sudo:root@localhost:" sudo-file-name)))))
-
-
 ;; search TAGS recursively each parent directory
 (defun jds-find-tags-file ()
   "recursively searches each parent directory for a file named 'TAGS' and returns the
