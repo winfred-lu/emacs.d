@@ -46,7 +46,7 @@
                                    (org . t)
                                    (plantuml . t)
                                    (python . t)
-                                   (sh . t))))
+                                   (shell . t))))
 (if (boundp 'add-to-list)
     (add-to-list 'org-src-lang-modes (quote ("plantuml" . fundamental))))
 
