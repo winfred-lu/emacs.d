@@ -11,6 +11,7 @@
 (define-key wf-minor-mode-map "w" 'whitespace-mode)
 
 ;; functions frequently used
+(global-set-key "\M-x" 'wf-M-x-ido-select)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-xg" 'magit-status)
 (global-set-key "\C-xk" 'browse-kill-ring)

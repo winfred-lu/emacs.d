@@ -24,6 +24,14 @@
         (find-file sudo-file-name)
       (find-file (concat "/sudo:root@localhost:" sudo-file-name)))))
 
+(defun wf-M-x-ido-select ()
+  "Ido M-x mode."
+  (interactive)
+  (call-interactively
+   (intern (ido-completing-read
+            "M-x "
+            (all-completions "" obarray 'commandp)))))
+
 (defun artist-ido-select-operation (type)
   "Use ido to select a drawing operation in artist-mode"
   (interactive
