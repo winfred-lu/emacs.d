@@ -1,7 +1,7 @@
 (global-set-key [(f7)] 'recompile)
 (global-set-key [(f9)] 'set-mark-command)
-(global-set-key [(f11)] 'whitespace-mode)
-(global-set-key [(f12)] (lambda()(interactive)(switch-to-buffer "*scratch*")))
+(global-set-key [(f10)] (lambda()(interactive)(switch-to-buffer "*scratch*")))
+(global-set-key [(f12)] 'whitespace-mode)
 
 (define-prefix-command 'wf-minor-mode-map)
 (define-key wf-minor-mode-map "a" 'artist-mode)
