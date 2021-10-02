@@ -1,7 +1,8 @@
 (setq ido-enable-flex-matching t
       ido-everywhere t
       ido-max-directory-size 100000
-      ido-file-extensions-order '(".c" ".py" ".el" ".org" ".sh"))
+      ido-file-extensions-order '(".c" ".cpp" ".py" ".el" ".org" ".sh"
+                                  ".ini" ".txt" ".cfg"))
 (ido-mode t)
 (ido-everywhere t)
 
