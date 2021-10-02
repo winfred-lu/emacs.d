@@ -15,6 +15,7 @@
     undo-tree           ; Evil requires undo-tree.el for linear undo and undo branches
     xcscope
     yasnippet
+    yasnippet-snippets
     zenburn-theme
     ) "a list of packages to ensure are installed")
 
