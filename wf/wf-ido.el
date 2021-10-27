@@ -68,3 +68,35 @@
           '(lambda ()
              (define-key artist-mode-map "\C-c\C-o" 'artist-ido-select-operation)
              (define-key artist-mode-map "\C-c\C-s" 'artist-ido-select-settings)))
+
+;; https://oremacs.com/2015/02/12/ido-occasional/
+(defun ido-occasional-completing-read
+    (prompt collection
+     &optional predicate require-match initial-input
+       hist def inherit-input-method)
+  "Use `ido-completing-read' if the collection isn't too large.
+Fall back to `completing-read' otherwise."
+  (let ((filtered-collection
+         (all-completions "" collection predicate)))
+    (if (<= (length filtered-collection) 30000)
+        (ido-completing-read
+         prompt filtered-collection nil
+         require-match initial-input hist
+         def nil)
+      (completing-read
+       prompt collection predicate
+       require-match initial-input hist
+       def inherit-input-method))))
+
+(defmacro with-ido-completion (fun)
+  "Wrap FUN in another interactive function with ido completion."
+  `(defun ,(intern (concat (symbol-name fun) "/with-ido")) ()
+     ,(format "Forward to `%S' with ido completion." fun)
+     (interactive)
+     (let ((completing-read-function
+            'ido-occasional-completing-read))
+       (call-interactively #',fun))))
+
+(global-set-key (kbd "<f1> f") (with-ido-completion describe-function))
+(global-set-key (kbd "<f1> v") (with-ido-completion describe-variable))
+(global-set-key (kbd "<f1> S") (with-ido-completion info-lookup-symbol))
