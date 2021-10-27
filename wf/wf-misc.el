@@ -19,9 +19,9 @@
 ;; y-or-n
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; chromium as default browser
+;; firefox as default browser
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "chromium-browser")
+      browse-url-generic-program "firefox")
 
 ;; stop y-and-n before editing symlinks
 (setq vc-follow-symlinks nil)
