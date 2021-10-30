@@ -22,6 +22,7 @@
 (evil-mode 1)
 
 (dolist (x '((calendar-mode . emacs)
+             (compilation-mode . emacs)
              (cscope-list-entry-mode . emacs)
              (Custom-mode . normal)
              (grep-mode . emacs)

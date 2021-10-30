@@ -71,6 +71,15 @@
       c-basic-offset 8
       c-tab-always-indent nil)
 
+;; quickly compile and run
+(defun wf-compile-and-run()
+  "Compile and run single c/c++ file."
+  (interactive)
+  (let* ((src (file-name-nondirectory (buffer-file-name)))
+         (exe (file-name-sans-extension src))
+         (cmd (if (string= (file-name-extension src) "c") "cc " "c++ ")))
+    (compile (concat cmd src " -o " exe " && ./" exe))))
+
 ;; misc C settings
 (add-hook 'c-mode-common-hook 'turn-on-cwarn-mode)
 (add-hook 'c-mode-common-hook

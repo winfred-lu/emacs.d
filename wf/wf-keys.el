@@ -1,4 +1,4 @@
-(global-set-key [(f7)] 'recompile)
+(global-set-key [(f7)] #'wf-compile-and-run)
 (global-set-key [(f9)] 'set-mark-command)
 (global-set-key [(f10)] (lambda()(interactive)(switch-to-buffer "*scratch*")))
 (global-set-key [(f12)] 'whitespace-mode)
