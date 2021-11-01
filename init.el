@@ -13,15 +13,6 @@
 (add-hook 'after-init-hook
           (lambda () (setq gc-cons-threshold wf-original-gc-cons-threshold)))
 
-;; basic package initializations
-(setq package-archives'(("gnu" . "https://elpa.gnu.org/packages/")
-                        ("melpa" . "https://melpa.org/packages/")
-                        ;("melpa-stable" . "https://stable.melpa.org/packages/")
-                        ;("marmalade" . "https://marmalade-repo.org/packages/")
-                        ))
-(setq package-enable-at-startup nil)
-(package-initialize)
-
 ;; un-comment the next line to check and install listed packages on startup
 ;(load-library "wf-chk-pkgs")
 
