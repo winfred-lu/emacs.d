@@ -1,8 +1,3 @@
-;; Winfred's Emacs Enrionment
-
-(when (< emacs-major-version 24)
-  (message "Your Emacs is old. Please upgrade if possible"))
-
 ;; add our folder to the load-path
 (add-to-list 'load-path (concat user-emacs-directory "wf"))
 

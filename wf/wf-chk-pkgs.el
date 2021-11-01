@@ -1,3 +1,7 @@
+;; check for emacs 24
+(when (< emacs-major-version 24)
+  (error "Emacs version > 24 is required for package system. Please upgrade."))
+
 ;; package initializations
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (setq package-enable-at-startup nil)
