@@ -8,8 +8,14 @@
 (add-hook 'after-init-hook
           (lambda () (setq gc-cons-threshold wf-original-gc-cons-threshold)))
 
-;; un-comment the next line to check and install listed packages on startup
-;(load-library "wf-chk-pkgs")
+;; add package sources
+(unless (assoc-default "melpa" package-archives)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
+
+;; ensure to install use-package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 (load-library "wf-visual")
 (load-library "wf-evil")
@@ -23,5 +29,8 @@
 ;(load-library "wf-helm")
 (load-library "wf-ido")
 
-(require 'magit)
-(require 'xcscope)
+(use-package magit
+  :commands magit-status
+  :ensure t
+  :bind (("C-x g" . magit-status)))
+(use-package xcscope :ensure t)
