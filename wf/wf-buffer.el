@@ -16,10 +16,13 @@
 (remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
 
 ;; make buffer names unique
-(require 'uniquify)
-(setq uniquify-buffer-name-style (quote forward))
+(use-package uniquify
+  :init
+  (setq uniquify-buffer-name-style (quote forward)))
 
-(require 'browse-kill-ring)
+(use-package browse-kill-ring
+  :commands browse-kill-ring
+  :bind (("C-x k" . browse-kill-ring)))
 
 ;; dired settings
 (autoload 'dired-jump "dired" t nil)

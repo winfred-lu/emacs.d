@@ -13,7 +13,6 @@
 ;; functions frequently used
 (global-set-key "\M-x" 'wf-M-x-ido-select)
 (global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-xk" 'browse-kill-ring)
 (global-set-key "\C-xm" 'wf-minor-mode-map)
 (global-set-key "\C-c\C-o" 'browse-url-at-point)
 (global-set-key "\C-x\C-b" 'ibuffer)

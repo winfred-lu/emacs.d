@@ -10,7 +10,7 @@
       (setq load-path (cons (concat my-org-d "/lisp/") load-path)
             org-ditaa-jar-path (concat my-org-d "/contrib/scripts/ditaa.jar"))
     (setq org-ditaa-jar-path "~/.emacs.d/ditaa.jar")))
-(require 'org-install)
+(use-package org-install)
 
 ;; org mode settings
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))

@@ -1,4 +1,4 @@
-(require 'idomenu)
+(use-package idomenu)
 
 ;; electric pair mode
 (add-hook 'emacs-lisp-mode-hook 'electric-pair-mode)
@@ -107,7 +107,7 @@
           (lambda ()
             (modify-syntax-entry ?_ "w" py-mode-syntax-table)))
 
-;(require 'ipython)
+;(use-package ipython)
 ;(setq python-python-command "ipython"
 ;      ipython-command "/usr/bin/ipython"
 ;      py-python-command-args '("--colors=Linux"))
