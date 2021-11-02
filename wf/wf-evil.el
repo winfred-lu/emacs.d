@@ -19,17 +19,6 @@
   (evil-mode 1)
   (use-package evil-matchit :ensure)
 
-  ;; Re-define keybinding for evil matchit mode
-  (defun evilmi-customize-keybinding ()
-    (evil-define-key 'normal evil-matchit-mode-map
-      "%" 'evilmi-jump-items
-      ",is" 'evilmi-select-items
-      ",id" 'evilmi-delete-items
-      ))
-
-  ;; Evil global modes
-  (global-evil-matchit-mode 1)
-
   ;; Set evil initial sate for major modes
   (dolist (x '((calendar-mode . emacs)
                (compilation-mode . emacs)
@@ -97,7 +86,7 @@
   (define-key wf-evil-comma-map "f" 'ido-find-file)
   (define-key wf-evil-comma-map "g" 'magit-status)
   (define-key wf-evil-comma-map "h" 'ibuffer)
-                                        ; ,i taken by 'evilmi-select-items and 'evilmi-delete-items
+  ; ,i taken by 'evilmi-select-items and 'evilmi-delete-items
   (define-key wf-evil-comma-map "k" 'kill-buffer)
   (define-key wf-evil-comma-map "l" 'evil-ace-jump-line-mode)
   (define-key wf-evil-comma-map "m" 'idomenu)
@@ -254,4 +243,20 @@
        (add-to-list 'org-file-apps '("\\.jpg\\'" . default))
        (add-to-list 'org-file-apps '("\\.png\\'" . default))
        (add-to-list 'org-file-apps '("\\.tif\\'" . default))))
+  )
+
+(use-package evil-matchit
+  :after evil
+  :ensure t
+  :config
+  ;; Re-define keybinding for evil matchit mode
+  (defun evilmi-customize-keybinding ()
+    (evil-define-key 'normal evil-matchit-mode-map
+      "%" 'evilmi-jump-items
+      ",is" 'evilmi-select-items
+      ",id" 'evilmi-delete-items
+      ))
+
+  ;; Evil global modes
+  (global-evil-matchit-mode 1)
   )
