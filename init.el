@@ -24,7 +24,6 @@
 (load "wf-keys")
 (load "wf-program")
 (load "wf-org")
-;(load "wf-helm")
 (load "wf-ido")
 
 (use-package yasnippet
