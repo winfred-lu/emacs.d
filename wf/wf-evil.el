@@ -17,7 +17,6 @@
 
   :config
   (evil-mode 1)
-  (use-package evil-matchit :ensure)
 
   ;; Set evil initial sate for major modes
   (dolist (x '((calendar-mode . emacs)
@@ -244,6 +243,7 @@
 (use-package evil-matchit
   :after evil
   :ensure t
+  :defer t
   :config
   ;; Re-define keybinding for evil matchit mode
   (defun evilmi-customize-keybinding ()
@@ -259,6 +259,7 @@
 (use-package ace-jump-mode
   :after evil
   :ensure t
+  :defer t
   :init
   ;; To supress the warning: Package cl is deprecated
   (setq byte-compile-warnings '(not cl-functions obsolete))
