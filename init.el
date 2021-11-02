@@ -12,6 +12,8 @@
 (unless (assoc-default "melpa" package-archives)
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
 
+;(load ""wf-proxy"")
+
 ;; ensure to install use-package
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
