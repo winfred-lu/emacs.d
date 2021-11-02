@@ -27,16 +27,3 @@
 (load "wf-program")
 (load "wf-org")
 (load "wf-ido")
-
-(use-package yasnippet
-  :hook ((c-mode . yas-minor-mode)
-         (python-mode . yas-minor-mode)
-         (sh-mode . yas-minor-mode)
-         (emacs-lisp-mode . yas-minor-mode)))
-
-(use-package magit
-  :commands magit-status
-  :ensure t
-  :bind (("C-x g" . magit-status)))
-
-(use-package xcscope :ensure t)

@@ -1,6 +1,19 @@
 (use-package idomenu
   :bind ("C-c i" . idomenu))
 
+(use-package yasnippet
+  :hook ((c-mode . yas-minor-mode)
+         (python-mode . yas-minor-mode)
+         (sh-mode . yas-minor-mode)
+         (emacs-lisp-mode . yas-minor-mode)))
+
+(use-package magit
+  :commands magit-status
+  :bind (("C-x g" . magit-status)))
+
+(use-package xcscope
+  :defer t)
+
 ;; electric pair mode
 (add-hook 'emacs-lisp-mode-hook 'electric-pair-mode)
 (add-hook 'c-mode-common-hook 'electric-pair-mode)
