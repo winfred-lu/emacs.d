@@ -1,5 +1,5 @@
 (use-package evil
-  :ensure
+  :ensure t
   :demand t
 
   :init
@@ -69,10 +69,6 @@
   (define-key evil-normal-state-map "k" 'evil-previous-visual-line)
   (define-key evil-normal-state-map "gj" 'evil-next-line)
   (define-key evil-normal-state-map "gk" 'evil-previous-line)
-
-  (define-key evil-motion-state-map (kbd "SPC") #'evil-ace-jump-word-mode)
-  (define-key evil-normal-state-map (kbd "SPC") #'evil-ace-jump-word-mode)
-  (define-key evil-operator-state-map (kbd "SPC") #'evil-ace-jump-char-mode)
 
   (define-prefix-command 'wf-evil-comma-map)
   (define-key wf-evil-comma-map "," 'evil-repeat-find-char-reverse)
@@ -258,5 +254,15 @@
       ))
 
   ;; Evil global modes
-  (global-evil-matchit-mode 1)
-  )
+  (global-evil-matchit-mode 1))
+
+(use-package ace-jump-mode
+  :after evil
+  :ensure t
+  :init
+  ;; To supress the warning: Package cl is deprecated
+  (setq byte-compile-warnings '(not cl-functions obsolete))
+  :config
+  (define-key evil-motion-state-map (kbd "SPC") #'evil-ace-jump-word-mode)
+  (define-key evil-normal-state-map (kbd "SPC") #'evil-ace-jump-word-mode)
+  (define-key evil-operator-state-map (kbd "SPC") #'evil-ace-jump-char-mode))
