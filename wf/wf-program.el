@@ -1,4 +1,5 @@
-(use-package idomenu)
+(use-package idomenu
+  :bind ("C-c i" . idomenu))
 
 ;; electric pair mode
 (add-hook 'emacs-lisp-mode-hook 'electric-pair-mode)

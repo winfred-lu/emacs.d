@@ -17,7 +17,8 @@
 
 ;; make buffer names unique
 (use-package uniquify
-  :init
+  :defer 10
+  :config
   (setq uniquify-buffer-name-style (quote forward)))
 
 (use-package browse-kill-ring
