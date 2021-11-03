@@ -1,14 +1,20 @@
-;; theme
-(setq zenburn-override-colors-alist
-      '(("zenburn-bg-1"     . "#060606")
-        ("zenburn-bg-08"    . "#0A0A0A")
-        ("zenburn-bg-05"    . "#0C0C0C")
-        ("zenburn-bg"       . "#101010")
-        ("zenburn-bg+05"    . "#1A1A1A")
-        ("zenburn-bg+1"     . "#242424")
-        ("zenburn-bg+2"     . "#2E2E2E")
-        ("zenburn-bg+3"     . "#333333")))
-(load-theme 'zenburn t)
+(use-package zenburn-theme
+  :ensure t
+  :init
+  (setq zenburn-override-colors-alist
+        '(("zenburn-bg-1"     . "#1C0C00")
+          ("zenburn-bg-08"    . "#0A0A0A")
+          ("zenburn-bg-05"    . "#2C2C00")
+          ("zenburn-bg"       . "#101010")
+          ("zenburn-bg+05"    . "#1A1A1A")
+          ("zenburn-bg+1"     . "#242424")
+          ("zenburn-bg+2"     . "#2E2E2E")
+          ("zenburn-bg+3"     . "#333333")))
+  :config
+  (load-theme 'zenburn t))
+
+;; Set font size to 10 pt in units of 1/10 pt
+(set-face-attribute 'default nil :height 100)
 
 ;; Don't show the startup screen, menu bar, tool bar, and scroll bar
 (setq inhibit-startup-message t)
