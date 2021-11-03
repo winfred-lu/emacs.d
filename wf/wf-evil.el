@@ -72,10 +72,10 @@
   (define-prefix-command 'wf-evil-comma-map)
   (define-key wf-evil-comma-map "," 'evil-repeat-find-char-reverse)
   (define-key wf-evil-comma-map "b" 'ido-switch-buffer)
-  (define-key wf-evil-comma-map "ca" 'calendar)
+  (define-key wf-evil-comma-map "ca" 'calc)
+  (define-key wf-evil-comma-map "cd" 'calendar)
   (define-key wf-evil-comma-map "ci" 'evilnc-comment-or-uncomment-lines)
-  (define-key wf-evil-comma-map "cc" 'evilnc-comment-or-uncomment-to-the-line)
-  (define-key wf-evil-comma-map "cl" 'calc)
+  (define-key wf-evil-comma-map "cl" 'evilnc-quick-comment-or-uncomment-to-the-line)
   (define-key wf-evil-comma-map "d" 'dired-jump)
   (define-key wf-evil-comma-map "e" 'wf-sudo-find-file)
   (define-key wf-evil-comma-map "f" 'ido-find-file)
@@ -255,6 +255,13 @@
 
   ;; Evil global modes
   (global-evil-matchit-mode 1))
+
+(use-package evil-nerd-commenter
+  :after evil
+  :commands evilnc-comment-or-uncomment-lines
+  :bind (("M-;" . evilnc-comment-or-uncomment-lines))
+  :config
+  (evilnc-default-hotkeys))
 
 (use-package ace-jump-mode
   :after evil
