@@ -151,13 +151,6 @@
     '(progn
        (evil-make-overriding-map custom-mode-map 'normal t)))
 
-  (eval-after-load "dired"
-    '(progn
-       (evil-define-key 'normal dired-mode-map (kbd "^")
-         (lambda () (interactive) (find-alternate-file "..")))
-       (evil-define-key 'normal dired-mode-map (kbd "RET")
-         `dired-find-file)))
-
   (eval-after-load "lisp"
     '(progn
        (evil-define-key 'insert emacs-lisp-mode-map (kbd "RET") 'evil-ret)))
