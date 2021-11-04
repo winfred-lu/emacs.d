@@ -6,9 +6,9 @@
       delete-old-versions t    ; don't ask to delete excess backup versions
       backup-by-copying t      ; don't clobber symlinks
       backup-directory-alist
-      `((".*" . "~/.emacs.d/backups"))  ; don't litter my fs tree
+      `((".*" . ,(concat user-emacs-directory "backups")))
       auto-save-file-name-transforms
-      `((".*" "~/.emacs.d/autosaves/" t))
+      `((".*" ,(concat user-emacs-directory "autosaves") t))
       )
 (setq bookmark-save-flag 1)
 
