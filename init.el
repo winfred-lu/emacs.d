@@ -1,6 +1,11 @@
 ;; add our folder to the load-path
 (add-to-list 'load-path (concat user-emacs-directory "wf"))
 
+;; keep customize settings separately
+(setq custom-file (concat user-emacs-directory "custom.el"))
+(when (file-exists-p custom-file)
+  (load custom-file))
+
 ;; temporarily reduce garbage collection during startup (speed up)
 (defconst wf-original-gc-cons-threshold gc-cons-threshold
     "Initial value of `gc-cons-threshold' at start-up time.")
