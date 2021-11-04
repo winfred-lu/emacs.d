@@ -175,10 +175,6 @@
               "K" 'ibuffer-do-kill-lines
               "<" 'ibuffer-toggle-sorting-mode)))
 
-  (eval-after-load 'info
-    '(progn
-       (evil-define-key 'motion Info-mode-map "," 'wf-evil-comma-map)))
-
   (eval-after-load "magit"
     '(progn
        (wf-define-evil-movements magit-status-mode-map
