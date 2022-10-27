@@ -14,10 +14,11 @@
           (lambda () (setq gc-cons-threshold wf-original-gc-cons-threshold)))
 
 ;; add package sources
+(package-initialize)
 (unless (assoc-default "melpa" package-archives)
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
 
-;(load ""wf-proxy"")
+;(load "wf-proxy")
 
 ;; ensure to install use-package
 (unless (package-installed-p 'use-package)
