@@ -31,6 +31,9 @@
   ;; evil-ret-and-indent all the time
   (define-key evil-insert-state-map [remap evil-ret] 'evil-ret-and-indent)
 
+  (define-key evil-insert-state-map "\C-a" 'move-beginning-of-line)
+  (define-key evil-insert-state-map "\C-e" 'move-end-of-line)
+
   ;; kj as escape to return to normal mode
   (define-key evil-insert-state-map "k" #'cofi/maybe-exit)
   (evil-define-command cofi/maybe-exit ()
