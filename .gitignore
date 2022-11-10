@@ -20,3 +20,5 @@ elpa
 ido.last
 recentf
 transient/
+custom.el
+network-security.data
