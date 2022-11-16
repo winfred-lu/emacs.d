@@ -8,7 +8,7 @@
       backup-directory-alist
       `((".*" . ,(concat user-emacs-directory "backups")))
       auto-save-file-name-transforms
-      `((".*" ,(concat user-emacs-directory "autosaves") t))
+      `((".*" ,(concat user-emacs-directory "autosaves/") t))
       )
 (setq bookmark-save-flag 1)
 
