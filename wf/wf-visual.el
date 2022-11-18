@@ -1,5 +1,4 @@
 (use-package zenburn-theme
-  :ensure t
   :init
   (setq zenburn-override-colors-alist
         '(("zenburn-bg-1"     . "#1C0C00")
@@ -24,7 +23,7 @@
 
 (setq line-number-mode t)
 (setq column-number-mode t)
-(if (not indicate-empty-lines) (toggle-indicate-empty-lines))
+(setq-default indicate-empty-lines t)
 
 ;; Eighty column
 (setq-default fill-column 80)
