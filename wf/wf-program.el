@@ -1,8 +1,8 @@
 (use-package idomenu
-  :bind ("C-c i" . idomenu))
+  :bind (("C-c i" . idomenu)))
 
 (use-package yasnippet
-  :hook (prog-mode . yas-minor-mode))
+  :hook ((prog-mode . yas-minor-mode)))
 
 (use-package magit
   :commands magit-status
