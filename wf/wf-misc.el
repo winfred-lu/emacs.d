@@ -19,9 +19,23 @@
 ;; y-or-n
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; firefox as default browser
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "firefox")
+;; default browser
+(setq browse-url-browser-function 'browse-url-generic)
+(if (string-match "-[Mm]icrosoft" operating-system-release)
+    (setq browse-url-generic-program "/mnt/c/Program Files \(x86\)/Microsoft/Edge/Application/msedge.exe")
+  (setq browse-url-generic-program "firefox"))
+
+;; add the following reistry in Windows 10 with new WSL
+;
+; REGEDIT4
+;
+; [HKEY_CLASSES_ROOT\org-protocol]
+; @="URL:Org Protocol"
+; "URL Protocol"=""
+; [HKEY_CLASSES_ROOT\org-protocol\shell]
+; [HKEY_CLASSES_ROOT\org-protocol\shell\open]
+; [HKEY_CLASSES_ROOT\org-protocol\shell\open\command]
+; @="\"C:\\Windows\\System32\\wsl.exe\" emacsclient  \"%1\""
 
 ;; stop y-and-n before editing symlinks
 (setq vc-follow-symlinks nil)
